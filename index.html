@@ -24,7 +24,10 @@
     </nav>
 
     <div class="controls">
-      <input id="searchInput" type="text" placeholder="Buscar juego..." aria-label="Buscar juego">
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Buscar juego..." aria-label="Buscar juego" autocomplete="off" aria-controls="searchSuggestions" aria-expanded="false">
+        <div id="searchSuggestions" class="search-suggestions hidden" role="listbox"></div>
+      </div>
       <button id="clearBtn" type="button">Limpiar</button>
       <button id="themeToggle" type="button" aria-label="Cambiar tema">Modo oscuro</button>
     </div>

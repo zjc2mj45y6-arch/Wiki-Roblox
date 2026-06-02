@@ -770,6 +770,7 @@ const trendSectionsData = [
 const categoryFilters = document.getElementById("categoryFilters");
 const gamesGrid = document.getElementById("gamesGrid");
 const searchInput = document.getElementById("searchInput");
+const searchSuggestions = document.getElementById("searchSuggestions");
 const clearBtn = document.getElementById("clearBtn");
 const emptyState = document.getElementById("emptyState");
 const cardTemplate = document.getElementById("cardTemplate");
@@ -798,6 +799,7 @@ let searchText = "";
 let activeView = "wiki";
 let activeGameTitle = "";
 const homeGameLimit = 12;
+const suggestionLimit = 6;
 
 function categoriesFromData(data) {
   return ["Todas", ...new Set(data.map((g) => g.category))];
@@ -826,23 +828,78 @@ function buildFilters() {
 }
 
 function filteredGames() {
-  const hasSearch = searchText.length > 0;
   const hasCategoryFilter = selectedCategory !== "Todas";
   const matches = games.filter((game) => {
-    const matchCategory = selectedCategory === "Todas" || game.category === selectedCategory;
-    const badges = (game.badges || []).join(" ");
-    const items = (game.items || []).map((item) => `${item.name} ${item.howTo}`).join(" ");
-    const eggs = (game.easterEggs || []).join(" ");
-    const text = `${game.title} ${game.category} ${game.creator} ${game.short} ${game.longDescription} ${badges} ${items} ${eggs}`.toLowerCase();
-    const matchSearch = text.includes(searchText.toLowerCase());
-    return matchCategory && matchSearch;
+    return selectedCategory === "Todas" || game.category === selectedCategory;
   });
 
-  if (!hasSearch && !hasCategoryFilter) {
+  if (!hasCategoryFilter) {
     return matches.slice(0, homeGameLimit);
   }
 
   return matches;
+}
+
+function searchableText(game) {
+  const badges = (game.badges || []).join(" ");
+  const items = (game.items || []).map((item) => `${item.name} ${item.howTo}`).join(" ");
+  const eggs = (game.easterEggs || []).join(" ");
+  return `${game.title} ${game.category} ${game.creator} ${game.short} ${game.longDescription} ${badges} ${items} ${eggs}`.toLowerCase();
+}
+
+function suggestedGames() {
+  const query = searchText.toLowerCase();
+  if (!query) {
+    return [];
+  }
+
+  return games
+    .filter((game) => searchableText(game).includes(query))
+    .sort((a, b) => {
+      const aTitle = a.title.toLowerCase();
+      const bTitle = b.title.toLowerCase();
+      const aStarts = aTitle.startsWith(query) ? 0 : 1;
+      const bStarts = bTitle.startsWith(query) ? 0 : 1;
+      return aStarts - bStarts || aTitle.localeCompare(bTitle);
+    })
+    .slice(0, suggestionLimit);
+}
+
+function hideSearchSuggestions() {
+  searchSuggestions.classList.add("hidden");
+  searchSuggestions.innerHTML = "";
+  searchInput.setAttribute("aria-expanded", "false");
+}
+
+function renderSearchSuggestions() {
+  const suggestions = suggestedGames();
+  searchSuggestions.innerHTML = "";
+
+  if (suggestions.length === 0) {
+    hideSearchSuggestions();
+    return;
+  }
+
+  suggestions.forEach((game) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "suggestion-item";
+    button.setAttribute("role", "option");
+    button.innerHTML = `
+      <span class="suggestion-title">${game.title}</span>
+      <span class="suggestion-meta">${game.category} | ${game.short}</span>
+    `;
+    button.addEventListener("click", () => {
+      searchText = "";
+      searchInput.value = "";
+      hideSearchSuggestions();
+      scrollToGame(game.title);
+    });
+    searchSuggestions.appendChild(button);
+  });
+
+  searchSuggestions.classList.remove("hidden");
+  searchInput.setAttribute("aria-expanded", "true");
 }
 
 function initialsFromTitle(title) {
@@ -979,6 +1036,7 @@ function scrollToGame(title) {
 
   searchText = "";
   searchInput.value = "";
+  hideSearchSuggestions();
   selectedCategory = "Todas";
   setActiveView("wiki");
   buildFilters();
@@ -1061,6 +1119,7 @@ function setActiveView(viewName) {
   });
 
   if (!isWiki) {
+    hideSearchSuggestions();
     renderTrendSections();
   }
 }
@@ -1105,15 +1164,42 @@ themeToggle.addEventListener("click", () => {
 
 searchInput.addEventListener("input", (event) => {
   searchText = event.target.value.trim();
-  renderGames();
+  renderSearchSuggestions();
+});
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    hideSearchSuggestions();
+    return;
+  }
+
+  if (event.key === "Enter") {
+    const firstSuggestion = suggestedGames()[0];
+    if (!firstSuggestion) {
+      return;
+    }
+
+    event.preventDefault();
+    searchText = "";
+    searchInput.value = "";
+    hideSearchSuggestions();
+    scrollToGame(firstSuggestion.title);
+  }
 });
 
 clearBtn.addEventListener("click", () => {
   searchInput.value = "";
   searchText = "";
+  hideSearchSuggestions();
   selectedCategory = "Todas";
   buildFilters();
   renderGames();
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".search-box")) {
+    hideSearchSuggestions();
+  }
 });
 
 viewTabs.forEach((tab) => {
