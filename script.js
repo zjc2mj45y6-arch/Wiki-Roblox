@@ -60,7 +60,7 @@ const games = [
   {
     title: "Tower of Hell",
     placeId: 1962086868,
-    image: "Imagenes/th.jpg",
+    image: "Imagenes/tower-of-hell-cover.png",
     category: "Obby",
     short: "Desafio de parkour por niveles sin puntos de control.",
     longDescription: "Tower of Hell es un obby competitivo donde debes llegar a la cima sin checkpoints antes de que termine el tiempo.",
@@ -78,7 +78,7 @@ const games = [
   {
     title: "Arsenal",
     placeId: 286090429,
-    image: "Imagenes/Arsenal.jpg",
+    image: "Imagenes/arsenal-cover.png",
     category: "Shooter",
     short: "Shooter competitivo de rondas cortas con armas variadas.",
     longDescription: "Arsenal es un shooter rapido donde cambias de arma al eliminar enemigos y ganas quien complete primero la rotacion.",
@@ -96,7 +96,7 @@ const games = [
   {
     title: "Murder Mystery 2",
     placeId: 142823291,
-    image: "Imagenes/MM2.jpg",
+    image: "Imagenes/murder-mystery-2-cover.png",
     category: "Suspenso",
     short: "Juego de roles ocultos donde debes descubrir al asesino.",
     longDescription: "MM2 asigna roles secretos cada ronda. Como inocente debes sobrevivir, como sheriff eliminar al asesino y como asesino eliminar a todos.",
@@ -115,7 +115,7 @@ const games = [
   {
     title: "Pet Simulator X",
     placeId: 6284583030,
-    image: "Imagenes/psX.jpg",
+    image: "Imagenes/pet-simulator-x-cover.png",
     category: "Simulacion",
     short: "Colecciona mascotas para desbloquear zonas y mejorar progreso.",
     longDescription: "Pet Simulator X trata de obtener mascotas cada vez mas fuertes para romper objetos, ganar monedas y avanzar por nuevos mundos.",
@@ -133,7 +133,7 @@ const games = [
   {
     title: "Doors",
     placeId: 6516141723,
-    image: "Imagenes/Doors.jpg",
+    image: "Imagenes/doors-cover.png",
     category: "Terror",
     short: "Experiencia de terror cooperativa con exploracion y supervivencia.",
     longDescription: "Doors es un juego de terror donde avanzas por habitaciones aleatorias y debes reaccionar rapido a entidades peligrosas.",
@@ -151,7 +151,7 @@ const games = [
   {
     title: "RIVALS",
     placeId: 17625359962,
-    image: "",
+    image: "Imagenes/rivals-cover.png",
     category: "Shooter",
     short: "Shooter competitivo de duelos rapidos con armas, movilidad y partidas intensas.",
     longDescription: "RIVALS destaca por su ritmo alto, rondas cortas y enfoque en punteria y desplazamiento. Tiene una base competitiva enorme y se mantiene entre los juegos mas jugados del momento.",
@@ -170,7 +170,7 @@ const games = [
   {
     title: "Jujutsu Shenanigans",
     placeId: 9391468976,
-    image: "",
+    image: "Imagenes/jujutsu-shenanigans-cover.png",
     category: "Aventura",
     short: "Combate anime caotico con habilidades vistosas y partidas llenas de energia.",
     longDescription: "Jujutsu Shenanigans mezcla arena fighter, habilidades exageradas y un flujo muy rapido de combate. Suele reaccionar fuerte a updates y eventos del genero anime.",
@@ -189,7 +189,7 @@ const games = [
   {
     title: "99 Nights in the Forest",
     placeId: 79546208627805,
-    image: "",
+    image: "Imagenes/99-nights-forest-cover.png",
     category: "Supervivencia",
     short: "Supervivencia cooperativa donde gestionas recursos y resistes noches peligrosas.",
     longDescription: "99 Nights in the Forest exploto por su mezcla de supervivencia, crafting ligero y sesiones intensas en equipo. Mantiene una concurrencia altisima y un crecimiento fuerte en la ultima semana.",
@@ -208,7 +208,7 @@ const games = [
   {
     title: "Fish It!",
     placeId: 121864768012064,
-    image: "",
+    image: "Imagenes/fish-it-cover.png",
     category: "Simulacion",
     short: "Pesca relajada con progresion rapida, coleccion y una comunidad en fuerte crecimiento.",
     longDescription: "Fish It! es uno de los juegos que mas esta acelerando en Roblox. Su loop simple de pesca, mejoras y coleccion lo puso entre los grandes ganadores de crecimiento reciente.",
