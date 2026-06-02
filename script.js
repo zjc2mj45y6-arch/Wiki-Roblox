@@ -76,6 +76,26 @@ const games = [
     ]
   },
   {
+    title: "Tower Defense Simulator",
+    placeId: 3260590327,
+    image: "Imagenes/tower-defense-simulator-cover.png",
+    category: "Tower Defense",
+    short: "Tower defense cooperativo donde colocas torres para frenar oleadas de enemigos.",
+    longDescription: "Tower Defense Simulator es una experiencia de estrategia en Roblox donde juegas solo o en equipo, colocas torres, mejoras defensas y sobrevives oleadas cada vez mas fuertes hasta derrotar jefes.",
+    creator: "Paradoxum Games",
+    year: 2019,
+    easterEggs: [
+      "Algunos mapas favorecen rutas de colocacion poco obvias para exprimir mejor el rango de las torres.",
+      "Los eventos temporales suelen traer enemigos, recompensas y torres que no estan disponibles todo el ano."
+    ],
+    items: [
+      { name: "Torre", icon: "T", howTo: "Se compra o desbloquea con monedas, gemas, nivel, eventos o pases segun el tipo de torre." },
+      { name: "Skincrate", icon: "C", howTo: "Se obtiene en tienda, recompensas o eventos para desbloquear skins cosmeticas de torres." },
+      { name: "Gemas", icon: "G", howTo: "Se ganan principalmente en modos avanzados y sirven para comprar torres especiales." }
+    ],
+    badges: ["Top del mes"]
+  },
+  {
     title: "Arsenal",
     placeId: 286090429,
     image: "Imagenes/arsenal-cover-original-style.png",
