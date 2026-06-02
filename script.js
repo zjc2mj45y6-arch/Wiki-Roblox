@@ -78,7 +78,7 @@ const games = [
   {
     title: "Arsenal",
     placeId: 286090429,
-    image: "Imagenes/arsenal-cover.png",
+    image: "Imagenes/arsenal-cover-original-style.png",
     category: "Shooter",
     short: "Shooter competitivo de rondas cortas con armas variadas.",
     longDescription: "Arsenal es un shooter rapido donde cambias de arma al eliminar enemigos y ganas quien complete primero la rotacion.",
