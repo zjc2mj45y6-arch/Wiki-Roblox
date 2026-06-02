@@ -886,9 +886,13 @@ function renderSearchSuggestions() {
     button.type = "button";
     button.className = "suggestion-item";
     button.setAttribute("role", "option");
+    const shouldShowThumb = game.title === "Brookhaven RP" && game.image;
     button.innerHTML = `
-      <span class="suggestion-title">${game.title}</span>
-      <span class="suggestion-meta">${game.category} | ${game.short}</span>
+      ${shouldShowThumb ? `<img class="suggestion-thumb" src="${game.image}" alt="${game.title} portada" loading="lazy">` : ""}
+      <span class="suggestion-copy">
+        <span class="suggestion-title">${game.title}</span>
+        <span class="suggestion-meta">${game.category} | ${game.short}</span>
+      </span>
     `;
     button.addEventListener("click", () => {
       searchText = "";
