@@ -640,6 +640,30 @@ body.modal-open { overflow: hidden; }
   line-height: 1.05;
 }
 
+.modal-roblox-link {
+  width: fit-content;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: color-mix(in srgb, var(--accent-soft) 82%, var(--card));
+  color: var(--accent);
+  font-family: "Fredoka", sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.modal-roblox-link:hover,
+.modal-roblox-link:focus-visible {
+  background: var(--accent);
+  color: #fff;
+  outline: none;
+}
+
 .modal-badges {
   display: flex;
   flex-wrap: wrap;

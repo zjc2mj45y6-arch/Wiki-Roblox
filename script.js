@@ -787,6 +787,7 @@ const modalImageFallback = document.getElementById("modalImageFallback");
 const modalFallbackInitials = document.getElementById("modalFallbackInitials");
 const modalCategory = document.getElementById("modalCategory");
 const modalTitle = document.getElementById("modalTitle");
+const modalRobloxLink = document.getElementById("modalRobloxLink");
 const modalBadges = document.getElementById("modalBadges");
 const modalMeta = document.getElementById("modalMeta");
 const modalDescription = document.getElementById("modalDescription");
@@ -952,6 +953,9 @@ function openGameModal(game) {
 
   modalCategory.textContent = game.category;
   modalTitle.textContent = game.title;
+  const showRobloxLink = game.title === "Brookhaven RP" && game.placeId;
+  modalRobloxLink.classList.toggle("hidden", !showRobloxLink);
+  modalRobloxLink.href = showRobloxLink ? `https://www.roblox.com/games/${game.placeId}` : "#";
   modalMeta.textContent = `Categoria: ${game.category} | Creador: ${game.creator} | Ano: ${game.year}`;
   modalDescription.textContent = game.longDescription;
 
