@@ -261,7 +261,7 @@ const games = [
   },
   {
     title: "Berry Avenue",
-    placeId: 7981339063,
+    placeId: 8481844229,
     image: "",
     category: "Roleplay",
     short: "Roleplay urbano con casas, personalizacion y enfoque social muy fuerte.",
@@ -298,7 +298,7 @@ const games = [
   },
   {
     title: "Hypershot",
-    placeId: 7436755782,
+    placeId: 17516596118,
     image: "",
     category: "Shooter",
     short: "Shooter de ritmo alto con enfoque en reflejos, precision y rounds cortos.",
@@ -336,7 +336,7 @@ const games = [
   },
   {
     title: "Anime Story",
-    placeId: 12722718889,
+    placeId: 9417197334,
     image: "",
     category: "Aventura",
     short: "RPG anime aun pequeno en visitas totales, pero ya con traccion visible en jugadores activos.",
@@ -922,6 +922,16 @@ function gameByTitle(title) {
   return games.find((game) => game.title === title);
 }
 
+function robloxGameUrl(game) {
+  const slug = game.title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return `https://www.roblox.com/games/${game.placeId}/${slug}`;
+}
+
 function closeGameModal() {
   gameModal.setAttribute("aria-hidden", "true");
   activeGameTitle = "";
@@ -953,9 +963,9 @@ function openGameModal(game) {
 
   modalCategory.textContent = game.category;
   modalTitle.textContent = game.title;
-  const showRobloxLink = game.title === "Brookhaven RP" && game.placeId;
+  const showRobloxLink = game.placeId;
   modalRobloxLink.classList.toggle("hidden", !showRobloxLink);
-  modalRobloxLink.href = showRobloxLink ? `https://www.roblox.com/games/${game.placeId}` : "#";
+  modalRobloxLink.href = showRobloxLink ? robloxGameUrl(game) : "#";
   modalMeta.textContent = `Categoria: ${game.category} | Creador: ${game.creator} | Ano: ${game.year}`;
   modalDescription.textContent = game.longDescription;
 
