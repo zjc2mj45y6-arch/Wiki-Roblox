@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Mini Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <header class="hero">
+    <h1>Roblox Mini Wiki</h1>
+    <p>Explora juegos por categorias y descubre informacion rapida y divertida.</p>
+
+    <nav class="view-nav" aria-label="Secciones principales">
+      <button class="view-tab active" type="button" data-view="wiki">Wiki de juegos</button>
+      <button class="view-tab" type="button" data-view="top-mes">Top del mes</button>
+      <button class="view-tab" type="button" data-view="revelacion-semana">Joyitas ocultas</button>
+    </nav>
+
+    <div class="controls">
+      <input id="searchInput" type="text" placeholder="Buscar juego..." aria-label="Buscar juego">
+      <button id="clearBtn" type="button">Limpiar</button>
+      <button id="themeToggle" type="button" aria-label="Cambiar tema">Modo oscuro</button>
+    </div>
+
+    <div id="categoryFilters" class="filters" aria-label="Filtros por categoria"></div>
+  </header>
+
+  <main>
+    <section id="wikiView" class="view-panel is-active" aria-labelledby="wikiViewTitle">
+      <h2 id="wikiViewTitle" class="sr-only">Wiki de juegos</h2>
+      <section id="gamesGrid" class="games-grid" aria-live="polite"></section>
+      <p id="emptyState" class="empty-state hidden">No se encontraron juegos con ese filtro.</p>
+    </section>
+
+    <section id="radarView" class="view-panel" aria-labelledby="trendBoardTitle">
+      <div class="section-heading">
+        <h2 id="trendBoardTitle">Radar Roblox</h2>
+        <p>Snapshot estimado al 1 de junio de 2026 con datos de concurrencia y tendencia reciente.</p>
+      </div>
+      <div id="trendSections" class="trend-sections trend-sections-single"></div>
+    </section>
+  </main>
+
+  <template id="cardTemplate">
+    <article class="game-card" tabindex="0" role="button">
+      <div class="card-visual">
+        <img class="game-image" alt="Imagen del juego" loading="lazy">
+        <div class="game-image-fallback" aria-hidden="true">
+          <span class="fallback-initials"></span>
+        </div>
+        <div class="game-overlay">
+          <div class="game-badges"></div>
+          <h2 class="game-title"></h2>
+          <p class="game-category"></p>
+          <p class="game-short"></p>
+        </div>
+      </div>
+      <div class="inline-panel">
+        <p class="panel-meta"></p>
+        <p class="panel-long"></p>
+        <h3>Easter Eggs</h3>
+        <ul class="panel-eggs"></ul>
+        <h3>Items y como conseguirlos</h3>
+        <div class="panel-items"></div>
+        <p class="item-howto">Haz click en un item para ver como conseguirlo.</p>
+      </div>
+    </article>
+  </template>
+
+  <template id="trendSectionTemplate">
+    <article class="trend-section-card">
+      <div class="trend-section-head">
+        <div>
+          <p class="trend-kicker"></p>
+          <h3 class="trend-title"></h3>
+        </div>
+        <span class="trend-note"></span>
+      </div>
+      <p class="trend-description"></p>
+      <div class="trend-list"></div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
