@@ -26,6 +26,8 @@ body[data-theme="dark"] {
 
 * { box-sizing: border-box; }
 
+html { scrollbar-gutter: stable; }
+
 body {
   margin: 0;
   font-family: "Baloo 2", cursive;
