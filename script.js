@@ -798,6 +798,7 @@ let selectedCategory = "Todas";
 let searchText = "";
 let activeView = "wiki";
 let activeGameTitle = "";
+let modalCloseTimer = null;
 const homeGameLimit = 12;
 const suggestionLimit = 6;
 
@@ -917,13 +918,28 @@ function gameByTitle(title) {
 }
 
 function closeGameModal() {
-  gameModal.classList.add("hidden");
   gameModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
   activeGameTitle = "";
+
+  if (gameModal.classList.contains("hidden") || gameModal.classList.contains("is-closing")) {
+    return;
+  }
+
+  gameModal.classList.add("is-closing");
+  modalCloseTimer = window.setTimeout(() => {
+    gameModal.classList.add("hidden");
+    gameModal.classList.remove("is-closing");
+    document.body.classList.remove("modal-open");
+    modalCloseTimer = null;
+  }, 160);
 }
 
 function openGameModal(game) {
+  if (modalCloseTimer) {
+    window.clearTimeout(modalCloseTimer);
+    modalCloseTimer = null;
+  }
+
   activeGameTitle = game.title;
   modalFallbackInitials.textContent = initialsFromTitle(game.title);
   modalImage.src = game.image || "";
@@ -965,7 +981,7 @@ function openGameModal(game) {
     modalItems.appendChild(itemBtn);
   });
 
-  gameModal.classList.remove("hidden");
+  gameModal.classList.remove("hidden", "is-closing");
   gameModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   requestAnimationFrame(() => modalPanel.focus());

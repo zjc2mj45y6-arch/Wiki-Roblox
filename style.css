@@ -532,6 +532,10 @@ body.modal-open { overflow: hidden; }
   backdrop-filter: blur(5px);
 }
 
+.game-modal.is-closing .modal-backdrop {
+  animation: modalBackdropFadeOut .16s ease forwards;
+}
+
 .modal-panel {
   position: relative;
   z-index: 1;
@@ -546,6 +550,10 @@ body.modal-open { overflow: hidden; }
   color: var(--text);
   box-shadow: 0 28px 70px rgba(2, 6, 23, 0.34);
   animation: modalPop .2s ease;
+}
+
+.game-modal.is-closing .modal-panel {
+  animation: modalSoftClose .16s ease forwards;
 }
 
 .modal-panel:focus { outline: none; }
@@ -678,6 +686,16 @@ body.modal-open { overflow: hidden; }
 @keyframes modalPop {
   0% { opacity: 0; transform: translateY(10px) scale(.98); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes modalSoftClose {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(5px) scale(.99); }
+}
+
+@keyframes modalBackdropFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @media (hover: none) { .game-overlay { opacity: 1; } }
