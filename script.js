@@ -398,11 +398,24 @@ const trendSectionTemplate = document.getElementById("trendSectionTemplate");
 const viewTabs = document.querySelectorAll(".view-tab");
 const wikiView = document.getElementById("wikiView");
 const radarView = document.getElementById("radarView");
+const gameModal = document.getElementById("gameModal");
+const modalPanel = gameModal.querySelector(".modal-panel");
+const modalImage = document.getElementById("modalImage");
+const modalImageFallback = document.getElementById("modalImageFallback");
+const modalFallbackInitials = document.getElementById("modalFallbackInitials");
+const modalCategory = document.getElementById("modalCategory");
+const modalTitle = document.getElementById("modalTitle");
+const modalBadges = document.getElementById("modalBadges");
+const modalMeta = document.getElementById("modalMeta");
+const modalDescription = document.getElementById("modalDescription");
+const modalEggs = document.getElementById("modalEggs");
+const modalItems = document.getElementById("modalItems");
+const modalItemHowto = document.getElementById("modalItemHowto");
 
 let selectedCategory = "Todas";
 let searchText = "";
 let activeView = "wiki";
-const openGames = new Set();
+let activeGameTitle = "";
 
 function categoriesFromData(data) {
   return ["Todas", ...new Set(data.map((g) => g.category))];
@@ -454,15 +467,59 @@ function gameByTitle(title) {
   return games.find((game) => game.title === title);
 }
 
-function toggleGameCard(card, game) {
-  if (openGames.has(game.title)) {
-    openGames.delete(game.title);
-    card.classList.remove("is-open");
-    return;
-  }
+function closeGameModal() {
+  gameModal.classList.add("hidden");
+  gameModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  activeGameTitle = "";
+}
 
-  openGames.add(game.title);
-  card.classList.add("is-open");
+function openGameModal(game) {
+  activeGameTitle = game.title;
+  modalFallbackInitials.textContent = initialsFromTitle(game.title);
+  modalImage.src = game.image || "";
+  modalImage.alt = `${game.title} - portada del juego`;
+  modalImageFallback.classList.toggle("is-visible", !game.image);
+
+  modalCategory.textContent = game.category;
+  modalTitle.textContent = game.title;
+  modalMeta.textContent = `Categoria: ${game.category} | Creador: ${game.creator} | Ano: ${game.year}`;
+  modalDescription.textContent = game.longDescription;
+
+  modalBadges.innerHTML = "";
+  (game.badges || []).forEach((badge) => {
+    const badgeEl = document.createElement("span");
+    badgeEl.className = "game-badge";
+    badgeEl.textContent = badge;
+    modalBadges.appendChild(badgeEl);
+  });
+
+  modalEggs.innerHTML = "";
+  game.easterEggs.forEach((egg) => {
+    const li = document.createElement("li");
+    li.textContent = egg;
+    modalEggs.appendChild(li);
+  });
+
+  modalItems.innerHTML = "";
+  modalItemHowto.textContent = "Haz click en un item para ver como conseguirlo.";
+  game.items.forEach((item) => {
+    const itemBtn = document.createElement("button");
+    itemBtn.type = "button";
+    itemBtn.className = "item-chip";
+    itemBtn.innerHTML = `<span class="item-icon">${item.icon}</span><span>${item.name}</span>`;
+    itemBtn.addEventListener("click", () => {
+      modalItems.querySelectorAll(".item-chip").forEach((chip) => chip.classList.remove("active"));
+      itemBtn.classList.add("active");
+      modalItemHowto.textContent = `${item.name}: ${item.howTo}`;
+    });
+    modalItems.appendChild(itemBtn);
+  });
+
+  gameModal.classList.remove("hidden");
+  gameModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  requestAnimationFrame(() => modalPanel.focus());
 }
 
 function renderGames() {
@@ -507,46 +564,14 @@ function renderGames() {
       badgesWrap.appendChild(badgeEl);
     });
 
-    const panelMeta = card.querySelector(".panel-meta");
-    const panelLong = card.querySelector(".panel-long");
-    const panelEggs = card.querySelector(".panel-eggs");
-    const panelItems = card.querySelector(".panel-items");
-    const itemHowTo = card.querySelector(".item-howto");
+    card.setAttribute("aria-label", `Ver detalle de ${game.title}`);
+    card.classList.toggle("is-selected", activeGameTitle === game.title);
 
-    panelMeta.textContent = `Categoria: ${game.category} | Creador: ${game.creator} | Ano: ${game.year}`;
-    panelLong.textContent = game.longDescription;
-
-    panelEggs.innerHTML = "";
-    game.easterEggs.forEach((egg) => {
-      const li = document.createElement("li");
-      li.textContent = egg;
-      panelEggs.appendChild(li);
-    });
-
-    panelItems.innerHTML = "";
-    game.items.forEach((item) => {
-      const itemBtn = document.createElement("button");
-      itemBtn.type = "button";
-      itemBtn.className = "item-chip";
-      itemBtn.innerHTML = `<span class="item-icon">${item.icon}</span><span>${item.name}</span>`;
-      itemBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        panelItems.querySelectorAll(".item-chip").forEach((chip) => chip.classList.remove("active"));
-        itemBtn.classList.add("active");
-        itemHowTo.textContent = `${item.name}: ${item.howTo}`;
-      });
-      panelItems.appendChild(itemBtn);
-    });
-
-    if (openGames.has(game.title)) {
-      card.classList.add("is-open");
-    }
-
-    card.addEventListener("click", () => toggleGameCard(card, game));
+    card.addEventListener("click", () => openGameModal(game));
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        toggleGameCard(card, game);
+        openGameModal(game);
       }
     });
 
@@ -563,8 +588,8 @@ function scrollToGame(title) {
   searchText = "";
   searchInput.value = "";
   selectedCategory = "Todas";
+  setActiveView("wiki");
   buildFilters();
-  openGames.add(title);
   renderGames();
 
   requestAnimationFrame(() => {
@@ -572,6 +597,7 @@ function scrollToGame(title) {
       return card.querySelector(".game-title")?.textContent === title;
     });
     targetCard?.scrollIntoView({ behavior: "smooth", block: "center" });
+    openGameModal(game);
   });
 }
 
@@ -655,6 +681,19 @@ function setTheme(theme) {
   localStorage.setItem("robloxWikiTheme", theme);
   themeToggle.textContent = theme === "dark" ? "Modo claro" : "Modo oscuro";
 }
+
+modalImage.addEventListener("error", () => modalImageFallback.classList.add("is-visible"));
+modalImage.addEventListener("load", () => modalImageFallback.classList.remove("is-visible"));
+
+gameModal.querySelectorAll("[data-modal-close]").forEach((closeControl) => {
+  closeControl.addEventListener("click", closeGameModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !gameModal.classList.contains("hidden")) {
+    closeGameModal();
+  }
+});
 
 function initTheme() {
   const stored = localStorage.getItem("robloxWikiTheme");

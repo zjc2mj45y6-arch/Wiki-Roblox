@@ -62,17 +62,43 @@
           <p class="game-short"></p>
         </div>
       </div>
-      <div class="inline-panel">
-        <p class="panel-meta"></p>
-        <p class="panel-long"></p>
-        <h3>Easter Eggs</h3>
-        <ul class="panel-eggs"></ul>
-        <h3>Items y como conseguirlos</h3>
-        <div class="panel-items"></div>
-        <p class="item-howto">Haz click en un item para ver como conseguirlo.</p>
-      </div>
     </article>
   </template>
+
+  <section id="gameModal" class="game-modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-modal-close></div>
+    <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <button class="modal-close" type="button" aria-label="Cerrar detalle" data-modal-close>&times;</button>
+      <div class="modal-media">
+        <img id="modalImage" alt="" loading="lazy">
+        <div id="modalImageFallback" class="game-image-fallback modal-fallback" aria-hidden="true">
+          <span id="modalFallbackInitials" class="fallback-initials"></span>
+        </div>
+      </div>
+      <div class="modal-content">
+        <div class="modal-head">
+          <div>
+            <p id="modalCategory" class="modal-category"></p>
+            <h2 id="modalTitle"></h2>
+          </div>
+          <div id="modalBadges" class="modal-badges"></div>
+        </div>
+        <p id="modalMeta" class="panel-meta"></p>
+        <p id="modalDescription" class="modal-description"></p>
+        <div class="modal-detail-grid">
+          <section>
+            <h3>Easter Eggs</h3>
+            <ul id="modalEggs" class="panel-eggs"></ul>
+          </section>
+          <section>
+            <h3>Items y como conseguirlos</h3>
+            <div id="modalItems" class="panel-items"></div>
+            <p id="modalItemHowto" class="item-howto">Haz click en un item para ver como conseguirlo.</p>
+          </section>
+        </div>
+      </div>
+    </article>
+  </section>
 
   <template id="trendSectionTemplate">
     <article class="trend-section-card">
