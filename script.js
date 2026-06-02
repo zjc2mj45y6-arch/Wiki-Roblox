@@ -2,7 +2,7 @@ const games = [
   {
     title: "Brookhaven RP",
     placeId: 4924922222,
-    image: "Imagenes/descarga (1).jpg",
+    image: "Imagenes/brookhaven-rp-cover.png",
     category: "Roleplay",
     short: "Simulador social para crear historias, vivir en ciudad y jugar con amigos.",
     longDescription: "Brookhaven RP es un juego de rol libre donde puedes elegir casa, vehiculos y profesiones para crear historias con otros jugadores.",
@@ -21,7 +21,7 @@ const games = [
   {
     title: "Adopt Me!",
     placeId: 920587237,
-    image: "Imagenes/noFilter.webp",
+    image: "Imagenes/adopt-me-cover.png",
     category: "Simulacion",
     short: "Juego de crianza y coleccion de mascotas con sistema de intercambio.",
     longDescription: "Adopt Me! se centra en criar mascotas, completar tareas y comerciar con otros jugadores para mejorar tu coleccion.",
@@ -41,7 +41,7 @@ const games = [
   {
     title: "Blox Fruits",
     placeId: 2753915549,
-    image: "Imagenes/descarga.jpg",
+    image: "Imagenes/blox-fruits-cover.png",
     category: "Aventura",
     short: "Aventura de exploracion y combate donde mejoras habilidades y equipo.",
     longDescription: "En Blox Fruits subes de nivel, visitas islas y consigues frutas para obtener habilidades especiales de combate.",
@@ -352,6 +352,387 @@ const games = [
       { name: "Fragmento", icon: "🔮", howTo: "Se consigue derrotando enemigos o completando actividades especiales." }
     ],
     badges: ["Revelacion semanal"]
+  },
+  {
+    title: "MeepCity",
+    placeId: 370731277,
+    image: "",
+    category: "Roleplay",
+    short: "Mundo social clasico con casas, fiestas, minijuegos y personalizacion.",
+    longDescription: "MeepCity es uno de los juegos sociales historicos de Roblox. Se centra en decorar casas, reunirse con amigos, cuidar meeps y participar en actividades casuales.",
+    creator: "alexnewtron",
+    year: 2016,
+    easterEggs: [
+      "Algunas casas usan decoraciones para crear salas secretas o zonas tematicas.",
+      "Los eventos y fiestas de jugadores pueden esconder minijuegos improvisados."
+    ],
+    items: [
+      { name: "Meep", icon: "*", howTo: "Compra o adopta un meep dentro del sistema del juego y personalizalo con accesorios." },
+      { name: "Muebles", icon: "#", howTo: "Se consiguen en tiendas internas usando monedas ganadas al jugar." }
+    ]
+  },
+  {
+    title: "Jailbreak",
+    placeId: 606849621,
+    image: "",
+    category: "Accion",
+    short: "Policias y criminales compiten en robos, persecuciones y escapes.",
+    longDescription: "Jailbreak mezcla mundo abierto, vehiculos, atracos y roles de policia o criminal. El objetivo cambia segun tu equipo: escapar, robar, capturar o proteger la ciudad.",
+    creator: "Badimo",
+    year: 2017,
+    easterEggs: [
+      "Algunas rutas de escape son mas rapidas si conoces tuneles y puntos elevados.",
+      "Los eventos grandes suelen dejar pistas visuales antes de una actualizacion."
+    ],
+    items: [
+      { name: "Vehiculo", icon: "V", howTo: "Se compra con dinero del juego o se desbloquea en ubicaciones especificas del mapa." },
+      { name: "Keycard", icon: "K", howTo: "Se obtiene robando a un policia, escapando con ayuda o encontrandola en situaciones concretas." }
+    ],
+    badges: ["Clasico"]
+  },
+  {
+    title: "Piggy",
+    placeId: 4623386862,
+    image: "",
+    category: "Terror",
+    short: "Terror por capitulos con llaves, puzzles y persecucion constante.",
+    longDescription: "Piggy combina supervivencia, escape room y narrativa por capitulos. Los jugadores deben encontrar objetos, abrir zonas y escapar antes de ser atrapados.",
+    creator: "MiniToon",
+    year: 2020,
+    easterEggs: [
+      "Muchos mapas tienen notas o detalles que conectan con la historia principal.",
+      "Algunos finales requieren completar pasos especificos que no son obvios en la primera partida."
+    ],
+    items: [
+      { name: "Llave", icon: "K", howTo: "Busca por habitaciones y usa el color correcto en la puerta correspondiente." },
+      { name: "Herramienta", icon: "T", howTo: "Aparece en puntos del mapa y desbloquea mecanismos como tablas, generadores o cajas." }
+    ]
+  },
+  {
+    title: "Natural Disaster Survival",
+    placeId: 189707,
+    image: "",
+    category: "Supervivencia",
+    short: "Sobrevive desastres aleatorios en mapas pequenos y caoticos.",
+    longDescription: "Natural Disaster Survival es un clasico donde cada ronda presenta un mapa y uno o mas desastres. La clave es leer el peligro y posicionarte bien antes de que sea tarde.",
+    creator: "Stickmasterluke",
+    year: 2008,
+    easterEggs: [
+      "El lobby permite ver la isla y anticipar parte del caos de cada ronda.",
+      "Algunos mapas tienen estructuras que parecen seguras pero caen rapido con terremotos o tornados."
+    ],
+    items: [
+      { name: "Globo", icon: "O", howTo: "Se consigue como item de tienda para saltar mas alto y moverte con ventaja." },
+      { name: "Manzana", icon: "A", howTo: "Se obtiene como item de curacion para recuperar vida durante rondas dificiles." }
+    ],
+    badges: ["Clasico"]
+  },
+  {
+    title: "Work at a Pizza Place",
+    placeId: 192800,
+    image: "",
+    category: "Simulacion",
+    short: "Trabaja en una pizzeria, gana dinero y mejora tu casa.",
+    longDescription: "Work at a Pizza Place es una experiencia clasica de trabajos cooperativos. Puedes cocinar, entregar pedidos, atender clientes, manejar suministros y decorar tu casa.",
+    creator: "Dued1",
+    year: 2008,
+    easterEggs: [
+      "Los roles menos populares pueden acelerar mucho el flujo de pedidos si alguien los cubre bien.",
+      "La decoracion de casas permite crear espacios secretos o tematicos con creatividad."
+    ],
+    items: [
+      { name: "Cheque", icon: "$", howTo: "Se gana trabajando en cualquier rol y se usa para comprar muebles o mejoras." },
+      { name: "Mueble", icon: "#", howTo: "Compralo en la tienda de muebles y colocalo dentro de tu casa." }
+    ],
+    badges: ["Clasico"]
+  },
+  {
+    title: "Royale High",
+    placeId: 735030788,
+    image: "",
+    category: "Roleplay",
+    short: "Roleplay fantastico escolar con moda, clases, eventos y coleccion.",
+    longDescription: "Royale High combina vida escolar fantastica, personalizacion de avatar, misiones, eventos de temporada y coleccion de accesorios.",
+    creator: "callmehbob",
+    year: 2017,
+    easterEggs: [
+      "Los eventos de temporada suelen esconder cofres o misiones por mapas especiales.",
+      "Algunos accesorios tienen combinaciones visuales que cambian por color o estilo."
+    ],
+    items: [
+      { name: "Diamantes", icon: "D", howTo: "Se ganan jugando, asistiendo a actividades o recogiendo recompensas en mapas." },
+      { name: "Accesorio", icon: "+", howTo: "Se consigue en tienda, eventos, cofres o intercambios con otros jugadores." }
+    ]
+  },
+  {
+    title: "Welcome to Bloxburg",
+    placeId: 185655149,
+    image: "",
+    category: "Roleplay",
+    short: "Construccion, trabajo y vida familiar en una ciudad residencial.",
+    longDescription: "Welcome to Bloxburg se centra en construir casas, trabajar para ganar dinero, mejorar habilidades y crear historias de vida cotidiana con otros jugadores.",
+    creator: "Bloxburg Development",
+    year: 2014,
+    easterEggs: [
+      "Muchos jugadores crean habitaciones ocultas usando paredes, sotanos y trucos de construccion.",
+      "Algunas tareas de trabajo se vuelven mas eficientes si optimizas rutas y tiempos."
+    ],
+    items: [
+      { name: "Plano de casa", icon: "H", howTo: "Usa el modo construir para colocar paredes, pisos, muebles y decoracion." },
+      { name: "Dinero", icon: "$", howTo: "Se obtiene trabajando en empleos y subiendo habilidades de trabajo." }
+    ]
+  },
+  {
+    title: "Bee Swarm Simulator",
+    placeId: 1537690962,
+    image: "",
+    category: "Simulacion",
+    short: "Recolecta polen, crea miel y mejora tu enjambre de abejas.",
+    longDescription: "Bee Swarm Simulator es un juego de progresion donde recolectas polen, conviertes miel, desbloqueas zonas y mejoras abejas con habilidades diferentes.",
+    creator: "Onett",
+    year: 2018,
+    easterEggs: [
+      "Algunas zonas tienen tokens y rutas de farmeo que cambian mucho la eficiencia.",
+      "Los eventos de temporada suelen traer misiones largas con recompensas unicas."
+    ],
+    items: [
+      { name: "Huevo", icon: "E", howTo: "Se compra en tiendas, se gana en misiones o aparece como recompensa especial." },
+      { name: "Amuleto", icon: "M", howTo: "Se obtiene completando retos o derrotando enemigos concretos." }
+    ]
+  },
+  {
+    title: "Build A Boat For Treasure",
+    placeId: 537413528,
+    image: "",
+    category: "Construccion",
+    short: "Construye barcos creativos para cruzar obstaculos y ganar tesoros.",
+    longDescription: "Build A Boat For Treasure premia la creatividad y la fisica. Construyes una nave con bloques, atraviesas etapas peligrosas y usas recompensas para mejorar tus diseños.",
+    creator: "Chillz Studios",
+    year: 2016,
+    easterEggs: [
+      "Algunos mecanismos con bisagras y motores permiten crear vehiculos muy distintos a barcos.",
+      "Los codigos y eventos suelen dar bloques raros para builds especiales."
+    ],
+    items: [
+      { name: "Bloque raro", icon: "B", howTo: "Se consigue en cofres, codigos, eventos o comprando paquetes del juego." },
+      { name: "Motor", icon: "M", howTo: "Aparece en cofres o recompensas y sirve para builds con movimiento." }
+    ]
+  },
+  {
+    title: "Theme Park Tycoon 2",
+    placeId: 69184822,
+    image: "",
+    category: "Tycoon",
+    short: "Diseña parques de atracciones con montanas rusas, tiendas y decoracion.",
+    longDescription: "Theme Park Tycoon 2 permite construir parques completos, gestionar visitantes, crear montanas rusas personalizadas y optimizar la experiencia para ganar dinero.",
+    creator: "Den_S",
+    year: 2012,
+    easterEggs: [
+      "Las construcciones avanzadas permiten ocultar recorridos y crear zonas tematicas muy detalladas.",
+      "La satisfaccion de visitantes mejora si equilibras decoracion, comida, juegos y limpieza."
+    ],
+    items: [
+      { name: "Montana rusa", icon: "R", howTo: "Se construye desde el menu de atracciones colocando vias y estaciones." },
+      { name: "Decoracion", icon: "#", howTo: "Compra props y piezas para subir el atractivo visual del parque." }
+    ]
+  },
+  {
+    title: "Evade",
+    placeId: 9872472334,
+    image: "",
+    category: "Supervivencia",
+    short: "Corre, revive companeros y escapa de entidades en rondas rapidas.",
+    longDescription: "Evade es una experiencia de supervivencia por rondas donde los jugadores deben moverse rapido, evitar nextbots, rescatar aliados y aprovechar mapas complejos.",
+    creator: "Hexagon Development Community",
+    year: 2022,
+    easterEggs: [
+      "Algunos mapas tienen rutas verticales que ayudan a cortar persecuciones.",
+      "Los consumibles y utilidades pueden salvar una ronda si se usan en el momento justo."
+    ],
+    items: [
+      { name: "Cola", icon: "C", howTo: "Se compra como consumible para ganar velocidad temporal durante una persecucion." },
+      { name: "Radar", icon: "R", howTo: "Se obtiene en tienda o loadout para detectar amenazas y moverte con mas informacion." }
+    ]
+  },
+  {
+    title: "Rainbow Friends",
+    placeId: 7991339063,
+    image: "",
+    category: "Terror",
+    short: "Terror por capitulos con monstruos de colores, misiones y sigilo.",
+    longDescription: "Rainbow Friends mezcla terror ligero, exploracion y objetivos cooperativos. Cada criatura tiene patrones distintos y obliga a cambiar la forma de moverte.",
+    creator: "Roy & Charcle",
+    year: 2021,
+    easterEggs: [
+      "Los sonidos ayudan a reconocer que criatura esta cerca antes de verla.",
+      "Algunas zonas de mapa son mejores para esconderse, pero no siempre sirven contra todos los enemigos."
+    ],
+    items: [
+      { name: "Caja", icon: "X", howTo: "Usala para esconderte de ciertos enemigos cuando estes en peligro." },
+      { name: "Objeto de mision", icon: "!", howTo: "Se encuentra explorando y se entrega en la zona indicada para avanzar la noche." }
+    ]
+  },
+  {
+    title: "BedWars",
+    placeId: 6872265039,
+    image: "",
+    category: "Estrategia",
+    short: "Defiende tu cama, compra mejoras y elimina equipos rivales.",
+    longDescription: "BedWars es un juego competitivo por equipos donde recolectas recursos, proteges tu base, mejoras equipo y atacas a otros jugadores.",
+    creator: "Easy.gg",
+    year: 2021,
+    easterEggs: [
+      "La seleccion de kit cambia mucho tu rol dentro del equipo.",
+      "El control de generadores puede decidir la partida antes de las peleas finales."
+    ],
+    items: [
+      { name: "Kit", icon: "K", howTo: "Se desbloquea en rotaciones, battle pass, tienda o recompensas especiales." },
+      { name: "Esmeralda", icon: "E", howTo: "Controla generadores centrales para comprar equipo avanzado." }
+    ]
+  },
+  {
+    title: "Blade Ball",
+    placeId: 13772394625,
+    image: "",
+    category: "Accion",
+    short: "Reflejos, habilidades y duelos donde una bola elimina al objetivo.",
+    longDescription: "Blade Ball combina reflejos rapidos con habilidades especiales. Debes bloquear la bola en el momento correcto, usar poderes y sobrevivir a rivales cada vez mas agresivos.",
+    creator: "Wiggity",
+    year: 2023,
+    easterEggs: [
+      "Algunas habilidades funcionan mejor si esperas el rebote exacto antes de activarlas.",
+      "Los modos temporales suelen cambiar la prioridad de habilidades y posicionamiento."
+    ],
+    items: [
+      { name: "Habilidad", icon: "P", howTo: "Se desbloquea con monedas, spins, eventos o progreso de cuenta." },
+      { name: "Espada", icon: "S", howTo: "Se consigue como cosmetico en cajas, pases o recompensas especiales." }
+    ]
+  },
+  {
+    title: "Creatures of Sonaria",
+    placeId: 5233782396,
+    image: "",
+    category: "Supervivencia",
+    short: "Sobrevive como criatura fantastica, crece, explora y domina ecosistemas.",
+    longDescription: "Creatures of Sonaria es una experiencia de supervivencia biologica donde juegas como criaturas con dietas, habilidades, crecimiento y riesgos distintos.",
+    creator: "Sonar Studios",
+    year: 2020,
+    easterEggs: [
+      "Algunas criaturas tienen comportamientos o ventajas que no se entienden hasta probar su ciclo completo.",
+      "Los eventos de temporada agregan especies y materiales que luego pueden volverse dificiles de conseguir."
+    ],
+    items: [
+      { name: "Especie", icon: "S", howTo: "Se obtiene por gachas, eventos, misiones o intercambio con otros jugadores." },
+      { name: "Material", icon: "M", howTo: "Se consigue durante eventos o explorando zonas concretas del mapa." }
+    ]
+  },
+  {
+    title: "The Mimic",
+    placeId: 6243699076,
+    image: "",
+    category: "Terror",
+    short: "Terror narrativo inspirado en leyendas con capitulos y exploracion.",
+    longDescription: "The Mimic ofrece capitulos de terror con ambientacion oscura, puzzles, persecuciones y una historia inspirada en mitos y leyendas.",
+    creator: "MUCDICH",
+    year: 2021,
+    easterEggs: [
+      "Los escenarios contienen detalles narrativos que anticipan enemigos o giros de la historia.",
+      "Algunos caminos parecen decorativos pero ayudan a entender mejor el mapa."
+    ],
+    items: [
+      { name: "Linterna", icon: "L", howTo: "Usala para orientarte en zonas oscuras y detectar caminos importantes." },
+      { name: "Llave", icon: "K", howTo: "Se encuentra explorando habitaciones y desbloquea puertas de progreso." }
+    ]
+  },
+  {
+    title: "Apeirophobia",
+    placeId: 10277607801,
+    image: "",
+    category: "Terror",
+    short: "Exploracion de backrooms con puzzles, niveles y entidades peligrosas.",
+    longDescription: "Apeirophobia se basa en recorrer niveles inquietantes, resolver objetivos y evitar entidades mientras avanzas por espacios laberinticos.",
+    creator: "Polaroid Studios",
+    year: 2022,
+    easterEggs: [
+      "Los niveles tienen pistas visuales que ayudan a ubicar salidas o codigos.",
+      "Algunas entidades se controlan mejor escuchando sus sonidos que mirandolas de frente."
+    ],
+    items: [
+      { name: "Camara", icon: "C", howTo: "Sirve para explorar con mas cuidado y detectar detalles en zonas oscuras." },
+      { name: "Codigo", icon: "N", howTo: "Se obtiene observando pistas del nivel y resolviendo el puzzle correspondiente." }
+    ]
+  },
+  {
+    title: "Restaurant Tycoon 2",
+    placeId: 3398014311,
+    image: "",
+    category: "Tycoon",
+    short: "Construye y administra un restaurante con cocina, clientes y decoracion.",
+    longDescription: "Restaurant Tycoon 2 te permite crear un restaurante, contratar personal, cocinar recetas, ampliar el local y mejorar la experiencia de clientes.",
+    creator: "Ultraw",
+    year: 2019,
+    easterEggs: [
+      "La distribucion de mesas y cocina afecta mucho la rapidez del servicio.",
+      "Algunas recetas y estilos de restaurante cambian el tipo de experiencia que puedes crear."
+    ],
+    items: [
+      { name: "Receta", icon: "R", howTo: "Se desbloquea progresando, comprando mejoras o expandiendo menus." },
+      { name: "Empleado", icon: "E", howTo: "Contratalo desde la gestion del restaurante para automatizar tareas." }
+    ]
+  },
+  {
+    title: "Sonic Speed Simulator",
+    placeId: 9049840490,
+    image: "",
+    category: "Carreras",
+    short: "Corre por mundos coloridos, sube velocidad y desbloquea personajes.",
+    longDescription: "Sonic Speed Simulator es una experiencia de velocidad y coleccion donde corres, subes nivel, completas eventos y desbloqueas personajes o skins.",
+    creator: "Gamefam Studios",
+    year: 2022,
+    easterEggs: [
+      "Los eventos temporales suelen esconder rutas de farmeo mejores para completar objetivos rapido.",
+      "Algunos recorridos tienen atajos que aprovechan saltos y velocidad acumulada."
+    ],
+    items: [
+      { name: "Skin", icon: "S", howTo: "Se desbloquea completando eventos, misiones o recompensas especiales." },
+      { name: "Trail", icon: "T", howTo: "Se consigue por coleccion, tienda o eventos y modifica efectos al correr." }
+    ]
+  },
+  {
+    title: "Slap Battles",
+    placeId: 6403373529,
+    image: "",
+    category: "Accion",
+    short: "Arena caotica de guantes con habilidades raras y mucho humor.",
+    longDescription: "Slap Battles gira alrededor de desbloquear guantes con poderes distintos y usarlos en arenas llenas de situaciones impredecibles.",
+    creator: "Tencelll",
+    year: 2021,
+    easterEggs: [
+      "Varios guantes secretos requieren pasos especificos o badges dificiles.",
+      "Algunas habilidades tienen interacciones raras con mapas, bordes y otros poderes."
+    ],
+    items: [
+      { name: "Guante", icon: "G", howTo: "Se desbloquea acumulando slaps, consiguiendo badges o completando desafios concretos." },
+      { name: "Badge", icon: "B", howTo: "Se obtiene al cumplir condiciones especiales dentro de partidas o eventos." }
+    ]
+  },
+  {
+    title: "Michaels Zombies",
+    placeId: 8054462345,
+    image: "",
+    category: "Shooter",
+    short: "Supervivencia por rondas contra zombies con armas, perks y equipo.",
+    longDescription: "Michaels Zombies es un shooter cooperativo de rondas donde sobrevives oleadas, compras armas, abres zonas y coordinas con tu equipo.",
+    creator: "MZ Community",
+    year: 2021,
+    easterEggs: [
+      "Algunos mapas esconden pasos de objetivos secretos para jugadores avanzados.",
+      "La gestion de puertas y economia es clave para aguantar rondas altas."
+    ],
+    items: [
+      { name: "Perk", icon: "P", howTo: "Se compra dentro de la partida para mejorar vida, velocidad o combate." },
+      { name: "Caja misteriosa", icon: "?", howTo: "Usa dinero de la ronda para obtener armas aleatorias." }
+    ]
   }
 ];
 
@@ -416,6 +797,7 @@ let selectedCategory = "Todas";
 let searchText = "";
 let activeView = "wiki";
 let activeGameTitle = "";
+const homeGameLimit = 12;
 
 function categoriesFromData(data) {
   return ["Todas", ...new Set(data.map((g) => g.category))];
@@ -444,13 +826,23 @@ function buildFilters() {
 }
 
 function filteredGames() {
-  return games.filter((game) => {
+  const hasSearch = searchText.length > 0;
+  const hasCategoryFilter = selectedCategory !== "Todas";
+  const matches = games.filter((game) => {
     const matchCategory = selectedCategory === "Todas" || game.category === selectedCategory;
     const badges = (game.badges || []).join(" ");
-    const text = `${game.title} ${game.category} ${game.short} ${badges}`.toLowerCase();
+    const items = (game.items || []).map((item) => `${item.name} ${item.howTo}`).join(" ");
+    const eggs = (game.easterEggs || []).join(" ");
+    const text = `${game.title} ${game.category} ${game.creator} ${game.short} ${game.longDescription} ${badges} ${items} ${eggs}`.toLowerCase();
     const matchSearch = text.includes(searchText.toLowerCase());
     return matchCategory && matchSearch;
   });
+
+  if (!hasSearch && !hasCategoryFilter) {
+    return matches.slice(0, homeGameLimit);
+  }
+
+  return matches;
 }
 
 function initialsFromTitle(title) {
