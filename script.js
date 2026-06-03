@@ -1,4 +1,4 @@
-function makeGame(title, category, short, options = {}) {
+﻿function makeGame(title, category, short, options = {}) {
   return {
     title,
     placeId: options.placeId,
@@ -114,10 +114,10 @@ const games = [
   makeGame("Starving Artists", "Social", "Crea arte, monta un stand y vende obras a otros jugadores.", { creator: "Double Bandit Studios", year: 2022 }),
   makeGame("Super Striker League", "Deportes", "Futbol arcade con habilidades especiales y partidos de equipos.", { creator: "Cinder Studio", year: 2019 }),
   makeGame("Kick Off", "Deportes", "Partidos de futbol simples con control directo del balon."),
-  makeGame("House Tycoon", "Tycoon", "Construye una casa paso a paso y mejora tu propiedad."),
+  makeGame("Kick a Lucky Block", "Simulacion", "Patea lucky blocks, escapa de tsunamis y coloca brainrots para ganar dinero.", { placeId: 89469502395769, image: "Imagenes/roblox-kick-a-lucky-block.png", creator: "No More Flops", year: 2026, badges: ["Top del mes"] }),
   makeGame("Camping", "Terror", "Historia clasica de terror en grupo durante una salida al bosque.", { creator: "SamsonXVI", year: 2018 }),
   makeGame("Super Golf", "Deportes", "Minigolf multijugador con mapas, tiros precisos y cosmeticos.", { creator: "Nosniy Games", year: 2019 }),
-  makeGame("Heroes World", "Aventura", "RPG de heroes con poderes, misiones y combate."),
+  makeGame("Slime RNG", "Simulacion", "Rolls de slimes raros, mejoras, mundos y combate contra enemigos.", { placeId: 92416421522960, image: "Imagenes/roblox-slime-rng.png", creator: "Stouts Studio", year: 2026, badges: ["Top del mes"] }),
   makeGame("My Supermarket", "Tycoon", "Administra un supermercado con estantes, clientes y mejoras.", { creator: "Rocky Studio", year: 2020 }),
   makeGame("Demon Slayer RPG 2", "Aventura", "RPG anime de cazadores, demonios, respiraciones y misiones.", { creator: "Shounen Studio", year: 2020 }),
   makeGame("Ghost Simulator", "Simulacion", "Captura fantasmas, mejora equipo y explora biomas.", { creator: "BloxByte Games", year: 2018 })
@@ -131,16 +131,16 @@ const trendSectionsData = [
     note: "10 juegos",
     description: "Ranking de los juegos con mas actividad global en Roblox durante el snapshot mensual. Incluye jugadores, aprobacion y votos de la comunidad.",
     items: [
-      { title: "Fish It!", metric: "554.1K jugando", meta: "83% aprobacion", likes: "1.3M", dislikes: "266K aprox.", context: "Lidera el snapshot mensual por concurrencia; pesca, progreso y coleccion lo mantienen arriba." },
-      { title: "Adopt Me!", metric: "412.3K jugando", meta: "86% aprobacion", likes: "9.1M", dislikes: "1.5M", context: "Vuelve al bloque elite con eventos y una comunidad enorme de mascotas e intercambio." },
-      { title: "Blox Fruits", metric: "346.3K jugando", meta: "92% aprobacion", likes: "12.1M", dislikes: "1.1M aprox.", context: "Sigue siendo el RPG de aventura mas fuerte por visitas, builds y progresion larga." },
-      { title: "RIVALS", metric: "310.9K jugando", meta: "95% aprobacion", likes: "9.5M", dislikes: "500K aprox.", context: "El shooter competitivo mas dominante del mes por partidas cortas y retencion alta." },
-      { title: "Brookhaven RP", metric: "296.7K jugando", meta: "86% aprobacion", likes: "7.5M aprox.", dislikes: "1.2M aprox.", context: "El gigante de roleplay sigue estable gracias a servidores sociales y actualizaciones constantes." },
-      { title: "Steal a Brainrot", metric: "232.6K jugando", meta: "86% aprobacion", likes: "15.1M", dislikes: "2.5M aprox.", context: "Mantiene una presencia enorme por su loop viral de coleccion, robo y defensa de base." },
-      { title: "99 Nights in the Forest", metric: "227.9K jugando", meta: "91% aprobacion", likes: "4.9M", dislikes: "485K aprox.", context: "Supervivencia cooperativa con noches tensas, crafting ligero y sesiones faciles de repetir." },
-      { title: "Murder Mystery 2", metric: "126.2K jugando", meta: "91% aprobacion", likes: "9.6M", dislikes: "949K aprox.", context: "El clasico de roles ocultos conserva un volumen mensual altisimo despues de anos." },
-      { title: "Jujutsu Shenanigans", metric: "102.6K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "338.6K", context: "Battleground anime con comunidad competitiva, destruccion de escenarios y picos fuertes por update." },
-      { title: "Forsaken", metric: "99.1K jugando", meta: "85% aprobacion", likes: "2.1M", dislikes: "355.5K", context: "Horror asimetrico reciente con empuje mensual suficiente para cerrar el top 10." }
+      { title: "Brookhaven RP", metric: "376.1K jugando", meta: "85.9% aprobacion", likes: "8.1M", dislikes: "1.3M", favorites: "28M", context: "Actualizado automaticamente desde ranking live: 376.1K jugando, 83.1B visitas y 28M favoritos." },
+      { title: "Adopt Me!", metric: "289.3K jugando", meta: "85.9% aprobacion", likes: "9.2M", dislikes: "1.5M", favorites: "29.1M", context: "Actualizado automaticamente desde ranking live: 289.3K jugando, 43.7B visitas y 29.1M favoritos." },
+      { title: "Blox Fruits", metric: "280.7K jugando", meta: "92.1% aprobacion", likes: "12.2M", dislikes: "1M", favorites: "19M", context: "Actualizado automaticamente desde ranking live: 280.7K jugando, 61.9B visitas y 19M favoritos." },
+      { title: "99 Nights in the Forest", metric: "225.2K jugando", meta: "90.5% aprobacion", likes: "4.9M", dislikes: "517.3K", favorites: "7.9M", context: "Actualizado automaticamente desde ranking live: 225.2K jugando, 27B visitas y 7.9M favoritos." },
+      { title: "RIVALS", metric: "196.5K jugando", meta: "94.1% aprobacion", likes: "9.6M", dislikes: "604.4K", favorites: "77.6M", context: "Actualizado automaticamente desde ranking live: 196.5K jugando, 15.4B visitas y 77.6M favoritos." },
+      { title: "Murder Mystery 2", metric: "143K jugando", meta: "90.8% aprobacion", likes: "9.7M", dislikes: "981K", favorites: "22.2M", context: "Actualizado automaticamente desde ranking live: 143K jugando, 26B visitas y 22.2M favoritos." },
+      { title: "Steal a Brainrot", metric: "115.7K jugando", meta: "85.6% aprobacion", likes: "15.1M", dislikes: "2.6M", favorites: "28.3M", context: "Actualizado automaticamente desde ranking live: 115.7K jugando, 69.5B visitas y 28.3M favoritos." },
+      { title: "Jujutsu Shenanigans", metric: "108K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "340.1K", favorites: "2.5M", context: "Actualizado automaticamente desde ranking live: 108K jugando, 5.7B visitas y 2.5M favoritos." },
+      { title: "Fish It!", metric: "83K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 83K jugando, 35.5B visitas y 11M favoritos." },
+      { title: "Forsaken", metric: "53.7K jugando", meta: "84.9% aprobacion", likes: "2.2M", dislikes: "395.6K", favorites: "2.9M", context: "Actualizado automaticamente desde ranking live: 53.7K jugando, 5.1B visitas y 2.9M favoritos." }
     ]
   },
   {
@@ -219,7 +219,7 @@ function updateFavoriteButton(button, game) {
   const pressed = isFavorite(game.title);
   button.setAttribute("aria-pressed", String(pressed));
   button.setAttribute("aria-label", pressed ? `Quitar ${game.title} de favoritos` : `Marcar ${game.title} como favorito`);
-  button.querySelector("span").textContent = pressed ? "★" : "☆";
+  button.querySelector("span").textContent = pressed ? "â˜…" : "â˜†";
 }
 
 function syncFavoritesFilterButton() {
@@ -344,7 +344,7 @@ function renderSearchSuggestions() {
         <span class="suggestion-meta">${game.category} | ${game.short}</span>
       </span>
       <button class="favorite-btn suggestion-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
-        <span aria-hidden="true">☆</span>
+        <span aria-hidden="true">â˜†</span>
       </button>
     `;
     const favoriteBtn = suggestion.querySelector(".suggestion-favorite-btn");
@@ -613,7 +613,7 @@ function renderTrendSections() {
           <img class="trend-thumb top-month-thumb" src="${thumbSrc}" alt="${item.title} portada" loading="lazy">
           <span class="trend-thumb-fallback top-month-thumb-fallback">${thumbInitials}</span>
           <button class="favorite-btn top-month-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
-            <span aria-hidden="true">☆</span>
+            <span aria-hidden="true">â˜†</span>
           </button>
         </div>
         <div class="top-month-copy">
@@ -629,6 +629,7 @@ function renderTrendSections() {
             <span><b>${item.metric}</b><small>Jugadores</small></span>
             <span><b>${item.likes || "N/D"}</b><small>Likes</small></span>
             <span><b>${item.dislikes || "N/D"}</b><small>Dislikes</small></span>
+            <span><b>${item.favorites || "N/D"}</b><small>Favoritos</small></span>
           </div>
         </div>
       ` : `
@@ -815,3 +816,4 @@ function init() {
 }
 
 init();
+
