@@ -171,6 +171,7 @@ h1 { margin: 0; font-family: "Fredoka", sans-serif; font-size: clamp(2rem, 4vw, 
 
 #clearBtn,
 #themeToggle,
+#favoritesFilterBtn,
 .view-tab,
 .filter-btn {
   border: 1px solid var(--border);
@@ -186,8 +187,15 @@ h1 { margin: 0; font-family: "Fredoka", sans-serif; font-size: clamp(2rem, 4vw, 
 #clearBtn,
 #themeToggle { background: var(--accent); color: #fff; border-color: transparent; }
 
+#favoritesFilterBtn[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+}
+
 #clearBtn:hover,
 #themeToggle:hover,
+#favoritesFilterBtn:hover,
 .view-tab:hover,
 .filter-btn:hover,
 .trend-item:hover { transform: translateY(-2px); }
@@ -411,6 +419,38 @@ main { max-width: 1100px; margin: 0 auto; }
   position: relative;
   aspect-ratio: 1 / 1;
   background: #0b1220;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 50%;
+  background: rgba(2, 6, 23, 0.58);
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .18s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.favorite-btn:hover,
+.favorite-btn:focus-visible {
+  transform: translateY(-1px);
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.favorite-btn[aria-pressed="true"] {
+  background: #fff3bf;
+  border-color: #ffd43b;
+  color: #8a5a00;
 }
 
 .game-card:hover,
@@ -672,6 +712,20 @@ body.modal-open { overflow: hidden; }
   min-width: 150px;
 }
 
+.modal-actions {
+  position: relative;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.modal-favorite-btn {
+  position: static;
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--card) 78%, var(--accent-soft));
+  color: var(--text);
+}
+
 .modal-badges .game-badge {
   background: color-mix(in srgb, var(--accent-soft) 78%, var(--card));
   border-color: color-mix(in srgb, var(--accent) 26%, var(--border));
@@ -778,5 +832,8 @@ body.modal-open { overflow: hidden; }
   .modal-badges {
     justify-content: flex-start;
     min-width: 0;
+  }
+  .modal-actions {
+    justify-items: start;
   }
 }

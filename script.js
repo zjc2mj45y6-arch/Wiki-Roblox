@@ -792,6 +792,7 @@ const gamesGrid = document.getElementById("gamesGrid");
 const searchInput = document.getElementById("searchInput");
 const searchSuggestions = document.getElementById("searchSuggestions");
 const clearBtn = document.getElementById("clearBtn");
+const favoritesFilterBtn = document.getElementById("favoritesFilterBtn");
 const emptyState = document.getElementById("emptyState");
 const cardTemplate = document.getElementById("cardTemplate");
 const themeToggle = document.getElementById("themeToggle");
@@ -808,6 +809,7 @@ const modalFallbackInitials = document.getElementById("modalFallbackInitials");
 const modalCategory = document.getElementById("modalCategory");
 const modalTitle = document.getElementById("modalTitle");
 const modalRobloxLink = document.getElementById("modalRobloxLink");
+const modalFavoriteBtn = document.getElementById("modalFavoriteBtn");
 const modalBadges = document.getElementById("modalBadges");
 const modalMeta = document.getElementById("modalMeta");
 const modalDescription = document.getElementById("modalDescription");
@@ -817,11 +819,60 @@ const modalItemHowto = document.getElementById("modalItemHowto");
 
 let selectedCategory = "Todas";
 let searchText = "";
+let showFavoritesOnly = false;
 let activeView = "wiki";
 let activeGameTitle = "";
 let modalCloseTimer = null;
+let favoriteTitles = new Set();
 const homeGameLimit = 12;
 const suggestionLimit = 6;
+const favoritesStorageKey = "robloxWikiFavorites";
+
+function loadFavorites() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(favoritesStorageKey) || "[]");
+    favoriteTitles = new Set(Array.isArray(stored) ? stored : []);
+  } catch {
+    favoriteTitles = new Set();
+  }
+}
+
+function saveFavorites() {
+  localStorage.setItem(favoritesStorageKey, JSON.stringify([...favoriteTitles]));
+}
+
+function isFavorite(title) {
+  return favoriteTitles.has(title);
+}
+
+function updateFavoriteButton(button, game) {
+  const pressed = isFavorite(game.title);
+  button.setAttribute("aria-pressed", String(pressed));
+  button.setAttribute("aria-label", pressed ? `Quitar ${game.title} de favoritos` : `Marcar ${game.title} como favorito`);
+  button.querySelector("span").textContent = pressed ? "★" : "☆";
+}
+
+function syncFavoritesFilterButton() {
+  favoritesFilterBtn.setAttribute("aria-pressed", String(showFavoritesOnly));
+  favoritesFilterBtn.textContent = showFavoritesOnly ? `Favoritos (${favoriteTitles.size})` : "Favoritos";
+}
+
+function toggleFavorite(game) {
+  if (isFavorite(game.title)) {
+    favoriteTitles.delete(game.title);
+  } else {
+    favoriteTitles.add(game.title);
+  }
+
+  saveFavorites();
+  syncFavoritesFilterButton();
+
+  if (activeGameTitle === game.title) {
+    updateFavoriteButton(modalFavoriteBtn, game);
+  }
+
+  renderGames();
+}
 
 function categoriesFromData(data) {
   return ["Todas", ...new Set(data.map((g) => g.category))];
@@ -851,11 +902,15 @@ function buildFilters() {
 
 function filteredGames() {
   const hasCategoryFilter = selectedCategory !== "Todas";
-  const matches = games.filter((game) => {
+  let matches = games.filter((game) => {
     return selectedCategory === "Todas" || game.category === selectedCategory;
   });
 
-  if (!hasCategoryFilter) {
+  if (showFavoritesOnly) {
+    matches = matches.filter((game) => isFavorite(game.title));
+  }
+
+  if (!hasCategoryFilter && !showFavoritesOnly) {
     return matches.slice(0, homeGameLimit);
   }
 
@@ -983,6 +1038,7 @@ function openGameModal(game) {
 
   modalCategory.textContent = game.category;
   modalTitle.textContent = game.title;
+  updateFavoriteButton(modalFavoriteBtn, game);
   const showRobloxLink = game.placeId;
   modalRobloxLink.classList.toggle("hidden", !showRobloxLink);
   modalRobloxLink.href = showRobloxLink ? robloxGameUrl(game) : "#";
@@ -1042,6 +1098,7 @@ function renderGames() {
     const image = card.querySelector(".game-image");
     const fallback = card.querySelector(".game-image-fallback");
     const fallbackInitials = card.querySelector(".fallback-initials");
+    const favoriteBtn = card.querySelector(".favorite-btn");
     const badgesWrap = card.querySelector(".game-badges");
 
     fallbackInitials.textContent = initialsFromTitle(game.title);
@@ -1069,9 +1126,19 @@ function renderGames() {
 
     card.setAttribute("aria-label", `Ver detalle de ${game.title}`);
     card.classList.toggle("is-selected", activeGameTitle === game.title);
+    updateFavoriteButton(favoriteBtn, game);
+
+    favoriteBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleFavorite(game);
+    });
 
     card.addEventListener("click", () => openGameModal(game));
     card.addEventListener("keydown", (event) => {
+      if (event.target.closest(".favorite-btn")) {
+        return;
+      }
+
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         openGameModal(game);
@@ -1091,7 +1158,9 @@ function scrollToGame(title) {
   searchText = "";
   searchInput.value = "";
   hideSearchSuggestions();
+  showFavoritesOnly = false;
   selectedCategory = "Todas";
+  syncFavoritesFilterButton();
   setActiveView("wiki");
   buildFilters();
   renderGames();
@@ -1166,6 +1235,7 @@ function setActiveView(viewName) {
   radarView.classList.toggle("is-active", !isWiki);
   searchInput.disabled = !isWiki;
   clearBtn.disabled = !isWiki;
+  favoritesFilterBtn.disabled = !isWiki;
   categoryFilters.style.display = isWiki ? "flex" : "none";
 
   viewTabs.forEach((tab) => {
@@ -1245,9 +1315,24 @@ clearBtn.addEventListener("click", () => {
   searchInput.value = "";
   searchText = "";
   hideSearchSuggestions();
+  showFavoritesOnly = false;
   selectedCategory = "Todas";
+  syncFavoritesFilterButton();
   buildFilters();
   renderGames();
+});
+
+favoritesFilterBtn.addEventListener("click", () => {
+  showFavoritesOnly = !showFavoritesOnly;
+  syncFavoritesFilterButton();
+  renderGames();
+});
+
+modalFavoriteBtn.addEventListener("click", () => {
+  const game = gameByTitle(activeGameTitle);
+  if (game) {
+    toggleFavorite(game);
+  }
 });
 
 document.addEventListener("click", (event) => {
@@ -1263,7 +1348,9 @@ viewTabs.forEach((tab) => {
 });
 
 function init() {
+  loadFavorites();
   initTheme();
+  syncFavoritesFilterButton();
   buildFilters();
   renderGames();
   setActiveView("wiki");

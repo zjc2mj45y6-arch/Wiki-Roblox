@@ -29,6 +29,7 @@
         <div id="searchSuggestions" class="search-suggestions hidden" role="listbox"></div>
       </div>
       <button id="clearBtn" type="button">Limpiar</button>
+      <button id="favoritesFilterBtn" type="button" aria-pressed="false">Favoritos</button>
       <button id="themeToggle" type="button" aria-label="Cambiar tema">Modo oscuro</button>
     </div>
 
@@ -54,6 +55,9 @@
   <template id="cardTemplate">
     <article class="game-card" tabindex="0" role="button">
       <div class="card-visual">
+        <button class="favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
+          <span aria-hidden="true">☆</span>
+        </button>
         <img class="game-image" alt="Imagen del juego" loading="lazy">
         <div class="game-image-fallback" aria-hidden="true">
           <span class="fallback-initials"></span>
@@ -88,7 +92,12 @@
               Abrir en Roblox
             </a>
           </div>
-          <div id="modalBadges" class="modal-badges"></div>
+          <div class="modal-actions">
+            <button id="modalFavoriteBtn" class="favorite-btn modal-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
+              <span aria-hidden="true">☆</span>
+            </button>
+            <div id="modalBadges" class="modal-badges"></div>
+          </div>
         </div>
         <p id="modalMeta" class="panel-meta"></p>
         <p id="modalDescription" class="modal-description"></p>
