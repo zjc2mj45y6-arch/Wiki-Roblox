@@ -143,6 +143,18 @@ h1 { margin: 0; font-family: "Fredoka", sans-serif; font-size: clamp(2rem, 4vw, 
   min-width: 0;
   display: grid;
   gap: 2px;
+  flex: 1;
+}
+
+.suggestion-favorite-btn {
+  position: static;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--card) 86%, var(--accent-soft));
+  color: var(--text);
+  font-size: 1.15rem;
 }
 
 .suggestion-item:last-child { border-bottom: 0; }
@@ -707,20 +719,15 @@ body.modal-open { overflow: hidden; }
 .modal-badges {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 6px;
-  min-width: 150px;
-}
-
-.modal-actions {
-  position: relative;
-  display: grid;
-  justify-items: end;
-  gap: 10px;
+  margin: 10px 0 0;
 }
 
 .modal-favorite-btn {
-  position: static;
+  top: 12px;
+  right: 58px;
+  z-index: 2;
   border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
   background: color-mix(in srgb, var(--card) 78%, var(--accent-soft));
   color: var(--text);
@@ -832,8 +839,5 @@ body.modal-open { overflow: hidden; }
   .modal-badges {
     justify-content: flex-start;
     min-width: 0;
-  }
-  .modal-actions {
-    justify-items: start;
   }
 }

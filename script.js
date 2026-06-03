@@ -872,6 +872,10 @@ function toggleFavorite(game) {
   }
 
   renderGames();
+
+  if (searchText) {
+    renderSearchSuggestions();
+  }
 }
 
 function categoriesFromData(data) {
@@ -958,25 +962,55 @@ function renderSearchSuggestions() {
   }
 
   suggestions.forEach((game) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "suggestion-item";
-    button.setAttribute("role", "option");
+    const suggestion = document.createElement("div");
+    suggestion.className = "suggestion-item";
+    suggestion.setAttribute("role", "option");
+    suggestion.tabIndex = 0;
     const shouldShowThumb = game.image;
-    button.innerHTML = `
+    suggestion.innerHTML = `
       ${shouldShowThumb ? `<img class="suggestion-thumb" src="${game.image}" alt="${game.title} portada" loading="lazy">` : ""}
       <span class="suggestion-copy">
         <span class="suggestion-title">${game.title}</span>
         <span class="suggestion-meta">${game.category} | ${game.short}</span>
       </span>
+      <button class="favorite-btn suggestion-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
+        <span aria-hidden="true">☆</span>
+      </button>
     `;
-    button.addEventListener("click", () => {
+    const favoriteBtn = suggestion.querySelector(".suggestion-favorite-btn");
+    updateFavoriteButton(favoriteBtn, game);
+
+    favoriteBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleFavorite(game);
+    });
+
+    favoriteBtn.addEventListener("keydown", (event) => {
+      event.stopPropagation();
+    });
+
+    suggestion.addEventListener("click", () => {
       searchText = "";
       searchInput.value = "";
       hideSearchSuggestions();
       scrollToGame(game.title);
     });
-    searchSuggestions.appendChild(button);
+
+    suggestion.addEventListener("keydown", (event) => {
+      if (event.target.closest(".suggestion-favorite-btn")) {
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        searchText = "";
+        searchInput.value = "";
+        hideSearchSuggestions();
+        scrollToGame(game.title);
+      }
+    });
+
+    searchSuggestions.appendChild(suggestion);
   });
 
   searchSuggestions.classList.remove("hidden");

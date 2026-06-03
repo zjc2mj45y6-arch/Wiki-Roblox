@@ -76,6 +76,9 @@
     <div class="modal-backdrop" data-modal-close></div>
     <article class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
       <button class="modal-close" type="button" aria-label="Cerrar detalle" data-modal-close>&times;</button>
+      <button id="modalFavoriteBtn" class="favorite-btn modal-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
+        <span aria-hidden="true">☆</span>
+      </button>
       <div class="modal-media">
         <img id="modalImage" alt="" loading="lazy">
         <div id="modalImageFallback" class="game-image-fallback modal-fallback" aria-hidden="true">
@@ -92,14 +95,9 @@
               Abrir en Roblox
             </a>
           </div>
-          <div class="modal-actions">
-            <button id="modalFavoriteBtn" class="favorite-btn modal-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
-              <span aria-hidden="true">☆</span>
-            </button>
-            <div id="modalBadges" class="modal-badges"></div>
-          </div>
         </div>
         <p id="modalMeta" class="panel-meta"></p>
+        <div id="modalBadges" class="modal-badges"></div>
         <p id="modalDescription" class="modal-description"></p>
         <div class="modal-detail-grid">
           <section>
