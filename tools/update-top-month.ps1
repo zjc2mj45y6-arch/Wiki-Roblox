@@ -136,10 +136,55 @@ function Format-CompactNumber {
   return [string][int]$Value
 }
 
+function Parse-CompactNumber {
+  param([string]$Text)
+
+  if (-not $Text) {
+    return $null
+  }
+
+  $clean = ($Text -replace ",", "").Trim()
+  $match = [regex]::Match($clean, '^(?<value>\d+(?:\.\d+)?)(?<suffix>[KMB])?$', "IgnoreCase")
+  if (-not $match.Success) {
+    return $null
+  }
+
+  $value = [double]$match.Groups["value"].Value
+  switch ($match.Groups["suffix"].Value.ToUpperInvariant()) {
+    "K" { return $value * 1000 }
+    "M" { return $value * 1000000 }
+    "B" { return $value * 1000000000 }
+    default { return $value }
+  }
+}
+
+function Format-PlayerLabel {
+  param([double]$Value)
+
+  $formatted = Format-CompactNumber $Value
+  if ($Value -eq 1) {
+    return "$formatted jugador activo"
+  }
+  return "$formatted jugadores activos"
+}
+
 function Escape-JsString {
   param([string]$Text)
 
   return ($Text -replace "\\", "\\\\" -replace '"', '\"')
+}
+
+function Clean-Text {
+  param([string]$Text)
+
+  if (-not $Text) {
+    return ""
+  }
+
+  $clean = [Net.WebUtility]::HtmlDecode($Text)
+  $clean = $clean -replace "<[^>]+>", ""
+  $clean = $clean -replace "\s+", " "
+  return $clean.Trim()
 }
 
 function Get-RankingRows {
@@ -218,13 +263,74 @@ function Get-LevelUpRows {
     }
 
     $known = $KnownGames[$title]
+    $statsUrl = $item.Groups["url"].Value
+    $placeId = if ($known) { $known.PlaceId } else { "" }
+    $description = ""
+    $playing = $null
+    $visits = $null
+    $favorites = $null
+    $approval = $null
+    $likes = $null
+    $dislikes = $null
+
+    try {
+      $detailHtml = Invoke-TextRequest -Uri $statsUrl
+      $robloxMatch = [regex]::Match($detailHtml, 'https://www\.roblox\.com/games/(?<id>\d+)', "Singleline")
+      if ($robloxMatch.Success) {
+        $placeId = $robloxMatch.Groups["id"].Value
+      }
+
+      $descriptionMatch = [regex]::Match($detailHtml, '<meta\s+name="description"\s+content="(?<description>[^"]+)"', "Singleline")
+      if ($descriptionMatch.Success) {
+        $description = Clean-Text $descriptionMatch.Groups["description"].Value
+      }
+
+      $playingMatch = [regex]::Match($detailHtml, '(?<value>[\d.,]+[KMB]?)\s+active players', "IgnoreCase")
+      if ($playingMatch.Success) {
+        $playing = Parse-CompactNumber $playingMatch.Groups["value"].Value
+      }
+
+      $visitsMatch = [regex]::Match($detailHtml, '(?<value>[\d.,]+[KMB]?)\s+visits', "IgnoreCase")
+      if ($visitsMatch.Success) {
+        $visits = Parse-CompactNumber $visitsMatch.Groups["value"].Value
+      }
+
+      $favoritesMatch = [regex]::Match($detailHtml, '<dd[^>]*>\s*(?<value>[\d.,]+[KMB]?)\s*</dd>\s*<dt[^>]*>\s*Favorites\s*</dt>', "Singleline")
+      if ($favoritesMatch.Success) {
+        $favorites = Parse-CompactNumber $favoritesMatch.Groups["value"].Value
+      }
+
+      $approvalMatch = [regex]::Match($detailHtml, '(?<value>\d+(?:\.\d+)?)%\s+approval', "IgnoreCase")
+      if ($approvalMatch.Success) {
+        $approval = [double]$approvalMatch.Groups["value"].Value
+      }
+
+      $votesMatch = [regex]::Match($detailHtml, 'from\s+(?<value>[\d.,]+[KMB]?)\s+votes', "IgnoreCase")
+      if ($votesMatch.Success -and $approval -ne $null) {
+        $votes = Parse-CompactNumber $votesMatch.Groups["value"].Value
+        if ($votes -ne $null) {
+          $likes = [math]::Round($votes * ($approval / 100))
+          $dislikes = [math]::Max(0, $votes - $likes)
+        }
+      }
+    } catch {
+      Write-Warning "No pude leer detalle LevelUpPlay para $title."
+    }
+
     $rows += [pscustomobject]@{
       Title = $title
-      StatsUrl = $item.Groups["url"].Value
+      StatsUrl = $statsUrl
       UniverseId = if ($known) { $known.UniverseId } else { "" }
-      PlaceId = if ($known) { $known.PlaceId } else { "" }
+      PlaceId = $placeId
       ImageUrl = $item.Groups["image"].Value
       Genre = $item.Groups["genre"].Value
+      DetailDescription = $description
+      Playing = $playing
+      Visits = $visits
+      Favorites = $favorites
+      Approval = $approval
+      Likes = $likes
+      Dislikes = $dislikes
     }
 
     if ($rows.Count -ge $Count) {
@@ -326,12 +432,21 @@ function Build-GameLine {
 
   $image = Download-Icon -PlaceId $Row.PlaceId -Title $Row.Title -ImageUrl $Row.ImageUrl
   $category = if ($Row.Genre) { $Row.Genre } else { "Roblox" }
-  $short = if ($Badge -eq "Joyita oculta") { "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento." } else { "Juego destacado del ranking actual de Roblox con actividad alta y comunidad activa." }
+  $short = if ($Badge -eq "Joyita oculta") {
+    if ($Row.Playing -ne $null) {
+      "Joyita emergente de Roblox con $(Format-PlayerLabel $Row.Playing), $(Format-CompactNumber $Row.Visits) visitas y $($Row.Approval)% de aprobacion."
+    } else {
+      "Joyita emergente en Roblox dentro de la categoria $category, destacada por aparecer en New & Rising."
+    }
+  } else {
+    "Juego destacado del ranking actual de Roblox con actividad alta y comunidad activa."
+  }
   $creator = if ($Row.Creator) { $Row.Creator } else { "Roblox Community" }
   $title = Escape-JsString $Row.Title
   $placePart = if ($Row.PlaceId) { "placeId: $($Row.PlaceId), " } else { "" }
+  $longDescriptionPart = if ($Badge -eq "Joyita oculta") { ", longDescription: `"$(Escape-JsString $short)`"" } else { "" }
 
-  return "  makeGame(`"$title`", `"$(Escape-JsString $category)`", `"$short`", { $placePart image: `"$image`", creator: `"$(Escape-JsString $creator)`", year: `"N/D`", badges: [`"$Badge`"] })"
+  return "  makeGame(`"$title`", `"$(Escape-JsString $category)`", `"$(Escape-JsString $short)`", { $placePart image: `"$image`", creator: `"$(Escape-JsString $creator)`", year: `"N/D`", badges: [`"$Badge`"]$longDescriptionPart })"
 }
 
 function Ensure-GamesInScript {
@@ -395,14 +510,21 @@ function Ensure-GamesInScript {
     $linePattern = '(?m)^  makeGame\("' + [regex]::Escape($row.Title) + '".*?\),?\r?$'
     $lineMatch = [regex]::Match($Script, $linePattern)
     if ($lineMatch.Success) {
-      $line = $lineMatch.Value
-      if ($line -match 'image:\s*"[^"]*"') {
-        $line = [regex]::Replace($line, 'image:\s*"[^"]*"', "image: `"$image`"")
+      if ($Badge -eq "Joyita oculta") {
+        $line = Build-GameLine -Row $row -Badge $Badge
+        if ($lineMatch.Value.Trim().EndsWith(",")) {
+          $line += ","
+        }
       } else {
-        $line = $line -replace '\}\)(,?)$', ", image: `"$image`" })`$1"
-      }
-      if ($row.PlaceId -and $line -notmatch 'placeId:\s*\d+') {
-        $line = $line -replace '\{\s*', "{ placeId: $($row.PlaceId), "
+        $line = $lineMatch.Value
+        if ($line -match 'image:\s*"[^"]*"') {
+          $line = [regex]::Replace($line, 'image:\s*"[^"]*"', "image: `"$image`"")
+        } else {
+          $line = $line -replace '\}\)(,?)$', ", image: `"$image`" })`$1"
+        }
+        if ($row.PlaceId -and $line -notmatch 'placeId:\s*\d+') {
+          $line = $line -replace '\{\s*', "{ placeId: $($row.PlaceId), "
+        }
       }
       $Script = [regex]::Replace($Script, $linePattern, [System.Text.RegularExpressions.MatchEvaluator]{ param($m) $line }, 1)
     }
@@ -419,17 +541,17 @@ function Build-TrendItemLines {
   )
 
   foreach ($row in $Rows | Select-Object -First $Count) {
-    $metric = if ($row.Playing) { "$(Format-CompactNumber $row.Playing) jugando" } else { if ($Mode -eq "Hidden") { "New & Rising" } else { "N/D jugando" } }
+    $metric = if ($row.Playing -ne $null) { "$(Format-CompactNumber $row.Playing) jugando" } else { if ($Mode -eq "Hidden") { "New & Rising" } else { "N/D jugando" } }
     $meta = if ($row.Approval) { "$($row.Approval)% aprobacion" } else { if ($row.Genre) { $row.Genre } else { "N/D aprobacion" } }
     $likes = if ($row.Likes -ne $null) { Format-CompactNumber $row.Likes } else { "N/D" }
     $dislikes = if ($row.Dislikes -ne $null) { Format-CompactNumber $row.Dislikes } else { "N/D" }
     $favorites = if ($row.Favorites -ne $null) { Format-CompactNumber $row.Favorites } else { "N/D" }
     $visits = if ($row.Visits -ne $null) { Format-CompactNumber $row.Visits } else { "N/D" }
     $context = if ($Mode -eq "Hidden") {
-      if ($row.Playing) {
-        "Joyita emergente actualizada automaticamente: $metric, $visits visitas y $favorites favoritos."
+      if ($row.Playing -ne $null) {
+        "Detectado en New & Rising con datos oficiales: $metric, $visits visitas, $favorites favoritos y $($row.Approval)% de aprobacion."
       } else {
-        "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking."
+        "Detectado en New & Rising; pendiente de resolver estadisticas oficiales de Roblox."
       }
     } else {
       "Actualizado automaticamente desde ranking live: $metric, $visits visitas y $favorites favoritos."

@@ -37,10 +37,10 @@ const games = [
   makeGame("Dress to Impress", "Moda", "Competencia de moda y creatividad con rondas sociales muy rapidas.", { placeId: 15101393044, creator: "Dress to Impress Group", year: 2023 }),
   makeGame("The Strongest Battlegrounds", "Aventura", "Arena de combate con personajes poderosos y duelos de alto impacto.", { placeId: 10449761463, creator: "Yielding Arts", year: 2022 }),
   makeGame("Berry Avenue", "Roleplay", "Roleplay urbano con casas, personalizacion y enfoque social muy fuerte.", { placeId: 8481844229, creator: "Amberry Games", year: 2022 }),
-  makeGame("Break For Pets !", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-break-for-pets.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
-  makeGame("Steal From Animes", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-steal-from-animes.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Break For Pets !", "All", "Joyita emergente de Roblox con 438 jugadores activos, 11.8M visitas y 90.9% de aprobacion.", { placeId: 139675726392792,  image: "Imagenes/roblox-break-for-pets.png", creator: "Ultimate Funny Games", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 438 jugadores activos, 11.8M visitas y 90.9% de aprobacion." }),
+  makeGame("Steal From Animes", "All", "Joyita emergente de Roblox con 4 jugadores activos, 2.3M visitas y 96.3% de aprobacion.", { placeId: 126270021252107,  image: "Imagenes/roblox-steal-from-animes.png", creator: "XAF Games", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 4 jugadores activos, 2.3M visitas y 96.3% de aprobacion." }),
   makeGame("Anime Vanguards", "Tower Defense", "Tower defense anime con unidades coleccionables y updates que disparan el trafico.", { placeId: 16146832113, creator: "Kitawari", year: 2024, badges: ["Revelacion semanal"] }),
-  makeGame("Escape Guards to Steal Brainrots", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-escape-guards-to-steal-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Escape Guards to Steal Brainrots", "All", "Joyita emergente de Roblox con 224 jugadores activos, 79.8M visitas y 89.2% de aprobacion.", { placeId: 71812071769179,  image: "Imagenes/roblox-escape-guards-to-steal-brainrots.png", creator: "lol games..", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 224 jugadores activos, 79.8M visitas y 89.2% de aprobacion." }),
   makeGame("MeepCity", "Roleplay", "Mundo social clasico con casas, fiestas, minijuegos y personalizacion.", { placeId: 370731277, creator: "alexnewtron", year: 2016, badges: ["Clasico"] }),
   makeGame("Jailbreak", "Accion", "Policias y criminales compiten en robos, persecuciones y escapes.", { placeId: 606849621, creator: "Badimo", year: 2017, badges: ["Clasico"] }),
   makeGame("Piggy", "Terror", "Terror por capitulos con llaves, puzzles y persecucion constante.", { placeId: 4623386862, creator: "MiniToon", year: 2020 }),
@@ -110,17 +110,17 @@ const games = [
   makeGame("Kaiju Universe", "Accion", "Combates de kaijus gigantes con habilidades, ciudades y progresion.", { creator: "Prometeo Games", year: 2019 }),
   makeGame("Murder Party", "Suspenso", "Roles secretos, caos social y objetivos ocultos por ronda.", { creator: "PlayMake", year: 2020 }),
   makeGame("Jujutsu Infinite", "Aventura", "RPG anime con tecnicas, progresion y combates de alto impacto.", { creator: "Awesome Ninja Games", year: 2024 }),
-  makeGame("Ultimate Lootopia", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-ultimate-lootopia.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
-  makeGame("FRUITS Dropper Incremental", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-fruits-dropper-incremental.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Ultimate Lootopia", "All", "Joyita emergente de Roblox con 0 jugadores activos, 259K visitas y 89.5% de aprobacion.", { placeId: 126915364342114,  image: "Imagenes/roblox-ultimate-lootopia.png", creator: "SuperLootify Studio", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 0 jugadores activos, 259K visitas y 89.5% de aprobacion." }),
+  makeGame("FRUITS Dropper Incremental", "All", "Joyita emergente de Roblox con 280 jugadores activos, 7.8M visitas y 92.5% de aprobacion.", { placeId: 70960300100792,  image: "Imagenes/roblox-fruits-dropper-incremental.png", creator: "Shedwaa's Incrementals", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 280 jugadores activos, 7.8M visitas y 92.5% de aprobacion." }),
   makeGame("Super Striker League", "Deportes", "Futbol arcade con habilidades especiales y partidos de equipos.", { creator: "Cinder Studio", year: 2019 }),
-  makeGame("DAS H00D", "Fighting", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-das-h00d.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("DAS H00D", "Fighting", "Joyita emergente de Roblox con 839 jugadores activos, 1.3M visitas y 80.3% de aprobacion.", { placeId: 80175090625232,  image: "Imagenes/roblox-das-h00d.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 839 jugadores activos, 1.3M visitas y 80.3% de aprobacion." }),
   makeGame("Kick a Lucky Block", "Simulacion", "Patea lucky blocks, escapa de tsunamis y coloca brainrots para ganar dinero.", { placeId: 89469502395769, image: "Imagenes/roblox-kick-a-lucky-block.png", creator: "No More Flops", year: 2026, badges: ["Top del mes"] }),
   makeGame("Attack on Titan Revolution", "Accion", "Combate inspirado en anime con movilidad aerea, progresion y raids cooperativas.", { creator: "AoTR Team", year: 2024 }),
-  makeGame("Chase Train for Brainrots!", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-chase-train-for-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Chase Train for Brainrots!", "All", "Joyita emergente de Roblox con 12 jugadores activos, 13.2M visitas y 90.6% de aprobacion.", { placeId: 89103233089742,  image: "Imagenes/roblox-chase-train-for-brainrots.png", creator: "67 Labs", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 12 jugadores activos, 13.2M visitas y 90.6% de aprobacion." }),
   makeGame("Slime RNG", "Simulacion", "Rolls de slimes raros, mejoras, mundos y combate contra enemigos.", { placeId: 92416421522960, image: "Imagenes/roblox-slime-rng.png", creator: "Stouts Studio", year: 2026, badges: ["Top del mes"] }),
-  makeGame("Deadeye", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-deadeye.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
-  makeGame("Escape Police For Brainrots", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-escape-police-for-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
-  makeGame("Frisbee", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-frisbee.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] })
+  makeGame("Deadeye", "All", "Joyita emergente de Roblox con 434 jugadores activos, 29.5M visitas y 94.7% de aprobacion.", { placeId: 93482986347670,  image: "Imagenes/roblox-deadeye.png", creator: "Headshot 100%", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 434 jugadores activos, 29.5M visitas y 94.7% de aprobacion." }),
+  makeGame("Escape Police For Brainrots", "All", "Joyita emergente de Roblox con 134 jugadores activos, 70M visitas y 92.5% de aprobacion.", { placeId: 135094773390024,  image: "Imagenes/roblox-escape-police-for-brainrots.png", creator: "67 game studios", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 134 jugadores activos, 70M visitas y 92.5% de aprobacion." }),
+  makeGame("Frisbee", "All", "Joyita emergente de Roblox con 3 jugadores activos, 4M visitas y 79.2% de aprobacion.", { placeId: 74417929205699,  image: "Imagenes/roblox-frisbee.png", creator: "[CFB] - College Football", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 3 jugadores activos, 4M visitas y 79.2% de aprobacion." })
 ];
 
 const trendSectionsData = [
@@ -131,16 +131,16 @@ const trendSectionsData = [
     note: "10 juegos",
     description: "Ranking de los juegos con mas actividad global en Roblox durante el snapshot mensual. Incluye jugadores, aprobacion y votos de la comunidad.",
     items: [
-      { title: "Brookhaven RP", metric: "371.1K jugando", meta: "85.9% aprobacion", likes: "8.1M", dislikes: "1.3M", favorites: "28M", context: "Actualizado automaticamente desde ranking live: 371.1K jugando, 83.1B visitas y 28M favoritos." },
-      { title: "Adopt Me!", metric: "288K jugando", meta: "85.9% aprobacion", likes: "9.2M", dislikes: "1.5M", favorites: "29.1M", context: "Actualizado automaticamente desde ranking live: 288K jugando, 43.7B visitas y 29.1M favoritos." },
-      { title: "Blox Fruits", metric: "281.5K jugando", meta: "92.1% aprobacion", likes: "12.2M", dislikes: "1M", favorites: "19M", context: "Actualizado automaticamente desde ranking live: 281.5K jugando, 61.9B visitas y 19M favoritos." },
-      { title: "99 Nights in the Forest", metric: "223.2K jugando", meta: "90.5% aprobacion", likes: "4.9M", dislikes: "517.3K", favorites: "7.9M", context: "Actualizado automaticamente desde ranking live: 223.2K jugando, 27B visitas y 7.9M favoritos." },
-      { title: "RIVALS", metric: "193.8K jugando", meta: "94.1% aprobacion", likes: "9.6M", dislikes: "604.4K", favorites: "77.6M", context: "Actualizado automaticamente desde ranking live: 193.8K jugando, 15.4B visitas y 77.6M favoritos." },
-      { title: "Murder Mystery 2", metric: "142.2K jugando", meta: "90.8% aprobacion", likes: "9.7M", dislikes: "981K", favorites: "22.2M", context: "Actualizado automaticamente desde ranking live: 142.2K jugando, 26B visitas y 22.2M favoritos." },
-      { title: "Steal a Brainrot", metric: "115.2K jugando", meta: "85.6% aprobacion", likes: "15.1M", dislikes: "2.6M", favorites: "28.3M", context: "Actualizado automaticamente desde ranking live: 115.2K jugando, 69.5B visitas y 28.3M favoritos." },
-      { title: "Jujutsu Shenanigans", metric: "107.6K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "340.1K", favorites: "2.5M", context: "Actualizado automaticamente desde ranking live: 107.6K jugando, 5.7B visitas y 2.5M favoritos." },
-      { title: "Fish It!", metric: "83.1K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 83.1K jugando, 35.5B visitas y 11M favoritos." },
-      { title: "Forsaken", metric: "53.7K jugando", meta: "84.9% aprobacion", likes: "2.2M", dislikes: "395.6K", favorites: "2.9M", context: "Actualizado automaticamente desde ranking live: 53.7K jugando, 5.1B visitas y 2.9M favoritos." }
+      { title: "Brookhaven RP", metric: "364.9K jugando", meta: "85.9% aprobacion", likes: "8.1M", dislikes: "1.3M", favorites: "28M", context: "Actualizado automaticamente desde ranking live: 364.9K jugando, 83.1B visitas y 28M favoritos." },
+      { title: "Adopt Me!", metric: "286.6K jugando", meta: "85.9% aprobacion", likes: "9.2M", dislikes: "1.5M", favorites: "29.1M", context: "Actualizado automaticamente desde ranking live: 286.6K jugando, 43.7B visitas y 29.1M favoritos." },
+      { title: "Blox Fruits", metric: "282.4K jugando", meta: "92.1% aprobacion", likes: "12.2M", dislikes: "1M", favorites: "19M", context: "Actualizado automaticamente desde ranking live: 282.4K jugando, 61.9B visitas y 19M favoritos." },
+      { title: "99 Nights in the Forest", metric: "219.9K jugando", meta: "90.5% aprobacion", likes: "4.9M", dislikes: "517.3K", favorites: "7.9M", context: "Actualizado automaticamente desde ranking live: 219.9K jugando, 27B visitas y 7.9M favoritos." },
+      { title: "RIVALS", metric: "189.8K jugando", meta: "94.1% aprobacion", likes: "9.6M", dislikes: "604.4K", favorites: "77.6M", context: "Actualizado automaticamente desde ranking live: 189.8K jugando, 15.4B visitas y 77.6M favoritos." },
+      { title: "Murder Mystery 2", metric: "141.1K jugando", meta: "90.8% aprobacion", likes: "9.7M", dislikes: "981K", favorites: "22.2M", context: "Actualizado automaticamente desde ranking live: 141.1K jugando, 26B visitas y 22.2M favoritos." },
+      { title: "Steal a Brainrot", metric: "115.8K jugando", meta: "85.6% aprobacion", likes: "15.1M", dislikes: "2.6M", favorites: "28.3M", context: "Actualizado automaticamente desde ranking live: 115.8K jugando, 69.5B visitas y 28.3M favoritos." },
+      { title: "Jujutsu Shenanigans", metric: "106.2K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "340.1K", favorites: "2.5M", context: "Actualizado automaticamente desde ranking live: 106.2K jugando, 5.7B visitas y 2.5M favoritos." },
+      { title: "Fish It!", metric: "82.8K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 82.8K jugando, 35.5B visitas y 11M favoritos." },
+      { title: "Forsaken", metric: "52.7K jugando", meta: "84.9% aprobacion", likes: "2.2M", dislikes: "395.6K", favorites: "2.9M", context: "Actualizado automaticamente desde ranking live: 52.7K jugando, 5.1B visitas y 2.9M favoritos." }
     ]
   },
   {
@@ -150,16 +150,16 @@ const trendSectionsData = [
     note: "Auto",
     description: "Juegos emergentes detectados automaticamente desde rankings New & Rising. Prioriza descubrimiento, imagen oficial y señales de actividad cuando estan disponibles.",
     items: [
-      { title: "Break For Pets !", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Steal From Animes", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Escape Guards to Steal Brainrots", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Frisbee", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Escape Police For Brainrots", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Deadeye", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "DAS H00D", metric: "New & Rising", meta: "Fighting", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Chase Train for Brainrots!", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "Ultimate Lootopia", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
-      { title: "FRUITS Dropper Incremental", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." }
+      { title: "DAS H00D", metric: "839 jugando", meta: "80.3% aprobacion", likes: "538", dislikes: "132", favorites: "4.4K", context: "Detectado en New & Rising con datos oficiales: 839 jugando, 1.3M visitas, 4.4K favoritos y 80.3% de aprobacion." },
+      { title: "Break For Pets !", metric: "438 jugando", meta: "90.9% aprobacion", likes: "6.3K", dislikes: "628", favorites: "16.1K", context: "Detectado en New & Rising con datos oficiales: 438 jugando, 11.8M visitas, 16.1K favoritos y 90.9% de aprobacion." },
+      { title: "Deadeye", metric: "434 jugando", meta: "94.7% aprobacion", likes: "57.6K", dislikes: "3.2K", favorites: "49.3K", context: "Detectado en New & Rising con datos oficiales: 434 jugando, 29.5M visitas, 49.3K favoritos y 94.7% de aprobacion." },
+      { title: "FRUITS Dropper Incremental", metric: "280 jugando", meta: "92.5% aprobacion", likes: "23.2K", dislikes: "1.9K", favorites: "22.7K", context: "Detectado en New & Rising con datos oficiales: 280 jugando, 7.8M visitas, 22.7K favoritos y 92.5% de aprobacion." },
+      { title: "Escape Guards to Steal Brainrots", metric: "224 jugando", meta: "89.2% aprobacion", likes: "87.8K", dislikes: "10.6K", favorites: "3.9M", context: "Detectado en New & Rising con datos oficiales: 224 jugando, 79.8M visitas, 3.9M favoritos y 89.2% de aprobacion." },
+      { title: "Escape Police For Brainrots", metric: "134 jugando", meta: "92.5% aprobacion", likes: "94.8K", dislikes: "7.7K", favorites: "70.7K", context: "Detectado en New & Rising con datos oficiales: 134 jugando, 70M visitas, 70.7K favoritos y 92.5% de aprobacion." },
+      { title: "Chase Train for Brainrots!", metric: "12 jugando", meta: "90.6% aprobacion", likes: "39.7K", dislikes: "4.1K", favorites: "19.7K", context: "Detectado en New & Rising con datos oficiales: 12 jugando, 13.2M visitas, 19.7K favoritos y 90.6% de aprobacion." },
+      { title: "Steal From Animes", metric: "4 jugando", meta: "96.3% aprobacion", likes: "19K", dislikes: "723", favorites: "8.5K", context: "Detectado en New & Rising con datos oficiales: 4 jugando, 2.3M visitas, 8.5K favoritos y 96.3% de aprobacion." },
+      { title: "Frisbee", metric: "3 jugando", meta: "79.2% aprobacion", likes: "3.4K", dislikes: "881", favorites: "7.7K", context: "Detectado en New & Rising con datos oficiales: 3 jugando, 4M visitas, 7.7K favoritos y 79.2% de aprobacion." },
+      { title: "Ultimate Lootopia", metric: "0 jugando", meta: "89.5% aprobacion", likes: "2.5K", dislikes: "288", favorites: "2.1K", context: "Detectado en New & Rising con datos oficiales: 0 jugando, 259K visitas, 2.1K favoritos y 89.5% de aprobacion." }
     ]
   }
 ];
@@ -835,4 +835,10 @@ function init() {
 }
 
 init();
+
+
+
+
+
+
 
