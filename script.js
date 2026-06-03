@@ -37,10 +37,10 @@ const games = [
   makeGame("Dress to Impress", "Moda", "Competencia de moda y creatividad con rondas sociales muy rapidas.", { placeId: 15101393044, creator: "Dress to Impress Group", year: 2023 }),
   makeGame("The Strongest Battlegrounds", "Aventura", "Arena de combate con personajes poderosos y duelos de alto impacto.", { placeId: 10449761463, creator: "Yielding Arts", year: 2022 }),
   makeGame("Berry Avenue", "Roleplay", "Roleplay urbano con casas, personalizacion y enfoque social muy fuerte.", { placeId: 8481844229, creator: "Amberry Games", year: 2022 }),
-  makeGame("Attack on Titan Revolution", "Aventura", "Accion anime con maniobras aereas, jefes y combates cooperativos.", { placeId: 13379208636, creator: "Evolution Power", year: 2024, badges: ["Revelacion semanal"] }),
-  makeGame("Hypershot", "Shooter", "Shooter de ritmo alto con enfoque en reflejos, precision y rounds cortos.", { placeId: 17516596118, creator: "Hypershot Team", year: 2024, badges: ["Revelacion semanal"] }),
+  makeGame("Break For Pets !", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-break-for-pets.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Steal From Animes", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-steal-from-animes.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
   makeGame("Anime Vanguards", "Tower Defense", "Tower defense anime con unidades coleccionables y updates que disparan el trafico.", { placeId: 16146832113, creator: "Kitawari", year: 2024, badges: ["Revelacion semanal"] }),
-  makeGame("Anime Story", "Aventura", "RPG anime aun pequeno en visitas totales, pero ya con traccion visible en jugadores activos.", { placeId: 9417197334, creator: "Anime Story Team", year: 2026, badges: ["Revelacion semanal"] }),
+  makeGame("Escape Guards to Steal Brainrots", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-escape-guards-to-steal-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
   makeGame("MeepCity", "Roleplay", "Mundo social clasico con casas, fiestas, minijuegos y personalizacion.", { placeId: 370731277, creator: "alexnewtron", year: 2016, badges: ["Clasico"] }),
   makeGame("Jailbreak", "Accion", "Policias y criminales compiten en robos, persecuciones y escapes.", { placeId: 606849621, creator: "Badimo", year: 2017, badges: ["Clasico"] }),
   makeGame("Piggy", "Terror", "Terror por capitulos con llaves, puzzles y persecucion constante.", { placeId: 4623386862, creator: "MiniToon", year: 2020 }),
@@ -110,17 +110,17 @@ const games = [
   makeGame("Kaiju Universe", "Accion", "Combates de kaijus gigantes con habilidades, ciudades y progresion.", { creator: "Prometeo Games", year: 2019 }),
   makeGame("Murder Party", "Suspenso", "Roles secretos, caos social y objetivos ocultos por ronda.", { creator: "PlayMake", year: 2020 }),
   makeGame("Jujutsu Infinite", "Aventura", "RPG anime con tecnicas, progresion y combates de alto impacto.", { creator: "Awesome Ninja Games", year: 2024 }),
-  makeGame("Project Slayers", "Aventura", "RPG anime de espadas, respiraciones, demonios y misiones.", { year: 2022 }),
-  makeGame("Starving Artists", "Social", "Crea arte, monta un stand y vende obras a otros jugadores.", { creator: "Double Bandit Studios", year: 2022 }),
+  makeGame("Ultimate Lootopia", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-ultimate-lootopia.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("FRUITS Dropper Incremental", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-fruits-dropper-incremental.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
   makeGame("Super Striker League", "Deportes", "Futbol arcade con habilidades especiales y partidos de equipos.", { creator: "Cinder Studio", year: 2019 }),
-  makeGame("Kick Off", "Deportes", "Partidos de futbol simples con control directo del balon."),
+  makeGame("DAS H00D", "Fighting", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-das-h00d.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
   makeGame("Kick a Lucky Block", "Simulacion", "Patea lucky blocks, escapa de tsunamis y coloca brainrots para ganar dinero.", { placeId: 89469502395769, image: "Imagenes/roblox-kick-a-lucky-block.png", creator: "No More Flops", year: 2026, badges: ["Top del mes"] }),
-  makeGame("Camping", "Terror", "Historia clasica de terror en grupo durante una salida al bosque.", { creator: "SamsonXVI", year: 2018 }),
-  makeGame("Super Golf", "Deportes", "Minigolf multijugador con mapas, tiros precisos y cosmeticos.", { creator: "Nosniy Games", year: 2019 }),
+  makeGame("Attack on Titan Revolution", "Accion", "Combate inspirado en anime con movilidad aerea, progresion y raids cooperativas.", { creator: "AoTR Team", year: 2024 }),
+  makeGame("Chase Train for Brainrots!", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-chase-train-for-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
   makeGame("Slime RNG", "Simulacion", "Rolls de slimes raros, mejoras, mundos y combate contra enemigos.", { placeId: 92416421522960, image: "Imagenes/roblox-slime-rng.png", creator: "Stouts Studio", year: 2026, badges: ["Top del mes"] }),
-  makeGame("My Supermarket", "Tycoon", "Administra un supermercado con estantes, clientes y mejoras.", { creator: "Rocky Studio", year: 2020 }),
-  makeGame("Demon Slayer RPG 2", "Aventura", "RPG anime de cazadores, demonios, respiraciones y misiones.", { creator: "Shounen Studio", year: 2020 }),
-  makeGame("Ghost Simulator", "Simulacion", "Captura fantasmas, mejora equipo y explora biomas.", { creator: "BloxByte Games", year: 2018 })
+  makeGame("Deadeye", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-deadeye.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Escape Police For Brainrots", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-escape-police-for-brainrots.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] }),
+  makeGame("Frisbee", "All", "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento.", {  image: "Imagenes/roblox-frisbee.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"] })
 ];
 
 const trendSectionsData = [
@@ -131,15 +131,15 @@ const trendSectionsData = [
     note: "10 juegos",
     description: "Ranking de los juegos con mas actividad global en Roblox durante el snapshot mensual. Incluye jugadores, aprobacion y votos de la comunidad.",
     items: [
-      { title: "Brookhaven RP", metric: "376.1K jugando", meta: "85.9% aprobacion", likes: "8.1M", dislikes: "1.3M", favorites: "28M", context: "Actualizado automaticamente desde ranking live: 376.1K jugando, 83.1B visitas y 28M favoritos." },
-      { title: "Adopt Me!", metric: "289.3K jugando", meta: "85.9% aprobacion", likes: "9.2M", dislikes: "1.5M", favorites: "29.1M", context: "Actualizado automaticamente desde ranking live: 289.3K jugando, 43.7B visitas y 29.1M favoritos." },
-      { title: "Blox Fruits", metric: "280.7K jugando", meta: "92.1% aprobacion", likes: "12.2M", dislikes: "1M", favorites: "19M", context: "Actualizado automaticamente desde ranking live: 280.7K jugando, 61.9B visitas y 19M favoritos." },
-      { title: "99 Nights in the Forest", metric: "225.2K jugando", meta: "90.5% aprobacion", likes: "4.9M", dislikes: "517.3K", favorites: "7.9M", context: "Actualizado automaticamente desde ranking live: 225.2K jugando, 27B visitas y 7.9M favoritos." },
-      { title: "RIVALS", metric: "196.5K jugando", meta: "94.1% aprobacion", likes: "9.6M", dislikes: "604.4K", favorites: "77.6M", context: "Actualizado automaticamente desde ranking live: 196.5K jugando, 15.4B visitas y 77.6M favoritos." },
-      { title: "Murder Mystery 2", metric: "143K jugando", meta: "90.8% aprobacion", likes: "9.7M", dislikes: "981K", favorites: "22.2M", context: "Actualizado automaticamente desde ranking live: 143K jugando, 26B visitas y 22.2M favoritos." },
-      { title: "Steal a Brainrot", metric: "115.7K jugando", meta: "85.6% aprobacion", likes: "15.1M", dislikes: "2.6M", favorites: "28.3M", context: "Actualizado automaticamente desde ranking live: 115.7K jugando, 69.5B visitas y 28.3M favoritos." },
-      { title: "Jujutsu Shenanigans", metric: "108K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "340.1K", favorites: "2.5M", context: "Actualizado automaticamente desde ranking live: 108K jugando, 5.7B visitas y 2.5M favoritos." },
-      { title: "Fish It!", metric: "83K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 83K jugando, 35.5B visitas y 11M favoritos." },
+      { title: "Brookhaven RP", metric: "371.1K jugando", meta: "85.9% aprobacion", likes: "8.1M", dislikes: "1.3M", favorites: "28M", context: "Actualizado automaticamente desde ranking live: 371.1K jugando, 83.1B visitas y 28M favoritos." },
+      { title: "Adopt Me!", metric: "288K jugando", meta: "85.9% aprobacion", likes: "9.2M", dislikes: "1.5M", favorites: "29.1M", context: "Actualizado automaticamente desde ranking live: 288K jugando, 43.7B visitas y 29.1M favoritos." },
+      { title: "Blox Fruits", metric: "281.5K jugando", meta: "92.1% aprobacion", likes: "12.2M", dislikes: "1M", favorites: "19M", context: "Actualizado automaticamente desde ranking live: 281.5K jugando, 61.9B visitas y 19M favoritos." },
+      { title: "99 Nights in the Forest", metric: "223.2K jugando", meta: "90.5% aprobacion", likes: "4.9M", dislikes: "517.3K", favorites: "7.9M", context: "Actualizado automaticamente desde ranking live: 223.2K jugando, 27B visitas y 7.9M favoritos." },
+      { title: "RIVALS", metric: "193.8K jugando", meta: "94.1% aprobacion", likes: "9.6M", dislikes: "604.4K", favorites: "77.6M", context: "Actualizado automaticamente desde ranking live: 193.8K jugando, 15.4B visitas y 77.6M favoritos." },
+      { title: "Murder Mystery 2", metric: "142.2K jugando", meta: "90.8% aprobacion", likes: "9.7M", dislikes: "981K", favorites: "22.2M", context: "Actualizado automaticamente desde ranking live: 142.2K jugando, 26B visitas y 22.2M favoritos." },
+      { title: "Steal a Brainrot", metric: "115.2K jugando", meta: "85.6% aprobacion", likes: "15.1M", dislikes: "2.6M", favorites: "28.3M", context: "Actualizado automaticamente desde ranking live: 115.2K jugando, 69.5B visitas y 28.3M favoritos." },
+      { title: "Jujutsu Shenanigans", metric: "107.6K jugando", meta: "86.9% aprobacion", likes: "2.3M", dislikes: "340.1K", favorites: "2.5M", context: "Actualizado automaticamente desde ranking live: 107.6K jugando, 5.7B visitas y 2.5M favoritos." },
+      { title: "Fish It!", metric: "83.1K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 83.1K jugando, 35.5B visitas y 11M favoritos." },
       { title: "Forsaken", metric: "53.7K jugando", meta: "84.9% aprobacion", likes: "2.2M", dislikes: "395.6K", favorites: "2.9M", context: "Actualizado automaticamente desde ranking live: 53.7K jugando, 5.1B visitas y 2.9M favoritos." }
     ]
   },
@@ -147,13 +147,19 @@ const trendSectionsData = [
     id: "revelacion-semana",
     kicker: "Descubrimientos",
     title: "Joyitas ocultas",
-    note: "Heuristica",
-    description: "Seleccion estimada de juegos con buen empuje reciente pero menor reconocimiento historico que los gigantes del top. Prioriza crecimiento y menor huella de visitas totales.",
+    note: "Auto",
+    description: "Juegos emergentes detectados automaticamente desde rankings New & Rising. Prioriza descubrimiento, imagen oficial y señales de actividad cuando estan disponibles.",
     items: [
-      { title: "Attack on Titan Revolution", metric: "58K jugando ahora", meta: "900.9M visitas", context: "Top 20 actual y todavia debajo de 1B visitas" },
-      { title: "Hypershot", metric: "26K jugando ahora", meta: "984M visitas", context: "Shooter en ascenso con perfil mas niche" },
-      { title: "Anime Vanguards", metric: "16K jugando ahora", meta: "+36.7% tendencia", context: "Tower defense anime con subida porcentual fuerte" },
-      { title: "Anime Story", metric: "24K jugando ahora", meta: "29.4M visitas", context: "Muy poca huella historica para el trafico actual" }
+      { title: "Break For Pets !", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Steal From Animes", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Escape Guards to Steal Brainrots", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Frisbee", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Escape Police For Brainrots", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Deadeye", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "DAS H00D", metric: "New & Rising", meta: "Fighting", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Chase Train for Brainrots!", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "Ultimate Lootopia", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." },
+      { title: "FRUITS Dropper Incremental", metric: "New & Rising", meta: "All", likes: "N/D", dislikes: "N/D", favorites: "N/D", context: "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking." }
     ]
   }
 ];
@@ -585,31 +591,36 @@ function renderTrendSections() {
     .filter((section) => section.id === activeView)
     .forEach((section) => {
     const isTopMonth = section.id === "top-mes";
+    const isSpotlight = section.id === "revelacion-semana";
+    const isExpandedRanking = isTopMonth || isSpotlight;
     const card = trendSectionTemplate.content.firstElementChild.cloneNode(true);
-    card.classList.toggle("top-month-board", isTopMonth);
+    card.classList.toggle("top-month-board", isExpandedRanking);
+    card.classList.toggle("hidden-gems-board", isSpotlight);
     card.querySelector(".trend-kicker").textContent = section.kicker;
     card.querySelector(".trend-title").textContent = section.title;
     card.querySelector(".trend-note").textContent = section.note;
     card.querySelector(".trend-description").textContent = section.description;
 
     const list = card.querySelector(".trend-list");
-    list.classList.toggle("top-month-list", isTopMonth);
+    list.classList.toggle("top-month-list", isExpandedRanking);
+    list.classList.toggle("hidden-gems-list", isSpotlight);
     section.items.forEach((item, index) => {
       const linkedGame = gameByTitle(item.title);
       const thumbSrc = linkedGame?.image || "";
       const thumbInitials = initialsFromTitle(item.title);
-      const trendItem = document.createElement(isTopMonth ? "article" : "button");
-      if (!isTopMonth) {
+      const trendItem = document.createElement(isExpandedRanking ? "article" : "button");
+      if (!isExpandedRanking) {
         trendItem.type = "button";
       }
-      trendItem.className = isTopMonth ? "trend-item top-month-item" : "trend-item";
+      trendItem.className = isExpandedRanking ? "trend-item top-month-item" : "trend-item";
+      trendItem.classList.toggle("hidden-gems-item", isSpotlight);
       trendItem.tabIndex = 0;
       trendItem.setAttribute("role", "button");
       trendItem.setAttribute("aria-label", `Ver detalle de ${item.title}`);
 
-      trendItem.innerHTML = isTopMonth ? `
+      trendItem.innerHTML = isExpandedRanking ? `
         <div class="top-month-media">
-          <span class="top-month-rank">#${index + 1}</span>
+          <span class="top-month-rank">${isSpotlight ? "J" : "#"}${index + 1}</span>
           <img class="trend-thumb top-month-thumb" src="${thumbSrc}" alt="${item.title} portada" loading="lazy">
           <span class="trend-thumb-fallback top-month-thumb-fallback">${thumbInitials}</span>
           <button class="favorite-btn top-month-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
@@ -657,7 +668,7 @@ function renderTrendSections() {
         thumbFallback.classList.add("is-visible");
       }
 
-      if (isTopMonth && linkedGame) {
+      if (isExpandedRanking && linkedGame) {
         const favoriteBtn = trendItem.querySelector(".top-month-favorite-btn");
         updateFavoriteButton(favoriteBtn, linkedGame);
 

@@ -1,5 +1,6 @@
 param(
-  [int]$Limit = 10
+  [int]$Limit = 10,
+  [int]$HiddenLimit = 10
 )
 
 $ErrorActionPreference = "Stop"
@@ -9,6 +10,7 @@ $ScriptPath = Join-Path $Root "script.js"
 $ImagesDir = Join-Path $Root "Imagenes"
 $RankingUrl = "https://robloxgames.org/stats/most-played"
 $FallbackRankingUrl = "https://levelupplay.my/charts/top-playing"
+$HiddenRankingUrl = "https://levelupplay.my/charts/new-rising"
 $Headers = @{
   "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36"
 }
@@ -75,6 +77,9 @@ function Normalize-Title {
   $clean = $clean -replace "\[[^\]]*\]", ""
   $clean = $clean -replace "^\s*DISASTERPLANTS\s+", ""
   $clean = $clean -replace "^\s*\[\]\s*", ""
+  $clean = $clean -replace "\s+", " "
+  $clean = $clean.Trim()
+  $clean = $clean -replace "^[^A-Za-z0-9]+", ""
   $clean = $clean -replace "\s+", " "
   $clean = $clean.Trim()
 
@@ -193,6 +198,43 @@ function Get-RankingRows {
   return $rows
 }
 
+function Get-LevelUpRows {
+  param(
+    [string]$Uri,
+    [int]$Count
+  )
+
+  $html = Invoke-TextRequest -Uri $Uri
+  $itemMatches = [regex]::Matches($html, '"position":(?<pos>\d+).*?"@type":"VideoGame","name":"(?<name>[^"]+)","url":"(?<url>[^"]+)","image":"(?<image>[^"]+)".*?"genre":"(?<genre>[^"]*)"', "Singleline")
+  if ($itemMatches.Count -eq 0) {
+    throw "No pude leer el ranking de $Uri."
+  }
+
+  $rows = @()
+  foreach ($item in $itemMatches) {
+    $title = Normalize-Title $item.Groups["name"].Value
+    if ($title -notmatch "[A-Za-z0-9]") {
+      continue
+    }
+
+    $known = $KnownGames[$title]
+    $rows += [pscustomobject]@{
+      Title = $title
+      StatsUrl = $item.Groups["url"].Value
+      UniverseId = if ($known) { $known.UniverseId } else { "" }
+      PlaceId = if ($known) { $known.PlaceId } else { "" }
+      ImageUrl = $item.Groups["image"].Value
+      Genre = $item.Groups["genre"].Value
+    }
+
+    if ($rows.Count -ge $Count) {
+      break
+    }
+  }
+
+  return $rows
+}
+
 function Add-LiveStats {
   param([array]$Rows)
 
@@ -249,16 +291,22 @@ function Add-LiveStats {
 function Download-Icon {
   param(
     [string]$PlaceId,
-    [string]$Title
+    [string]$Title,
+    [string]$ImageUrl = ""
   )
-
-  if (-not $PlaceId) {
-    return ""
-  }
 
   $fileName = "roblox-$(Slugify $Title).png"
   $relativePath = "Imagenes/$fileName"
   $outputPath = Join-Path $ImagesDir $fileName
+
+  if (-not $PlaceId) {
+    if ($ImageUrl) {
+      Invoke-WebRequest -Uri $ImageUrl -Headers $Headers -OutFile $outputPath
+      return $relativePath
+    }
+    return ""
+  }
+
   $thumbUrl = "https://thumbnails.roblox.com/v1/places/gameicons?placeIds=$PlaceId&size=512x512&format=Png&isCircular=false"
   $thumb = (Invoke-JsonRequest -Uri $thumbUrl).data | Select-Object -First 1
 
@@ -271,15 +319,151 @@ function Download-Icon {
 }
 
 function Build-GameLine {
-  param([pscustomobject]$Row)
+  param(
+    [pscustomobject]$Row,
+    [string]$Badge = "Top del mes"
+  )
 
-  $image = Download-Icon -PlaceId $Row.PlaceId -Title $Row.Title
-  $category = "Roblox"
-  $short = "Juego destacado del ranking actual de Roblox con actividad alta y comunidad activa."
+  $image = Download-Icon -PlaceId $Row.PlaceId -Title $Row.Title -ImageUrl $Row.ImageUrl
+  $category = if ($Row.Genre) { $Row.Genre } else { "Roblox" }
+  $short = if ($Badge -eq "Joyita oculta") { "Juego emergente detectado en rankings New & Rising con senales recientes de descubrimiento." } else { "Juego destacado del ranking actual de Roblox con actividad alta y comunidad activa." }
   $creator = if ($Row.Creator) { $Row.Creator } else { "Roblox Community" }
   $title = Escape-JsString $Row.Title
+  $placePart = if ($Row.PlaceId) { "placeId: $($Row.PlaceId), " } else { "" }
 
-  return "  makeGame(`"$title`", `"$category`", `"$short`", { placeId: $($Row.PlaceId), image: `"$image`", creator: `"$(Escape-JsString $creator)`", year: `"N/D`", badges: [`"Top del mes`"] })"
+  return "  makeGame(`"$title`", `"$(Escape-JsString $category)`", `"$short`", { $placePart image: `"$image`", creator: `"$(Escape-JsString $creator)`", year: `"N/D`", badges: [`"$Badge`"] })"
+}
+
+function Ensure-GamesInScript {
+  param(
+    [string]$Script,
+    [array]$Rows,
+    [string]$Badge
+  )
+
+  $gamesStart = $Script.IndexOf("const games = [")
+  $trendStart = $Script.IndexOf("const trendSectionsData")
+  $gamesBlock = $Script.Substring($gamesStart, $trendStart - $gamesStart)
+  $currentTitles = [regex]::Matches($gamesBlock, 'makeGame\("([^"]+)"') | ForEach-Object { $_.Groups[1].Value }
+  $missingRows = $Rows | Where-Object { $currentTitles -notcontains $_.Title }
+
+  foreach ($row in $missingRows) {
+    $replacementCandidates = @(
+      "Attack on Titan Revolution",
+      "Hypershot",
+      "Anime Story",
+      "Ghost Simulator",
+      "Demon Slayer RPG 2",
+      "My Supermarket",
+      "Kick Off",
+      "Super Golf",
+      "Camping",
+      "Starving Artists",
+      "Project Slayers",
+      "Royale High"
+    )
+    $replaced = $false
+
+    foreach ($candidate in $replacementCandidates) {
+      if ($Rows.Title -contains $candidate) {
+        continue
+      }
+
+      $linePattern = '(?m)^  makeGame\("' + [regex]::Escape($candidate) + '".*?\),?\r?$'
+      if ([regex]::IsMatch($Script, $linePattern)) {
+        $newLine = Build-GameLine -Row $row -Badge $Badge
+        if ([regex]::Match($Script, $linePattern).Value.Trim().EndsWith(",")) {
+          $newLine += ","
+        }
+        $Script = [regex]::Replace($Script, $linePattern, $newLine, 1)
+        $replaced = $true
+        break
+      }
+    }
+
+    if (-not $replaced) {
+      throw "No encontre una entrada segura para reemplazar por $($row.Title)."
+    }
+  }
+
+  foreach ($row in $Rows) {
+    $image = Download-Icon -PlaceId $row.PlaceId -Title $row.Title -ImageUrl $row.ImageUrl
+    if (-not $image) {
+      continue
+    }
+
+    $linePattern = '(?m)^  makeGame\("' + [regex]::Escape($row.Title) + '".*?\),?\r?$'
+    $lineMatch = [regex]::Match($Script, $linePattern)
+    if ($lineMatch.Success) {
+      $line = $lineMatch.Value
+      if ($line -match 'image:\s*"[^"]*"') {
+        $line = [regex]::Replace($line, 'image:\s*"[^"]*"', "image: `"$image`"")
+      } else {
+        $line = $line -replace '\}\)(,?)$', ", image: `"$image`" })`$1"
+      }
+      if ($row.PlaceId -and $line -notmatch 'placeId:\s*\d+') {
+        $line = $line -replace '\{\s*', "{ placeId: $($row.PlaceId), "
+      }
+      $Script = [regex]::Replace($Script, $linePattern, [System.Text.RegularExpressions.MatchEvaluator]{ param($m) $line }, 1)
+    }
+  }
+
+  return $Script
+}
+
+function Build-TrendItemLines {
+  param(
+    [array]$Rows,
+    [string]$Mode,
+    [int]$Count
+  )
+
+  foreach ($row in $Rows | Select-Object -First $Count) {
+    $metric = if ($row.Playing) { "$(Format-CompactNumber $row.Playing) jugando" } else { if ($Mode -eq "Hidden") { "New & Rising" } else { "N/D jugando" } }
+    $meta = if ($row.Approval) { "$($row.Approval)% aprobacion" } else { if ($row.Genre) { $row.Genre } else { "N/D aprobacion" } }
+    $likes = if ($row.Likes -ne $null) { Format-CompactNumber $row.Likes } else { "N/D" }
+    $dislikes = if ($row.Dislikes -ne $null) { Format-CompactNumber $row.Dislikes } else { "N/D" }
+    $favorites = if ($row.Favorites -ne $null) { Format-CompactNumber $row.Favorites } else { "N/D" }
+    $visits = if ($row.Visits -ne $null) { Format-CompactNumber $row.Visits } else { "N/D" }
+    $context = if ($Mode -eq "Hidden") {
+      if ($row.Playing) {
+        "Joyita emergente actualizada automaticamente: $metric, $visits visitas y $favorites favoritos."
+      } else {
+        "Detectado automaticamente desde New & Rising; la miniatura se actualiza desde la fuente del ranking."
+      }
+    } else {
+      "Actualizado automaticamente desde ranking live: $metric, $visits visitas y $favorites favoritos."
+    }
+    "      { title: `"$(Escape-JsString $row.Title)`", metric: `"$metric`", meta: `"$(Escape-JsString $meta)`", likes: `"$likes`", dislikes: `"$dislikes`", favorites: `"$favorites`", context: `"$(Escape-JsString $context)`" }"
+  }
+}
+
+function Replace-TrendItems {
+  param(
+    [string]$Script,
+    [string]$SectionId,
+    [array]$ItemLines
+  )
+
+  $newItems = "    items: [`r`n" + ($ItemLines -join ",`r`n") + "`r`n    ]"
+  $sectionStart = $Script.IndexOf("id: `"$SectionId`"")
+  $itemsStart = $Script.IndexOf("    items: [", $sectionStart)
+  $sectionEnd = if ($SectionId -eq "top-mes") {
+    $Script.IndexOf('  },' + "`r`n" + '  {' + "`r`n" + '    id: "revelacion-semana"', $itemsStart)
+  } else {
+    $Script.IndexOf("  }`r`n];", $itemsStart)
+  }
+  if ($sectionEnd -lt 0 -and $SectionId -eq "top-mes") {
+    $sectionEnd = $Script.IndexOf("  },`n  {`n    id: `"revelacion-semana`"", $itemsStart)
+  }
+  if ($sectionEnd -lt 0 -and $SectionId -ne "top-mes") {
+    $sectionEnd = $Script.IndexOf("  }`n];", $itemsStart)
+  }
+  if ($sectionStart -lt 0 -or $itemsStart -lt 0 -or $sectionEnd -lt 0) {
+    throw "No pude encontrar el bloque $SectionId para actualizar."
+  }
+
+  return $Script.Substring(0, $itemsStart) + $newItems + "`r`n" + $Script.Substring($sectionEnd)
 }
 
 function Update-Script {
@@ -367,8 +551,22 @@ function Update-Script {
   Set-Content -Path $ScriptPath -Value $script -Encoding UTF8
 }
 
+function Update-HiddenGems {
+  param([array]$Rows)
+
+  $script = Get-Content -Path $ScriptPath -Raw
+  $script = Ensure-GamesInScript -Script $script -Rows $Rows -Badge "Joyita oculta"
+  $itemLines = Build-TrendItemLines -Rows $Rows -Mode "Hidden" -Count $HiddenLimit
+  $script = Replace-TrendItems -Script $script -SectionId "revelacion-semana" -ItemLines $itemLines
+  Set-Content -Path $ScriptPath -Value $script -Encoding UTF8
+}
+
 $ranking = Get-RankingRows
 $ranking = Add-LiveStats -Rows $ranking
 Update-Script -Rows ($ranking | Select-Object -First $Limit)
 
-Write-Output "Top del mes actualizado: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+$hiddenRanking = Get-LevelUpRows -Uri $HiddenRankingUrl -Count $HiddenLimit
+$hiddenRanking = Add-LiveStats -Rows $hiddenRanking
+Update-HiddenGems -Rows ($hiddenRanking | Select-Object -First $HiddenLimit)
+
+Write-Output "Top del mes y Joyitas ocultas actualizados: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
