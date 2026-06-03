@@ -521,6 +521,25 @@ main { max-width: 1100px; margin: 0 auto; }
   display: grid;
 }
 
+.top-month-media > .top-month-thumb {
+  width: 100%;
+  height: 168px;
+  max-width: none;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: center;
+  flex: none;
+}
+
+.top-month-media > .top-month-thumb-fallback {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 2.4rem;
+}
+
 .trend-game strong {
   display: block;
   font-family: "Fredoka", sans-serif;
