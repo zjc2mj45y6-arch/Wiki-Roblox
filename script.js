@@ -225,7 +225,7 @@ function updateFavoriteButton(button, game) {
   const pressed = isFavorite(game.title);
   button.setAttribute("aria-pressed", String(pressed));
   button.setAttribute("aria-label", pressed ? `Quitar ${game.title} de favoritos` : `Marcar ${game.title} como favorito`);
-  button.querySelector("span").textContent = pressed ? "â˜…" : "â˜†";
+  button.querySelector("span").textContent = pressed ? "\u2605" : "\u2606";
 }
 
 function syncFavoritesFilterButton() {
@@ -350,7 +350,7 @@ function renderSearchSuggestions() {
         <span class="suggestion-meta">${game.category} | ${game.short}</span>
       </span>
       <button class="favorite-btn suggestion-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
-        <span aria-hidden="true">â˜†</span>
+        <span aria-hidden="true">&#9734;</span>
       </button>
     `;
     const favoriteBtn = suggestion.querySelector(".suggestion-favorite-btn");
@@ -624,7 +624,7 @@ function renderTrendSections() {
           <img class="trend-thumb top-month-thumb" src="${thumbSrc}" alt="${item.title} portada" loading="lazy">
           <span class="trend-thumb-fallback top-month-thumb-fallback">${thumbInitials}</span>
           <button class="favorite-btn top-month-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
-            <span aria-hidden="true">â˜†</span>
+            <span aria-hidden="true">&#9734;</span>
           </button>
         </div>
         <div class="top-month-copy">
@@ -679,7 +679,15 @@ function renderTrendSections() {
         });
       }
 
-      trendItem.addEventListener("click", () => scrollToGame(item.title));
+      const openTrendGame = () => {
+        if (isExpandedRanking && linkedGame) {
+          openGameModal(linkedGame);
+          return;
+        }
+        scrollToGame(item.title);
+      };
+
+      trendItem.addEventListener("click", openTrendGame);
       trendItem.addEventListener("keydown", (event) => {
         if (event.target.closest(".favorite-btn")) {
           return;
@@ -687,7 +695,7 @@ function renderTrendSections() {
 
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          scrollToGame(item.title);
+          openTrendGame();
         }
       });
       list.appendChild(trendItem);
