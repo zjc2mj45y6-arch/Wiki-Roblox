@@ -201,25 +201,6 @@ const trendSectionsData = [
       { title: "Fish It!", metric: "82.8K jugando", meta: "89.9% aprobacion", likes: "9.3M", dislikes: "1M", favorites: "11M", context: "Actualizado automaticamente desde ranking live: 82.8K jugando, 35.5B visitas y 11M favoritos." },
       { title: "Forsaken", metric: "52.7K jugando", meta: "84.9% aprobacion", likes: "2.2M", dislikes: "395.6K", favorites: "2.9M", context: "Actualizado automaticamente desde ranking live: 52.7K jugando, 5.1B visitas y 2.9M favoritos." }
     ]
-  },
-  {
-    id: "revelacion-semana",
-    kicker: "Descubrimientos",
-    title: "Joyitas ocultas",
-    note: "Auto",
-    description: "Juegos emergentes detectados automaticamente desde rankings New & Rising. Prioriza descubrimiento, imagen oficial y señales de actividad cuando estan disponibles.",
-    items: [
-      { title: "DAS H00D", metric: "839 jugando", meta: "80.3% aprobacion", likes: "538", dislikes: "132", favorites: "4.4K", context: "Detectado en New & Rising con datos oficiales: 839 jugando, 1.3M visitas, 4.4K favoritos y 80.3% de aprobacion." },
-      { title: "Break For Pets !", metric: "438 jugando", meta: "90.9% aprobacion", likes: "6.3K", dislikes: "628", favorites: "16.1K", context: "Detectado en New & Rising con datos oficiales: 438 jugando, 11.8M visitas, 16.1K favoritos y 90.9% de aprobacion." },
-      { title: "Deadeye", metric: "434 jugando", meta: "94.7% aprobacion", likes: "57.6K", dislikes: "3.2K", favorites: "49.3K", context: "Detectado en New & Rising con datos oficiales: 434 jugando, 29.5M visitas, 49.3K favoritos y 94.7% de aprobacion." },
-      { title: "FRUITS Dropper Incremental", metric: "280 jugando", meta: "92.5% aprobacion", likes: "23.2K", dislikes: "1.9K", favorites: "22.7K", context: "Detectado en New & Rising con datos oficiales: 280 jugando, 7.8M visitas, 22.7K favoritos y 92.5% de aprobacion." },
-      { title: "Escape Guards to Steal Brainrots", metric: "224 jugando", meta: "89.2% aprobacion", likes: "87.8K", dislikes: "10.6K", favorites: "3.9M", context: "Detectado en New & Rising con datos oficiales: 224 jugando, 79.8M visitas, 3.9M favoritos y 89.2% de aprobacion." },
-      { title: "Escape Police For Brainrots", metric: "134 jugando", meta: "92.5% aprobacion", likes: "94.8K", dislikes: "7.7K", favorites: "70.7K", context: "Detectado en New & Rising con datos oficiales: 134 jugando, 70M visitas, 70.7K favoritos y 92.5% de aprobacion." },
-      { title: "Chase Train for Brainrots!", metric: "12 jugando", meta: "90.6% aprobacion", likes: "39.7K", dislikes: "4.1K", favorites: "19.7K", context: "Detectado en New & Rising con datos oficiales: 12 jugando, 13.2M visitas, 19.7K favoritos y 90.6% de aprobacion." },
-      { title: "Steal From Animes", metric: "4 jugando", meta: "96.3% aprobacion", likes: "19K", dislikes: "723", favorites: "8.5K", context: "Detectado en New & Rising con datos oficiales: 4 jugando, 2.3M visitas, 8.5K favoritos y 96.3% de aprobacion." },
-      { title: "Frisbee", metric: "3 jugando", meta: "79.2% aprobacion", likes: "3.4K", dislikes: "881", favorites: "7.7K", context: "Detectado en New & Rising con datos oficiales: 3 jugando, 4M visitas, 7.7K favoritos y 79.2% de aprobacion." },
-      { title: "Ultimate Lootopia", metric: "0 jugando", meta: "89.5% aprobacion", likes: "2.5K", dislikes: "288", favorites: "2.1K", context: "Detectado en New & Rising con datos oficiales: 0 jugando, 259K visitas, 2.1K favoritos y 89.5% de aprobacion." }
-    ]
   }
 ];
 const categoryFilters = document.getElementById("categoryFilters");
@@ -830,11 +811,9 @@ function renderTrendSections() {
     .filter((section) => section.id === activeView)
     .forEach((section) => {
     const isTopMonth = section.id === "top-mes";
-    const isSpotlight = section.id === "revelacion-semana";
-    const isExpandedRanking = isTopMonth || isSpotlight;
+    const isExpandedRanking = isTopMonth;
     const card = trendSectionTemplate.content.firstElementChild.cloneNode(true);
     card.classList.toggle("top-month-board", isExpandedRanking);
-    card.classList.toggle("hidden-gems-board", isSpotlight);
     card.querySelector(".trend-kicker").textContent = section.kicker;
     card.querySelector(".trend-title").textContent = section.title;
     card.querySelector(".trend-note").textContent = section.note;
@@ -842,7 +821,6 @@ function renderTrendSections() {
 
     const list = card.querySelector(".trend-list");
     list.classList.toggle("top-month-list", isExpandedRanking);
-    list.classList.toggle("hidden-gems-list", isSpotlight);
     section.items.forEach((item, index) => {
       const linkedGame = gameByTitle(item.title);
       const thumbSrc = linkedGame?.image || "";
@@ -852,14 +830,13 @@ function renderTrendSections() {
         trendItem.type = "button";
       }
       trendItem.className = isExpandedRanking ? "trend-item top-month-item" : "trend-item";
-      trendItem.classList.toggle("hidden-gems-item", isSpotlight);
       trendItem.tabIndex = 0;
       trendItem.setAttribute("role", "button");
       trendItem.setAttribute("aria-label", `Ver detalle de ${item.title}`);
 
       trendItem.innerHTML = isExpandedRanking ? `
         <div class="top-month-media">
-          <span class="top-month-rank">${isSpotlight ? "J" : "#"}${index + 1}</span>
+          <span class="top-month-rank">#${index + 1}</span>
           <img class="trend-thumb top-month-thumb" src="${thumbSrc}" alt="${item.title} portada" loading="lazy">
           <span class="trend-thumb-fallback top-month-thumb-fallback">${thumbInitials}</span>
           <button class="favorite-btn top-month-favorite-btn" type="button" aria-label="Marcar como favorito" aria-pressed="false">
