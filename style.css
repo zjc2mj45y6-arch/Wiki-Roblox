@@ -159,6 +159,20 @@ h1 { margin: 0; font-family: "Fredoka", sans-serif; font-size: clamp(2rem, 4vw, 
 
 .suggestion-item:last-child { border-bottom: 0; }
 
+.suggestion-heading {
+  padding: 9px 12px 6px;
+  color: var(--muted);
+  font-family: "Fredoka", sans-serif;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.recent-suggestion {
+  background: color-mix(in srgb, var(--accent-soft) 34%, transparent);
+}
+
 .suggestion-item:hover,
 .suggestion-item:focus-visible {
   background: color-mix(in srgb, var(--accent-soft) 76%, var(--card));
@@ -916,6 +930,77 @@ body.modal-open { overflow: hidden; }
   line-height: 1.48;
 }
 
+.quick-guide {
+  margin: 0 0 20px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--card));
+}
+
+.quick-guide h3 {
+  margin: 0 0 10px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.08rem;
+}
+
+.guide-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.guide-stat {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 9px;
+  background: color-mix(in srgb, var(--card) 84%, transparent);
+}
+
+.guide-stat small,
+.guide-stat strong {
+  display: block;
+  line-height: 1.12;
+}
+
+.guide-stat small,
+.guide-summary span {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.guide-stat strong {
+  margin-top: 4px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1rem;
+}
+
+.guide-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.guide-summary div {
+  display: grid;
+  gap: 2px;
+}
+
+.guide-summary strong {
+  line-height: 1.2;
+}
+
+.beginner-tips {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  line-height: 1.38;
+}
+
 .modal-detail-grid {
   display: grid;
   gap: 18px;
@@ -1010,6 +1095,9 @@ body.modal-open { overflow: hidden; }
   .modal-badges {
     justify-content: flex-start;
     min-width: 0;
+  }
+  .guide-stats {
+    grid-template-columns: 1fr;
   }
   .top-month-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));

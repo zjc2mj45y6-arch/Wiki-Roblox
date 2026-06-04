@@ -189,6 +189,10 @@ const modalFavoriteBtn = document.getElementById("modalFavoriteBtn");
 const modalBadges = document.getElementById("modalBadges");
 const modalMeta = document.getElementById("modalMeta");
 const modalDescription = document.getElementById("modalDescription");
+const modalGuideStats = document.getElementById("modalGuideStats");
+const modalBestFor = document.getElementById("modalBestFor");
+const modalFirstGoal = document.getElementById("modalFirstGoal");
+const modalBeginnerTips = document.getElementById("modalBeginnerTips");
 const modalEggs = document.getElementById("modalEggs");
 const modalItems = document.getElementById("modalItems");
 const modalItemHowto = document.getElementById("modalItemHowto");
@@ -200,9 +204,12 @@ let activeView = "wiki";
 let activeGameTitle = "";
 let modalCloseTimer = null;
 let favoriteTitles = new Set();
+let recentlyViewedTitles = [];
 const homeGameLimit = 12;
 const suggestionLimit = 6;
+const recentlyViewedLimit = 3;
 const favoritesStorageKey = "robloxWikiFavorites";
+const recentlyViewedStorageKey = "robloxWikiRecentlyViewed";
 
 function loadFavorites() {
   try {
@@ -215,6 +222,28 @@ function loadFavorites() {
 
 function saveFavorites() {
   localStorage.setItem(favoritesStorageKey, JSON.stringify([...favoriteTitles]));
+}
+
+function loadRecentlyViewed() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(recentlyViewedStorageKey) || "[]");
+    recentlyViewedTitles = Array.isArray(stored) ? stored.filter((title) => gameByTitle(title)) : [];
+  } catch {
+    recentlyViewedTitles = [];
+  }
+}
+
+function saveRecentlyViewed() {
+  localStorage.setItem(recentlyViewedStorageKey, JSON.stringify(recentlyViewedTitles));
+}
+
+function rememberViewedGame(game) {
+  recentlyViewedTitles = [
+    game.title,
+    ...recentlyViewedTitles.filter((title) => title !== game.title)
+  ].slice(0, recentlyViewedLimit);
+
+  saveRecentlyViewed();
 }
 
 function isFavorite(title) {
@@ -393,6 +422,55 @@ function renderSearchSuggestions() {
   searchInput.setAttribute("aria-expanded", "true");
 }
 
+function renderRecentSearchSuggestions() {
+  searchSuggestions.innerHTML = "";
+  const recentGames = recentlyViewedTitles.map(gameByTitle).filter(Boolean).slice(0, recentlyViewedLimit);
+
+  if (recentGames.length === 0 || searchText) {
+    hideSearchSuggestions();
+    return;
+  }
+
+  const heading = document.createElement("div");
+  heading.className = "suggestion-heading";
+  heading.textContent = "Recientes";
+  searchSuggestions.appendChild(heading);
+
+  recentGames.forEach((game) => {
+    const suggestion = document.createElement("div");
+    suggestion.className = "suggestion-item recent-suggestion";
+    suggestion.setAttribute("role", "option");
+    suggestion.tabIndex = 0;
+    suggestion.innerHTML = `
+      ${game.image ? `<img class="suggestion-thumb" src="${game.image}" alt="${game.title} portada" loading="lazy">` : ""}
+      <span class="suggestion-copy">
+        <span class="suggestion-title">${game.title}</span>
+        <span class="suggestion-meta">${game.category} | visto o buscado recientemente</span>
+      </span>
+    `;
+
+    const openRecentGame = () => {
+      searchText = "";
+      searchInput.value = "";
+      hideSearchSuggestions();
+      openGameModal(game);
+    };
+
+    suggestion.addEventListener("click", openRecentGame);
+    suggestion.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openRecentGame();
+      }
+    });
+
+    searchSuggestions.appendChild(suggestion);
+  });
+
+  searchSuggestions.classList.remove("hidden");
+  searchInput.setAttribute("aria-expanded", "true");
+}
+
 function initialsFromTitle(title) {
   return title
     .split(" ")
@@ -415,6 +493,84 @@ function robloxGameUrl(game) {
     .replace(/^-+|-+$/g, "");
 
   return `https://www.roblox.com/games/${game.placeId}/${slug}`;
+}
+
+function gameGuide(game) {
+  const title = game.title.toLowerCase();
+  const category = game.category;
+  const badges = game.badges || [];
+
+  const categoryProfiles = {
+    Accion: ["Media", "Rapida", "Competitivo", "practicar controles y ganar la primera ronda"],
+    Aventura: ["Media", "Media", "Progresion", "explorar el mapa inicial y mejorar una habilidad"],
+    Carreras: ["Baja", "Rapida", "Competitivo", "probar vehiculos y completar una carrera corta"],
+    Construccion: ["Media", "Larga", "Creativo", "juntar recursos y construir una base simple"],
+    Deportes: ["Media", "Rapida", "Competitivo", "aprender el movimiento y jugar un partido corto"],
+    Estrategia: ["Media", "Media", "Cooperativo", "proteger tu base y comprar una mejora clave"],
+    Fighting: ["Media", "Rapida", "Competitivo", "entrenar ataques basicos antes de pelear"],
+    Moda: ["Baja", "Rapida", "Creativo", "crear un outfit que encaje con el tema"],
+    Obby: ["Media", "Rapida", "Habilidad", "superar los primeros obstaculos sin apurarte"],
+    Roleplay: ["Baja", "Libre", "Social", "elegir un rol y explorar zonas concurridas"],
+    Shooter: ["Alta", "Rapida", "Competitivo", "ajustar sensibilidad y practicar punteria"],
+    Simulacion: ["Baja", "Media", "Progresion", "completar tareas iniciales para desbloquear mejoras"],
+    Social: ["Baja", "Libre", "Social", "visitar zonas activas y personalizar tu espacio"],
+    Supervivencia: ["Media", "Media", "Cooperativo", "conseguir recursos y aprender amenazas del mapa"],
+    Suspenso: ["Media", "Rapida", "Social", "observar pistas y mantenerte cerca de zonas seguras"],
+    Terror: ["Media", "Media", "Cooperativo", "aprender patrones del enemigo y avanzar con calma"],
+    "Tower Defense": ["Media", "Media", "Estrategia", "colocar defensas basicas y mejorar temprano"],
+    Tycoon: ["Baja", "Larga", "Progresion", "crear ingresos estables antes de decorar"],
+    All: ["Media", "Media", "Descubrimiento", "probar la mecanica principal durante unos minutos"]
+  };
+
+  let [difficulty, session, playStyle, firstGoal] = categoryProfiles[category] || categoryProfiles.All;
+
+  if (badges.includes("Joyita oculta")) {
+    playStyle = "Descubrimiento";
+  }
+
+  if (badges.includes("Clasico")) {
+    difficulty = difficulty === "Alta" ? "Media" : difficulty;
+  }
+
+  if (title.includes("rng")) {
+    playStyle = "Coleccion";
+    session = "Media";
+    firstGoal = "conseguir tus primeros rolls y revisar rarezas";
+  }
+
+  if (title.includes("brainrot")) {
+    playStyle = "Viral";
+    firstGoal = "entender como ganar dinero y proteger tu progreso";
+  }
+
+  const bestForByStyle = {
+    Competitivo: "jugadores que quieren rondas intensas y mejorar habilidad",
+    Cooperativo: "grupos que prefieren coordinarse y sobrevivir juntos",
+    Creativo: "jugadores que disfrutan personalizar y mostrar ideas",
+    Descubrimiento: "probar experiencias nuevas antes de que se vuelvan mas populares",
+    Estrategia: "pensar ubicaciones, mejoras y decisiones por oleadas",
+    Habilidad: "retos cortos donde importan precision y paciencia",
+    Libre: "entrar sin presion y crear tu propia rutina",
+    Progresion: "desbloquear mejoras poco a poco y volver seguido",
+    Social: "jugar con amigos, rolear o leer las intenciones de otros",
+    Viral: "partidas rapidas con mecanicas simples y mucho caos",
+    Coleccion: "buscar rarezas, mejorar suerte y completar colecciones"
+  };
+
+  return {
+    stats: [
+      { label: "Dificultad", value: difficulty },
+      { label: "Sesion", value: session },
+      { label: "Estilo", value: playStyle }
+    ],
+    bestFor: bestForByStyle[playStyle] || bestForByStyle.Progresion,
+    firstGoal,
+    tips: [
+      `Empieza por ${firstGoal}.`,
+      `Si es tu primera vez, usa la categoria ${category} como guia para saber que esperar.`,
+      game.placeId ? "Abre el enlace oficial si quieres revisar servidores, updates o descripcion del creador." : "Busca el juego por su nombre exacto en Roblox si quieres revisar updates recientes."
+    ]
+  };
 }
 
 function closeGameModal() {
@@ -441,6 +597,7 @@ function openGameModal(game) {
   }
 
   activeGameTitle = game.title;
+  rememberViewedGame(game);
   modalFallbackInitials.textContent = initialsFromTitle(game.title);
   modalImage.src = game.image || "";
   modalImage.alt = `${game.title} - portada del juego`;
@@ -454,6 +611,23 @@ function openGameModal(game) {
   modalRobloxLink.href = showRobloxLink ? robloxGameUrl(game) : "#";
   modalMeta.textContent = `Categoria: ${game.category} | Creador: ${game.creator} | Ano: ${game.year}`;
   modalDescription.textContent = game.longDescription;
+
+  const guide = gameGuide(game);
+  modalGuideStats.innerHTML = "";
+  guide.stats.forEach((stat) => {
+    const statEl = document.createElement("span");
+    statEl.className = "guide-stat";
+    statEl.innerHTML = `<small>${stat.label}</small><strong>${stat.value}</strong>`;
+    modalGuideStats.appendChild(statEl);
+  });
+  modalBestFor.textContent = guide.bestFor;
+  modalFirstGoal.textContent = guide.firstGoal;
+  modalBeginnerTips.innerHTML = "";
+  guide.tips.forEach((tip) => {
+    const li = document.createElement("li");
+    li.textContent = tip;
+    modalBeginnerTips.appendChild(li);
+  });
 
   modalBadges.innerHTML = "";
   (game.badges || []).forEach((badge) => {
@@ -766,7 +940,23 @@ themeToggle.addEventListener("click", () => {
 
 searchInput.addEventListener("input", (event) => {
   searchText = event.target.value.trim();
-  renderSearchSuggestions();
+  if (searchText) {
+    renderSearchSuggestions();
+  } else {
+    renderRecentSearchSuggestions();
+  }
+});
+
+searchInput.addEventListener("focus", () => {
+  if (!searchText) {
+    renderRecentSearchSuggestions();
+  }
+});
+
+searchInput.addEventListener("click", () => {
+  if (!searchText) {
+    renderRecentSearchSuggestions();
+  }
 });
 
 searchInput.addEventListener("keydown", (event) => {
@@ -785,6 +975,7 @@ searchInput.addEventListener("keydown", (event) => {
     searchText = "";
     searchInput.value = "";
     hideSearchSuggestions();
+    rememberViewedGame(firstSuggestion);
     scrollToGame(firstSuggestion.title);
   }
 });
@@ -827,6 +1018,7 @@ viewTabs.forEach((tab) => {
 
 function init() {
   loadFavorites();
+  loadRecentlyViewed();
   initTheme();
   syncFavoritesFilterButton();
   buildFilters();
