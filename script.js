@@ -232,7 +232,6 @@ const modalDescription = document.getElementById("modalDescription");
 const modalGuideStats = document.getElementById("modalGuideStats");
 const modalBestFor = document.getElementById("modalBestFor");
 const modalFirstGoal = document.getElementById("modalFirstGoal");
-const modalBeginnerTips = document.getElementById("modalBeginnerTips");
 const modalEggs = document.getElementById("modalEggs");
 const modalItems = document.getElementById("modalItems");
 const modalItemHowto = document.getElementById("modalItemHowto");
@@ -614,12 +613,7 @@ function gameGuide(game) {
       { label: "Estilo", value: playStyle }
     ],
     bestFor: bestForByStyle[playStyle] || bestForByStyle.Progresion,
-    firstGoal,
-    tips: [
-      `Empieza por ${firstGoal}.`,
-      `Si es tu primera vez, usa la categoria ${category} como guia para saber que esperar.`,
-      game.placeId ? "Abre el enlace oficial si quieres revisar servidores, updates o descripcion del creador." : "Busca el juego por su nombre exacto en Roblox si quieres revisar updates recientes."
-    ]
+    firstGoal
   };
 }
 
@@ -672,12 +666,6 @@ function openGameModal(game) {
   });
   modalBestFor.textContent = guide.bestFor;
   modalFirstGoal.textContent = guide.firstGoal;
-  modalBeginnerTips.innerHTML = "";
-  guide.tips.forEach((tip) => {
-    const li = document.createElement("li");
-    li.textContent = tip;
-    modalBeginnerTips.appendChild(li);
-  });
 
   modalBadges.innerHTML = "";
   (game.badges || []).forEach((badge) => {
