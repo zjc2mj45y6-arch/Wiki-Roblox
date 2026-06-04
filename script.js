@@ -178,7 +178,7 @@ const viewTabs = document.querySelectorAll(".view-tab");
 const wikiView = document.getElementById("wikiView");
 const radarView = document.getElementById("radarView");
 const gameModal = document.getElementById("gameModal");
-const modalPanel = gameModal.querySelector(".modal-panel");
+const modalContent = gameModal.querySelector(".modal-content");
 const modalImage = document.getElementById("modalImage");
 const modalImageFallback = document.getElementById("modalImageFallback");
 const modalFallbackInitials = document.getElementById("modalFallbackInitials");
@@ -662,7 +662,8 @@ function openGameModal(game) {
   gameModal.classList.remove("hidden", "is-closing");
   gameModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
-  requestAnimationFrame(() => modalPanel.focus());
+  modalContent.scrollTop = 0;
+  requestAnimationFrame(() => modalContent.focus());
 }
 
 function renderGames() {

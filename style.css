@@ -801,7 +801,7 @@ body.modal-open { overflow: hidden; }
   position: relative;
   z-index: 1;
   width: min(980px, 100%);
-  max-height: min(760px, calc(100vh - 44px));
+  height: min(760px, calc(100vh - 44px));
   display: grid;
   grid-template-columns: minmax(260px, 360px) 1fr;
   overflow: hidden;
@@ -818,6 +818,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .modal-panel:focus { outline: none; }
+.modal-content:focus { outline: none; }
 
 .modal-close {
   position: absolute;
@@ -837,7 +838,7 @@ body.modal-open { overflow: hidden; }
 
 .modal-media {
   position: relative;
-  min-height: 100%;
+  min-height: 0;
   background: #0b1220;
 }
 
@@ -853,8 +854,24 @@ body.modal-open { overflow: hidden; }
 .modal-fallback.is-visible { display: grid; }
 
 .modal-content {
-  overflow: auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content::after {
+  content: "";
+  position: sticky;
+  bottom: -24px;
+  display: block;
+  height: 24px;
+  margin: 0 -24px -24px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--card));
 }
 
 .modal-head {
@@ -1079,7 +1096,8 @@ body.modal-open { overflow: hidden; }
   }
   .modal-panel {
     grid-template-columns: 1fr;
-    max-height: calc(100vh - 24px);
+    grid-template-rows: auto minmax(0, 1fr);
+    height: calc(100vh - 24px);
   }
   .modal-media img {
     min-height: 210px;
