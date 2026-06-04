@@ -761,10 +761,22 @@ body[data-theme="dark"] .hidden-gems-board {
 .item-icon {
   width: 28px;
   height: 28px;
+  flex: 0 0 28px;
+  overflow: hidden;
   border-radius: 8px;
   display: grid;
   place-items: center;
   background: color-mix(in srgb, var(--card) 72%, #ffffff);
+  color: var(--accent);
+  font-family: "Fredoka", sans-serif;
+  font-weight: 800;
+}
+
+.item-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .item-howto {

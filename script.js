@@ -34,94 +34,153 @@ const games = [
   makeGame("Jujutsu Shenanigans", "Aventura", "Combate anime caotico con habilidades vistosas y partidas llenas de energia.", { placeId: 9391468976, image: "Imagenes/roblox-jujutsu-shenanigans.png", creator: "Awesome Ninja Games", year: 2024, badges: ["Top del dia", "Top del mes"] }),
   makeGame("99 Nights in the Forest", "Supervivencia", "Supervivencia cooperativa donde gestionas recursos y resistes noches peligrosas.", { placeId: 79546208627805, image: "Imagenes/roblox-99-nights-in-the-forest.png", creator: "Grandma's Favourite Games", year: 2025, badges: ["Top del dia", "Top del mes"] }),
   makeGame("Fish It!", "Simulacion", "Pesca relajada con progresion rapida, coleccion y una comunidad en fuerte crecimiento.", { placeId: 121864768012064, image: "Imagenes/roblox-fish-it.png", creator: "Fish It Devs", year: 2026, badges: ["Top del mes"] }),
-  makeGame("Dress to Impress", "Moda", "Competencia de moda y creatividad con rondas sociales muy rapidas.", { placeId: 15101393044, creator: "Dress to Impress Group", year: 2023 }),
-  makeGame("The Strongest Battlegrounds", "Aventura", "Arena de combate con personajes poderosos y duelos de alto impacto.", { placeId: 10449761463, creator: "Yielding Arts", year: 2022 }),
-  makeGame("Berry Avenue", "Roleplay", "Roleplay urbano con casas, personalizacion y enfoque social muy fuerte.", { placeId: 8481844229, creator: "Amberry Games", year: 2022 }),
+  makeGame("Dress to Impress", "Moda", "Competencia de moda y creatividad con rondas sociales muy rapidas.", { placeId: 15101393044, image: "Imagenes/roblox-dress-to-impress.png", creator: "Dress to Impress Group", year: 2023 }),
+  makeGame("The Strongest Battlegrounds", "Aventura", "Arena de combate con personajes poderosos y duelos de alto impacto.", { placeId: 10449761463, image: "Imagenes/roblox-the-strongest-battlegrounds.png", creator: "Yielding Arts", year: 2022 }),
+  makeGame("Berry Avenue", "Roleplay", "Roleplay urbano con casas, personalizacion y enfoque social muy fuerte.", { placeId: 8481844229, image: "Imagenes/roblox-berry-avenue.png", creator: "Amberry Games", year: 2022 }),
   makeGame("Break For Pets !", "All", "Joyita emergente de Roblox con 438 jugadores activos, 11.8M visitas y 90.9% de aprobacion.", { placeId: 139675726392792,  image: "Imagenes/roblox-break-for-pets.png", creator: "Ultimate Funny Games", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 438 jugadores activos, 11.8M visitas y 90.9% de aprobacion." }),
   makeGame("Steal From Animes", "All", "Joyita emergente de Roblox con 4 jugadores activos, 2.3M visitas y 96.3% de aprobacion.", { placeId: 126270021252107,  image: "Imagenes/roblox-steal-from-animes.png", creator: "XAF Games", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 4 jugadores activos, 2.3M visitas y 96.3% de aprobacion." }),
-  makeGame("Anime Vanguards", "Tower Defense", "Tower defense anime con unidades coleccionables y updates que disparan el trafico.", { placeId: 16146832113, creator: "Kitawari", year: 2024, badges: ["Revelacion semanal"] }),
+  makeGame("Anime Vanguards", "Tower Defense", "Tower defense anime con unidades coleccionables y updates que disparan el trafico.", { placeId: 16146832113, image: "Imagenes/roblox-anime-vanguards.png", creator: "Kitawari", year: 2024, badges: ["Revelacion semanal"] }),
   makeGame("Escape Guards to Steal Brainrots", "All", "Joyita emergente de Roblox con 224 jugadores activos, 79.8M visitas y 89.2% de aprobacion.", { placeId: 71812071769179,  image: "Imagenes/roblox-escape-guards-to-steal-brainrots.png", creator: "lol games..", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 224 jugadores activos, 79.8M visitas y 89.2% de aprobacion." }),
-  makeGame("MeepCity", "Roleplay", "Mundo social clasico con casas, fiestas, minijuegos y personalizacion.", { placeId: 370731277, creator: "alexnewtron", year: 2016, badges: ["Clasico"] }),
-  makeGame("Jailbreak", "Accion", "Policias y criminales compiten en robos, persecuciones y escapes.", { placeId: 606849621, creator: "Badimo", year: 2017, badges: ["Clasico"] }),
-  makeGame("Piggy", "Terror", "Terror por capitulos con llaves, puzzles y persecucion constante.", { placeId: 4623386862, creator: "MiniToon", year: 2020 }),
-  makeGame("Natural Disaster Survival", "Supervivencia", "Sobrevive desastres aleatorios en mapas pequenos y caoticos.", { placeId: 189707, creator: "Stickmasterluke", year: 2008, badges: ["Clasico"] }),
-  makeGame("Work at a Pizza Place", "Simulacion", "Trabaja en una pizzeria, gana dinero y mejora tu casa.", { placeId: 192800, creator: "Dued1", year: 2008, badges: ["Clasico"] }),
-  makeGame("Royale High", "Roleplay", "Roleplay fantastico escolar con moda, clases, eventos y coleccion.", { placeId: 735030788, creator: "callmehbob", year: 2017 }),
-  makeGame("Welcome to Bloxburg", "Roleplay", "Construccion, trabajo y vida familiar en una ciudad residencial.", { placeId: 185655149, creator: "Bloxburg Development", year: 2014 }),
-  makeGame("Bee Swarm Simulator", "Simulacion", "Recolecta polen, crea miel y mejora tu enjambre de abejas.", { placeId: 1537690962, creator: "Onett", year: 2018 }),
-  makeGame("Build A Boat For Treasure", "Construccion", "Construye barcos creativos para cruzar obstaculos y ganar tesoros.", { placeId: 537413528, creator: "Chillz Studios", year: 2016 }),
-  makeGame("Theme Park Tycoon 2", "Tycoon", "Disena parques de atracciones con montanas rusas, tiendas y decoracion.", { placeId: 69184822, creator: "Den_S", year: 2012 }),
-  makeGame("Evade", "Supervivencia", "Corre, revive companeros y escapa de entidades en rondas rapidas.", { placeId: 9872472334, creator: "Hexagon Development Community", year: 2022 }),
-  makeGame("Rainbow Friends", "Terror", "Terror por capitulos con monstruos de colores, misiones y sigilo.", { placeId: 7991339063, creator: "Roy & Charcle", year: 2021 }),
-  makeGame("BedWars", "Estrategia", "Defiende tu cama, compra mejoras y elimina equipos rivales.", { placeId: 6872265039, creator: "Easy.gg", year: 2021 }),
-  makeGame("Blade Ball", "Accion", "Reflejos, habilidades y duelos donde una bola elimina al objetivo.", { placeId: 13772394625, creator: "Wiggity", year: 2023 }),
-  makeGame("Creatures of Sonaria", "Supervivencia", "Sobrevive como criatura fantastica, crece, explora y domina ecosistemas.", { placeId: 5233782396, creator: "Sonar Studios", year: 2020 }),
-  makeGame("The Mimic", "Terror", "Terror narrativo inspirado en leyendas con capitulos y exploracion.", { placeId: 6243699076, creator: "MUCDICH", year: 2021 }),
-  makeGame("Apeirophobia", "Terror", "Exploracion de backrooms con puzzles, niveles y entidades peligrosas.", { placeId: 10277607801, creator: "Polaroid Studios", year: 2022 }),
-  makeGame("Restaurant Tycoon 2", "Tycoon", "Construye y administra un restaurante con cocina, clientes y decoracion.", { placeId: 3398014311, creator: "Ultraw", year: 2019 }),
-  makeGame("Sonic Speed Simulator", "Carreras", "Corre por mundos coloridos, sube velocidad y desbloquea personajes.", { placeId: 9049840490, creator: "Gamefam Studios", year: 2022 }),
-  makeGame("Slap Battles", "Accion", "Arena caotica de guantes con habilidades raras y mucho humor.", { placeId: 6403373529, creator: "Tencelll", year: 2021 }),
-  makeGame("Michaels Zombies", "Shooter", "Supervivencia por rondas contra zombies con armas, perks y equipo.", { placeId: 8054462345, creator: "MZ Community", year: 2021 }),
+  makeGame("MeepCity", "Roleplay", "Mundo social clasico con casas, fiestas, minijuegos y personalizacion.", { placeId: 370731277, image: "Imagenes/roblox-meepcity.png", creator: "alexnewtron", year: 2016, badges: ["Clasico"] }),
+  makeGame("Jailbreak", "Accion", "Policias y criminales compiten en robos, persecuciones y escapes.", { placeId: 606849621, image: "Imagenes/roblox-jailbreak.png", creator: "Badimo", year: 2017, badges: ["Clasico"] }),
+  makeGame("Piggy", "Terror", "Terror por capitulos con llaves, puzzles y persecucion constante.", { placeId: 4623386862, image: "Imagenes/roblox-piggy.png", creator: "MiniToon", year: 2020 }),
+  makeGame("Natural Disaster Survival", "Supervivencia", "Sobrevive desastres aleatorios en mapas pequenos y caoticos.", { placeId: 189707, image: "Imagenes/roblox-natural-disaster-survival.png", creator: "Stickmasterluke", year: 2008, badges: ["Clasico"] }),
+  makeGame("Work at a Pizza Place", "Simulacion", "Trabaja en una pizzeria, gana dinero y mejora tu casa.", { placeId: 192800, image: "Imagenes/roblox-work-at-a-pizza-place.png", creator: "Dued1", year: 2008, badges: ["Clasico"] }),
+  makeGame("Royale High", "Roleplay", "Roleplay fantastico escolar con moda, clases, eventos y coleccion.", { placeId: 735030788, image: "Imagenes/roblox-royale-high.png", creator: "callmehbob", year: 2017 }),
+  makeGame("Welcome to Bloxburg", "Roleplay", "Construccion, trabajo y vida familiar en una ciudad residencial.", { placeId: 185655149, image: "Imagenes/roblox-welcome-to-bloxburg.png", creator: "Bloxburg Development", year: 2014 }),
+  makeGame("Bee Swarm Simulator", "Simulacion", "Recolecta polen, crea miel y mejora tu enjambre de abejas.", { placeId: 1537690962, image: "Imagenes/roblox-bee-swarm-simulator.png", creator: "Onett", year: 2018 }),
+  makeGame("Build A Boat For Treasure", "Construccion", "Construye barcos creativos para cruzar obstaculos y ganar tesoros.", { placeId: 537413528, image: "Imagenes/roblox-build-a-boat-for-treasure.png", creator: "Chillz Studios", year: 2016 }),
+  makeGame("Theme Park Tycoon 2", "Tycoon", "Disena parques de atracciones con montanas rusas, tiendas y decoracion.", { placeId: 69184822, image: "Imagenes/roblox-theme-park-tycoon-2.png", creator: "Den_S", year: 2012 }),
+  makeGame("Evade", "Supervivencia", "Corre, revive companeros y escapa de entidades en rondas rapidas.", { placeId: 9872472334, image: "Imagenes/roblox-evade.png", creator: "Hexagon Development Community", year: 2022 }),
+  makeGame("Rainbow Friends", "Terror", "Terror por capitulos con monstruos de colores, misiones y sigilo.", { placeId: 7991339063, image: "Imagenes/roblox-rainbow-friends.png", creator: "Roy & Charcle", year: 2021 }),
+  makeGame("BedWars", "Estrategia", "Defiende tu cama, compra mejoras y elimina equipos rivales.", { placeId: 6872265039, image: "Imagenes/roblox-bedwars.png", creator: "Easy.gg", year: 2021 }),
+  makeGame("Blade Ball", "Accion", "Reflejos, habilidades y duelos donde una bola elimina al objetivo.", { placeId: 13772394625, image: "Imagenes/roblox-blade-ball.png", creator: "Wiggity", year: 2023 }),
+  makeGame("Creatures of Sonaria", "Supervivencia", "Sobrevive como criatura fantastica, crece, explora y domina ecosistemas.", { placeId: 5233782396, image: "Imagenes/roblox-creatures-of-sonaria.png", creator: "Sonar Studios", year: 2020 }),
+  makeGame("The Mimic", "Terror", "Terror narrativo inspirado en leyendas con capitulos y exploracion.", { placeId: 6243699076, image: "Imagenes/roblox-the-mimic.png", creator: "MUCDICH", year: 2021 }),
+  makeGame("Apeirophobia", "Terror", "Exploracion de backrooms con puzzles, niveles y entidades peligrosas.", { placeId: 10277607801, image: "Imagenes/roblox-apeirophobia.png", creator: "Polaroid Studios", year: 2022 }),
+  makeGame("Restaurant Tycoon 2", "Tycoon", "Construye y administra un restaurante con cocina, clientes y decoracion.", { placeId: 3398014311, image: "Imagenes/roblox-restaurant-tycoon-2.png", creator: "Ultraw", year: 2019 }),
+  makeGame("Sonic Speed Simulator", "Carreras", "Corre por mundos coloridos, sube velocidad y desbloquea personajes.", { placeId: 9049840490, image: "Imagenes/roblox-sonic-speed-simulator.png", creator: "Gamefam Studios", year: 2022 }),
+  makeGame("Slap Battles", "Accion", "Arena caotica de guantes con habilidades raras y mucho humor.", { placeId: 6403373529, image: "Imagenes/roblox-slap-battles.png", creator: "Tencelll", year: 2021 }),
+  makeGame("Michaels Zombies", "Shooter", "Supervivencia por rondas contra zombies con armas, perks y equipo.", { placeId: 8054462345, image: "Imagenes/roblox-michaels-zombies.png", creator: "MZ Community", year: 2021 }),
   makeGame("Steal a Brainrot", "Simulacion", "Juego viral de coleccion y robo de brainrots con progresion rapida.", { placeId: 109983668079237, image: "Imagenes/roblox-steal-a-brainrot.png", creator: "Brainrot Games", badges: ["Top global", "Top del mes"] }),
-  makeGame("Grow a Garden", "Simulacion", "Cultiva, mejora semillas y vende cosechas en uno de los mayores hits recientes.", { creator: "The Garden Game", year: 2025, badges: ["Top global"] }),
-  makeGame("All Star Tower Defense", "Tower Defense", "Tower defense anime con unidades coleccionables y mapas por oleadas.", { creator: "Top Down Games", year: 2020 }),
-  makeGame("Dandy's World", "Terror", "Supervivencia cooperativa con personajes, maquinas y amenazas por piso.", { creator: "BlushCrunch Studio", year: 2024, badges: ["Top global"] }),
-  makeGame("Toilet Tower Defense", "Tower Defense", "Defensa por oleadas basada en unidades y upgrades de estilo meme.", { creator: "Telanthric Development", year: 2023 }),
-  makeGame("Flee the Facility", "Terror", "Escape asimetrico donde hackeas computadoras y huyes del cazador.", { creator: "A.W. Apps", year: 2017 }),
-  makeGame("Livetopia", "Roleplay", "Roleplay de ciudad con casas, vehiculos y espacios sociales.", { creator: "Century Makers", year: 2021 }),
-  makeGame("PLS DONATE", "Social", "Plazas sociales donde los jugadores crean stands y reciben donaciones.", { creator: "Quataun", year: 2022 }),
+  makeGame("Grow a Garden", "Simulacion", "Cultiva, mejora semillas y vende cosechas en uno de los mayores hits recientes.", { placeId: 126884695634066, image: "Imagenes/roblox-grow-a-garden.png", creator: "The Garden Game", year: 2025, badges: ["Top global"] }),
+  makeGame("All Star Tower Defense", "Tower Defense", "Tower defense anime con unidades coleccionables y mapas por oleadas.", { placeId: 4996049426, image: "Imagenes/roblox-all-star-tower-defense.png", creator: "Top Down Games", year: 2020 }),
+  makeGame("Dandy's World", "Terror", "Supervivencia cooperativa con personajes, maquinas y amenazas por piso.", { placeId: 16116270224, image: "Imagenes/roblox-dandy-s-world.png", creator: "BlushCrunch Studio", year: 2024, badges: ["Top global"] }),
+  makeGame("Toilet Tower Defense", "Tower Defense", "Defensa por oleadas basada en unidades y upgrades de estilo meme.", { placeId: 13775256536, image: "Imagenes/roblox-toilet-tower-defense.png", creator: "Telanthric Development", year: 2023 }),
+  makeGame("Flee the Facility", "Terror", "Escape asimetrico donde hackeas computadoras y huyes del cazador.", { placeId: 893973440, image: "Imagenes/roblox-flee-the-facility.png", creator: "A.W. Apps", year: 2017 }),
+  makeGame("Livetopia", "Roleplay", "Roleplay de ciudad con casas, vehiculos y espacios sociales.", { placeId: 6737970321, image: "Imagenes/roblox-livetopia.png", creator: "Century Makers", year: 2021 }),
+  makeGame("PLS DONATE", "Social", "Plazas sociales donde los jugadores crean stands y reciben donaciones.", { placeId: 8737602449, image: "Imagenes/roblox-pls-donate.png", creator: "Quataun", year: 2022 }),
   makeGame("Forsaken", "Terror", "Horror multijugador con supervivientes, cazadores y objetivos por ronda.", { placeId: 18687417158, image: "Imagenes/roblox-forsaken.png", creator: "Forsaken Dev Team", badges: ["Top del mes"] }),
-  makeGame("Blue Lock: Rivals", "Deportes", "Futbol anime competitivo con estilos, habilidades y partidos rapidos."),
-  makeGame("Fisch", "Simulacion", "Pesca, exploracion y coleccion con zonas y especies raras.", { creator: "Fisching", year: 2024 }),
-  makeGame("BARRY'S PRISON RUN", "Obby", "Obby de escape de prision con obstaculos, persecuciones y humor.", { creator: "PlatinumFalls" }),
-  makeGame("King Legacy", "Aventura", "RPG de islas, frutas, espadas y jefes inspirado en anime pirata.", { creator: "Sea King Games", year: 2019 }),
-  makeGame("Anime Defenders", "Tower Defense", "Tower defense anime con invocaciones, evoluciones y raids.", { year: 2024 }),
-  makeGame("3008", "Terror", "Sobrevive en una tienda infinita construyendo refugios y evitando empleados.", { creator: "uglyburger0", year: 2019 }),
-  makeGame("Break In", "Terror", "Historia cooperativa de supervivencia dentro de una casa bajo amenaza.", { creator: "Cracky4", year: 2019 }),
-  makeGame("Prison Life", "Roleplay", "Clasico de policias y prisioneros con escapes y enfrentamientos.", { creator: "Aesthetical", year: 2014 }),
-  makeGame("Da Hood", "Roleplay", "Roleplay urbano con economia, combate y mucha interaccion social.", { creator: "Da Hood Entertainment", year: 2019 }),
-  makeGame("Driving Empire", "Carreras", "Conduce, compra autos y compite en carreras de mundo abierto.", { creator: "Driving Empire by Voldex", year: 2019 }),
-  makeGame("Shindo Life", "Aventura", "RPG ninja con linajes, habilidades, jefes y exploracion.", { creator: "RELL World", year: 2020 }),
-  makeGame("Survive the Killer", "Terror", "Supervivencia por rondas donde rescatas aliados y evitas al asesino.", { creator: "Slyce Entertainment", year: 2020 }),
-  makeGame("Car Dealership Tycoon", "Tycoon", "Construye un concesionario, compra autos y gana dinero conduciendo.", { creator: "Foxzie", year: 2018 }),
-  makeGame("Pet Simulator 99", "Simulacion", "Colecciona mascotas, rompe objetos y progresa por areas cada vez mayores.", { creator: "BIG Games Pets", year: 2023 }),
-  makeGame("Islands", "Simulacion", "Construye tu isla, farmea recursos y comercia con otros jugadores.", { creator: "Easy.gg", year: 2020 }),
-  makeGame("Muscle Legends", "Simulacion", "Entrena fuerza, desbloquea zonas y pelea para subir poder.", { creator: "Scriptbloxian Studios", year: 2019 }),
-  makeGame("Ninja Legends", "Simulacion", "Entrena ninjutsu, salta entre islas y colecciona mascotas.", { creator: "Scriptbloxian Studios", year: 2019 }),
-  makeGame("Squid Game", "Supervivencia", "Minijuegos de eliminacion inspirados en retos de supervivencia.", { creator: "Trendsetter Games", year: 2021 }),
-  makeGame("Funky Friday", "Ritmo", "Batallas musicales de ritmo con canciones, animaciones y duelos.", { creator: "Lyte Interactive", year: 2021 }),
-  makeGame("Obby But You're on a Bike", "Obby", "Obby de precision donde completas recorridos montado en bicicleta.", { creator: "FORTUNE 777" }),
-  makeGame("Sol's RNG", "Simulacion", "Experiencia RNG centrada en conseguir auras cada vez mas raras.", { creator: "Sol's Studio", year: 2023 }),
-  makeGame("Speed Run 4", "Obby", "Clasico de velocidad con niveles de plataformas y musica energetica.", { creator: "Vurse", year: 2014 }),
-  makeGame("Zombie Attack", "Supervivencia", "Oleadas de zombies, armas, mascotas y jefes cooperativos.", { creator: "wenlocktoad vs indra", year: 2017 }),
-  makeGame("Strongman Simulator", "Simulacion", "Entrena fuerza arrastrando objetos y desbloqueando zonas.", { creator: "The Gang Stockholm", year: 2021 }),
-  makeGame("Dragon Adventures", "Simulacion", "Cria dragones, explora mundos y comercia criaturas raras.", { creator: "Sonar Studios", year: 2019 }),
-  makeGame("Deepwoken", "Aventura", "RPG desafiante con combate, exploracion, builds y riesgo alto.", { creator: "Monad Studios", year: 2021 }),
-  makeGame("Anime Dimensions Simulator", "Aventura", "Combate anime por dimensiones con personajes y raids.", { creator: "Albatross Games", year: 2021 }),
-  makeGame("Lumber Tycoon 2", "Tycoon", "Tala madera, construye base y vende recursos en un clasico sandbox.", { creator: "Defaultio", year: 2015 }),
-  makeGame("Arm Wrestle Simulator", "Simulacion", "Entrena fuerza, gana duelos y avanza por mundos.", { creator: "Kubo Games", year: 2023 }),
-  makeGame("Untitled Boxing Game", "Accion", "Boxeo competitivo con estilos, esquives y duelos tecnicos.", { creator: "drowningsome", year: 2023 }),
-  makeGame("Grand Piece Online", "Aventura", "RPG de exploracion pirata con frutas, barcos, islas y bosses.", { creator: "Grand Quest Games", year: 2020 }),
-  makeGame("Ro-Ghoul", "Aventura", "Combate anime entre facciones con progreso, quinques y kagunes.", { creator: "SushiWalrus", year: 2017 }),
-  makeGame("Fruit Battlegrounds", "Accion", "Arena anime de frutas con combate, habilidades y rolls.", { creator: "P O P O", year: 2022 }),
-  makeGame("My Restaurant", "Tycoon", "Administra restaurante, atiende clientes y mejora decoracion.", { creator: "BIG Games", year: 2019 }),
-  makeGame("Type Soul", "Aventura", "RPG anime de facciones, builds y PvP intenso.", { year: 2023 }),
-  makeGame("Southwest Florida", "Roleplay", "Roleplay de ciudad con trabajos, autos y vida cotidiana.", { creator: "Strigid Development", year: 2020 }),
-  makeGame("Kaiju Universe", "Accion", "Combates de kaijus gigantes con habilidades, ciudades y progresion.", { creator: "Prometeo Games", year: 2019 }),
-  makeGame("Murder Party", "Suspenso", "Roles secretos, caos social y objetivos ocultos por ronda.", { creator: "PlayMake", year: 2020 }),
-  makeGame("Jujutsu Infinite", "Aventura", "RPG anime con tecnicas, progresion y combates de alto impacto.", { creator: "Awesome Ninja Games", year: 2024 }),
+  makeGame("Blue Lock: Rivals", "Deportes", "Futbol anime competitivo con estilos, habilidades y partidos rapidos.", { placeId: 18668065416, image: "Imagenes/roblox-blue-lock-rivals.png" }),
+  makeGame("Fisch", "Simulacion", "Pesca, exploracion y coleccion con zonas y especies raras.", { placeId: 16732694052, image: "Imagenes/roblox-fisch.png", creator: "Fisching", year: 2024 }),
+  makeGame("BARRY'S PRISON RUN", "Obby", "Obby de escape de prision con obstaculos, persecuciones y humor.", { placeId: 8712817601, image: "Imagenes/roblox-barry-s-prison-run.png", creator: "PlatinumFalls" }),
+  makeGame("King Legacy", "Aventura", "RPG de islas, frutas, espadas y jefes inspirado en anime pirata.", { placeId: 4520749081, image: "Imagenes/roblox-king-legacy.png", creator: "Sea King Games", year: 2019 }),
+  makeGame("Anime Defenders", "Tower Defense", "Tower defense anime con invocaciones, evoluciones y raids.", { placeId: 17017769292, image: "Imagenes/roblox-anime-defenders.png", year: 2024 }),
+  makeGame("3008", "Terror", "Sobrevive en una tienda infinita construyendo refugios y evitando empleados.", { placeId: 2768379856, image: "Imagenes/roblox-3008.png", creator: "uglyburger0", year: 2019 }),
+  makeGame("Break In", "Terror", "Historia cooperativa de supervivencia dentro de una casa bajo amenaza.", { placeId: 3851622790, image: "Imagenes/roblox-break-in.png", creator: "Cracky4", year: 2019 }),
+  makeGame("Prison Life", "Roleplay", "Clasico de policias y prisioneros con escapes y enfrentamientos.", { placeId: 155615604, image: "Imagenes/roblox-prison-life.png", creator: "Aesthetical", year: 2014 }),
+  makeGame("Da Hood", "Roleplay", "Roleplay urbano con economia, combate y mucha interaccion social.", { placeId: 2788229376, image: "Imagenes/roblox-da-hood.png", creator: "Da Hood Entertainment", year: 2019 }),
+  makeGame("Driving Empire", "Carreras", "Conduce, compra autos y compite en carreras de mundo abierto.", { placeId: 3351674303, image: "Imagenes/roblox-driving-empire.png", creator: "Driving Empire by Voldex", year: 2019 }),
+  makeGame("Shindo Life", "Aventura", "RPG ninja con linajes, habilidades, jefes y exploracion.", { placeId: 4616652839, image: "Imagenes/roblox-shindo-life.png", creator: "RELL World", year: 2020 }),
+  makeGame("Survive the Killer", "Terror", "Supervivencia por rondas donde rescatas aliados y evitas al asesino.", { placeId: 4580204640, image: "Imagenes/roblox-survive-the-killer.png", creator: "Slyce Entertainment", year: 2020 }),
+  makeGame("Car Dealership Tycoon", "Tycoon", "Construye un concesionario, compra autos y gana dinero conduciendo.", { placeId: 1554960397, image: "Imagenes/roblox-car-dealership-tycoon.png", creator: "Foxzie", year: 2018 }),
+  makeGame("Pet Simulator 99", "Simulacion", "Colecciona mascotas, rompe objetos y progresa por areas cada vez mayores.", { placeId: 8737899170, image: "Imagenes/roblox-pet-simulator-99.png", creator: "BIG Games Pets", year: 2023 }),
+  makeGame("Islands", "Simulacion", "Construye tu isla, farmea recursos y comercia con otros jugadores.", { placeId: 4872321990, image: "Imagenes/roblox-islands.png", creator: "Easy.gg", year: 2020 }),
+  makeGame("Muscle Legends", "Simulacion", "Entrena fuerza, desbloquea zonas y pelea para subir poder.", { placeId: 3623096087, image: "Imagenes/roblox-muscle-legends.png", creator: "Scriptbloxian Studios", year: 2019 }),
+  makeGame("Ninja Legends", "Simulacion", "Entrena ninjutsu, salta entre islas y colecciona mascotas.", { placeId: 3956818381, image: "Imagenes/roblox-ninja-legends.png", creator: "Scriptbloxian Studios", year: 2019 }),
+  makeGame("Squid Game", "Supervivencia", "Minijuegos de eliminacion inspirados en retos de supervivencia.", { placeId: 7605357829, image: "Imagenes/roblox-squid-game.png", creator: "Trendsetter Games", year: 2021 }),
+  makeGame("Funky Friday", "Ritmo", "Batallas musicales de ritmo con canciones, animaciones y duelos.", { placeId: 6447798030, image: "Imagenes/roblox-funky-friday.png", creator: "Lyte Interactive", year: 2021 }),
+  makeGame("Obby But You're on a Bike", "Obby", "Obby de precision donde completas recorridos montado en bicicleta.", { placeId: 14184086618, image: "Imagenes/roblox-obby-but-you-re-on-a-bike.png", creator: "FORTUNE 777" }),
+  makeGame("Sol's RNG", "Simulacion", "Experiencia RNG centrada en conseguir auras cada vez mas raras.", { placeId: 15532962292, image: "Imagenes/roblox-sol-s-rng.png", creator: "Sol's Studio", year: 2023 }),
+  makeGame("Speed Run 4", "Obby", "Clasico de velocidad con niveles de plataformas y musica energetica.", { placeId: 183364845, image: "Imagenes/roblox-speed-run-4.png", creator: "Vurse", year: 2014 }),
+  makeGame("Zombie Attack", "Supervivencia", "Oleadas de zombies, armas, mascotas y jefes cooperativos.", { placeId: 1240123653, image: "Imagenes/roblox-zombie-attack.png", creator: "wenlocktoad vs indra", year: 2017 }),
+  makeGame("Strongman Simulator", "Simulacion", "Entrena fuerza arrastrando objetos y desbloqueando zonas.", { placeId: 6766156863, image: "Imagenes/roblox-strongman-simulator.png", creator: "The Gang Stockholm", year: 2021 }),
+  makeGame("Dragon Adventures", "Simulacion", "Cria dragones, explora mundos y comercia criaturas raras.", { placeId: 3475397644, image: "Imagenes/roblox-dragon-adventures.png", creator: "Sonar Studios", year: 2019 }),
+  makeGame("Deepwoken", "Aventura", "RPG desafiante con combate, exploracion, builds y riesgo alto.", { placeId: 4111023553, image: "Imagenes/roblox-deepwoken.png", creator: "Monad Studios", year: 2021 }),
+  makeGame("Anime Dimensions Simulator", "Aventura", "Combate anime por dimensiones con personajes y raids.", { placeId: 6938803436, image: "Imagenes/roblox-anime-dimensions-simulator.png", creator: "Albatross Games", year: 2021 }),
+  makeGame("Lumber Tycoon 2", "Tycoon", "Tala madera, construye base y vende recursos en un clasico sandbox.", { placeId: 13822889, image: "Imagenes/roblox-lumber-tycoon-2.png", creator: "Defaultio", year: 2015 }),
+  makeGame("Arm Wrestle Simulator", "Simulacion", "Entrena fuerza, gana duelos y avanza por mundos.", { placeId: 13127800756, image: "Imagenes/roblox-arm-wrestle-simulator.png", creator: "Kubo Games", year: 2023 }),
+  makeGame("Untitled Boxing Game", "Accion", "Boxeo competitivo con estilos, esquives y duelos tecnicos.", { placeId: 13621938427, image: "Imagenes/roblox-untitled-boxing-game.png", creator: "drowningsome", year: 2023 }),
+  makeGame("Grand Piece Online", "Aventura", "RPG de exploracion pirata con frutas, barcos, islas y bosses.", { placeId: 1730877806, image: "Imagenes/roblox-grand-piece-online.png", creator: "Grand Quest Games", year: 2020 }),
+  makeGame("Ro-Ghoul", "Aventura", "Combate anime entre facciones con progreso, quinques y kagunes.", { placeId: 914010731, image: "Imagenes/roblox-ro-ghoul.png", creator: "SushiWalrus", year: 2017 }),
+  makeGame("Fruit Battlegrounds", "Accion", "Arena anime de frutas con combate, habilidades y rolls.", { placeId: 9224601490, image: "Imagenes/roblox-fruit-battlegrounds.png", creator: "P O P O", year: 2022 }),
+  makeGame("My Restaurant", "Tycoon", "Administra restaurante, atiende clientes y mejora decoracion.", { placeId: 4490140733, image: "Imagenes/roblox-my-restaurant.png", creator: "BIG Games", year: 2019 }),
+  makeGame("Type Soul", "Aventura", "RPG anime de facciones, builds y PvP intenso.", { placeId: 14067600077, image: "Imagenes/roblox-type-soul.png", year: 2023 }),
+  makeGame("Southwest Florida", "Roleplay", "Roleplay de ciudad con trabajos, autos y vida cotidiana.", { placeId: 5104202731, image: "Imagenes/roblox-southwest-florida.png", creator: "Strigid Development", year: 2020 }),
+  makeGame("Kaiju Universe", "Accion", "Combates de kaijus gigantes con habilidades, ciudades y progresion.", { placeId: 4110892437, image: "Imagenes/roblox-kaiju-universe.png", creator: "Prometeo Games", year: 2019 }),
+  makeGame("Murder Party", "Suspenso", "Roles secretos, caos social y objetivos ocultos por ronda.", { placeId: 5611648039, image: "Imagenes/roblox-murder-party.png", creator: "PlayMake", year: 2020 }),
+  makeGame("Jujutsu Infinite", "Aventura", "RPG anime con tecnicas, progresion y combates de alto impacto.", { placeId: 10450270085, image: "Imagenes/roblox-jujutsu-infinite.png", creator: "Awesome Ninja Games", year: 2024 }),
   makeGame("Ultimate Lootopia", "All", "Joyita emergente de Roblox con 0 jugadores activos, 259K visitas y 89.5% de aprobacion.", { placeId: 126915364342114,  image: "Imagenes/roblox-ultimate-lootopia.png", creator: "SuperLootify Studio", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 0 jugadores activos, 259K visitas y 89.5% de aprobacion." }),
   makeGame("FRUITS Dropper Incremental", "All", "Joyita emergente de Roblox con 280 jugadores activos, 7.8M visitas y 92.5% de aprobacion.", { placeId: 70960300100792,  image: "Imagenes/roblox-fruits-dropper-incremental.png", creator: "Shedwaa's Incrementals", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 280 jugadores activos, 7.8M visitas y 92.5% de aprobacion." }),
-  makeGame("Super Striker League", "Deportes", "Futbol arcade con habilidades especiales y partidos de equipos.", { creator: "Cinder Studio", year: 2019 }),
+  makeGame("Super Striker League", "Deportes", "Futbol arcade con habilidades especiales y partidos de equipos.", { placeId: 3360853050, image: "Imagenes/roblox-super-striker-league.png", creator: "Cinder Studio", year: 2019 }),
   makeGame("DAS H00D", "Fighting", "Joyita emergente de Roblox con 839 jugadores activos, 1.3M visitas y 80.3% de aprobacion.", { placeId: 80175090625232,  image: "Imagenes/roblox-das-h00d.png", creator: "Roblox Community", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 839 jugadores activos, 1.3M visitas y 80.3% de aprobacion." }),
   makeGame("Kick a Lucky Block", "Simulacion", "Patea lucky blocks, escapa de tsunamis y coloca brainrots para ganar dinero.", { placeId: 89469502395769, image: "Imagenes/roblox-kick-a-lucky-block.png", creator: "No More Flops", year: 2026, badges: ["Top del mes"] }),
-  makeGame("Attack on Titan Revolution", "Accion", "Combate inspirado en anime con movilidad aerea, progresion y raids cooperativas.", { creator: "AoTR Team", year: 2024 }),
+  makeGame("Attack on Titan Revolution", "Accion", "Combate inspirado en anime con movilidad aerea, progresion y raids cooperativas.", { placeId: 13379208636, image: "Imagenes/roblox-attack-on-titan-revolution.png", creator: "AoTR Team", year: 2024 }),
   makeGame("Chase Train for Brainrots!", "All", "Joyita emergente de Roblox con 12 jugadores activos, 13.2M visitas y 90.6% de aprobacion.", { placeId: 89103233089742,  image: "Imagenes/roblox-chase-train-for-brainrots.png", creator: "67 Labs", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 12 jugadores activos, 13.2M visitas y 90.6% de aprobacion." }),
   makeGame("Slime RNG", "Simulacion", "Rolls de slimes raros, mejoras, mundos y combate contra enemigos.", { placeId: 92416421522960, image: "Imagenes/roblox-slime-rng.png", creator: "Stouts Studio", year: 2026, badges: ["Top del mes"] }),
   makeGame("Deadeye", "All", "Joyita emergente de Roblox con 434 jugadores activos, 29.5M visitas y 94.7% de aprobacion.", { placeId: 93482986347670,  image: "Imagenes/roblox-deadeye.png", creator: "Headshot 100%", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 434 jugadores activos, 29.5M visitas y 94.7% de aprobacion." }),
   makeGame("Escape Police For Brainrots", "All", "Joyita emergente de Roblox con 134 jugadores activos, 70M visitas y 92.5% de aprobacion.", { placeId: 135094773390024,  image: "Imagenes/roblox-escape-police-for-brainrots.png", creator: "67 game studios", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 134 jugadores activos, 70M visitas y 92.5% de aprobacion." }),
   makeGame("Frisbee", "All", "Joyita emergente de Roblox con 3 jugadores activos, 4M visitas y 79.2% de aprobacion.", { placeId: 74417929205699,  image: "Imagenes/roblox-frisbee.png", creator: "[CFB] - College Football", year: "N/D", badges: ["Joyita oculta"], longDescription: "Joyita emergente de Roblox con 3 jugadores activos, 4M visitas y 79.2% de aprobacion." })
 ];
+
+const topMonthItemsByTitle = {
+  "Brookhaven RP": [
+    { name: "Premium Pass", image: "Imagenes/items/premium-pass.webp", icon: "P", howTo: "Compra el gamepass Premium con Robux dentro de Brookhaven o desde la pagina de Roblox. Desbloquea casas premium, vehiculos premium y extras de roleplay; es de los desbloqueos mas usados porque Brookhaven no tiene trading de items." },
+    { name: "Premium Vehicles", image: "Imagenes/items/premium-vehicles.webp", icon: "V", howTo: "Compra el pase de vehiculos correspondiente. Luego abre el menu de vehiculos y selecciona los modelos premium para roleplay, persecuciones o escenas de lujo." },
+    { name: "Estates Unlocked", image: "Imagenes/items/estates-unlocked.webp", icon: "E", howTo: "Compra el gamepass Estates Unlocked. Despues podras reclamar mansiones grandes desde los lotes de estates, ideales para roleplay de casas de lujo." }
+  ],
+  "Adopt Me!": [
+    { name: "Bat Dragon", image: "Imagenes/items/bat-dragon.webp", icon: "B", howTo: "Fue del evento Halloween 2019 por 180,000 Candy. Ya no se compra directamente; hoy se consigue principalmente mediante trading con otros jugadores." },
+    { name: "Shadow Dragon", image: "Imagenes/items/shadow-dragon.webp", icon: "S", howTo: "Fue un pet legendario limitado de Halloween 2019 comprado por 1,000 Robux. Como esta off-sale, la forma actual de conseguirlo es trading." },
+    { name: "Frost Dragon", image: "Imagenes/items/frost-dragon.webp", icon: "F", howTo: "Fue vendido durante el evento navideno de 2019 por 1,000 Robux. Actualmente solo se consigue negociando con otros jugadores." }
+  ],
+  "Blox Fruits": [
+    { name: "Dragon Fruit", image: "Imagenes/items/dragon-fruit.webp", icon: "D", howTo: "Comprala al Blox Fruit Dealer cuando aparezca en stock por 15,000,000 de dinero del juego, compra la version permanente por Robux, o consiguela por trading." },
+    { name: "Kitsune Fruit", image: "Imagenes/items/kitsune-fruit.webp", icon: "K", howTo: "Sale raramente en el Blox Fruit Dealer por 8,000,000 de dinero del juego. Tambien puede comprarse permanente con Robux o conseguirse por trading." },
+    { name: "Dark Blade", image: "Imagenes/items/dark-blade.webp", icon: "B", howTo: "Compra el gamepass Dark Blade por Robux, recibelo como regalo o tradea el gamepass en Second Sea/Third Sea. Para V2 completa The Son Quest." }
+  ],
+  "99 Nights in the Forest": [
+    { name: "Laser Cannon", image: "Imagenes/items/laser-cannon.webp", icon: "L", howTo: "Busca Broken UFOs, Mothership UFOs o Alien Chests. Tambien puede aparecer por eventos; con la clase Cyborg empiezas con Laser Cannon." },
+    { name: "Chainsaw", image: "Imagenes/items/chainsaw.webp", icon: "C", howTo: "Abre Ruby Chests o fabricala en el Workshop con Cultist Gems, Bear Pelts, Alpha Wolf Pelts, Bunny Foot y Scrap. Sirve para farmear madera rapido." },
+    { name: "Strong Axe", image: "Imagenes/items/strong-axe.webp", icon: "A", howTo: "Consiguela con el cuarto intercambio del Pelt Trader, Gold Chests o Legendary Chests. Es valiosa porque corta arboles normales de un golpe." }
+  ],
+  "RIVALS": [
+    { name: "Bug Net", image: "Imagenes/items/bug-net.webp", icon: "B", howTo: "Skin exclusiva para Scythe. Se entrega a jugadores que reportan bugs importantes en el Discord de Nosniy Games, normalmente segun revision del equipo." },
+    { name: "10B Visits Skin", image: "Imagenes/items/ten-billion-skin.webp", icon: "10", howTo: "Skin conmemorativa para Assault Rifle. Se consigue canjeando el codigo TEN_BILLION_VISITS_OMG en Rewards/Codes si aun esta activo para tu cuenta." },
+    { name: "Glorious Skins", image: "Imagenes/items/glorious-skins.webp", icon: "G", howTo: "Gana Glory al final de temporada ranked o con Ranked Contract. En Ranked Shop compra el track del arma hasta llegar a la skin Glorious." }
+  ],
+  "Murder Mystery 2": [
+    { name: "Chroma Traveler's Gun", image: "Imagenes/items/chroma-travelers-gun.webp", icon: "C", howTo: "Originalmente salia de la Halloween Box 2023. Como el evento termino, ahora se consigue mediante trading con otros jugadores." },
+    { name: "Gingerscope", image: "Imagenes/items/gingerscope.webp", icon: "G", howTo: "Fue recompensa del tier 20 del Battle Pass Christmas 2023 por 98,000 Snow Tokens. Hoy la forma realista de conseguirlo es trading." },
+    { name: "Traveler's Axe", image: "Imagenes/items/travelers-axe.webp", icon: "T", howTo: "Fue recompensa del evento Halloween 2023. Al estar fuera de evento, actualmente se obtiene negociando en trades." }
+  ],
+  "Steal a Brainrot": [
+    { name: "Hydra Dragon Cannelloni", image: "Imagenes/items/hydra-dragon-cannelloni.webp", icon: "H", howTo: "Secret Brainrot de alto valor. Se intenta obtener con la OG Fuse Machine usando cuatro Brainrots de rareza Rare; la probabilidad de exito es baja." },
+    { name: "Dragon Cannelloni", image: "Imagenes/items/dragon-cannelloni.webp", icon: "D", howTo: "Secret Brainrot muy raro. Puede aparecer en servidores con suerte/boosts activos; tambien puedes robarlo si otro jugador lo tiene expuesto." },
+    { name: "La Supreme Combinasion", image: "Imagenes/items/la-supreme-combinasion.webp", icon: "S", howTo: "Secret Brainrot de fusion. Se obtiene con Fusion Machine y requiere una inversion muy alta, por eso es objetivo de jugadores avanzados." }
+  ],
+  "Jujutsu Shenanigans": [
+    { name: "Honored One", image: "Imagenes/items/honored-one.webp", icon: "H", howTo: "Personaje disponible desde el selector, sin gacha ni compra. Es buscado por su kit Limitless/Six Eyes y su despertar Infinite Void." },
+    { name: "Vessel", image: "Imagenes/items/vessel.webp", icon: "V", howTo: "Selecciona Vessel desde la lista de personajes. Su despertar King of Curses incluye Malevolent Shrine y World Cutting Slash, fuerte para PvP." },
+    { name: "Disaster Plants", image: "Imagenes/items/disaster-plants.webp", icon: "D", howTo: "Moveset Early Access. Actualmente requiere el gamepass Early Access; cuando el personaje este completo puede pasar a ser gratis." }
+  ],
+  "Fish It!": [
+    { name: "Diamond Rod", image: "Imagenes/items/diamond-rod.webp", icon: "D", howTo: "Cana Secret/endgame. Requiere Element Rod, peces Secret de zonas especificas, entregar a Lary una Mutated Gemstone Ruby y un Lochness Monster, y lograr 1000 capturas PERFECT." },
+    { name: "Element Rod", image: "Imagenes/items/element-rod.webp", icon: "E", howTo: "Completa la Element Quest: ten Ghostfinn Rod, pesca Secrets en Ancient Jungle y Sacred Temple, y crea 3 Transcended Stones." },
+    { name: "Ghostfinn Rod", image: "Imagenes/items/ghostfinn-rod.webp", icon: "G", howTo: "Cana Mythic de Deep Sea. Pesca 300 Rare/Epic en Treasure Room, 3 Mythic y 1 Secret en Sisyphus Statue, y gana 1M monedas." }
+  ],
+  "Forsaken": [
+    { name: "Gunner Guest 1337", image: "Imagenes/items/gunner-guest-1337.webp", icon: "G", howTo: "Skin secreta para Guest 1337. Consigue la Predator Badge en The Isle matando al primer grupo de mercenarios y vuelve a Forsaken para reclamarla." },
+    { name: "Ghost Two Time", image: "Imagenes/items/ghost-two-time.webp", icon: "T", howTo: "Skin especial para Two Time. Consigue The Champion Badge o The Fallen Badge en The Isle mediante los retos de Elite Mercenaries o Frogspawns." },
+    { name: "Hacklord Shedletsky", image: "Imagenes/items/hacklord-shedletsky.webp", icon: "H", howTo: "Completa el achievement For the outcome is already decided: juega como 1x1x1x1 y elimina 100 Shedletskys en total." }
+  ]
+};
+
+games.forEach((game) => {
+  if (topMonthItemsByTitle[game.title]) {
+    game.items = topMonthItemsByTitle[game.title];
+  }
+});
 
 const trendSectionsData = [
   {
@@ -650,7 +709,12 @@ function openGameModal(game) {
     const itemBtn = document.createElement("button");
     itemBtn.type = "button";
     itemBtn.className = "item-chip";
-    itemBtn.innerHTML = `<span class="item-icon">${item.icon}</span><span>${item.name}</span>`;
+    itemBtn.innerHTML = `
+      <span class="item-icon">
+        ${item.image ? `<img src="${item.image}" alt="" loading="lazy">` : item.icon}
+      </span>
+      <span>${item.name}</span>
+    `;
     itemBtn.addEventListener("click", () => {
       modalItems.querySelectorAll(".item-chip").forEach((chip) => chip.classList.remove("active"));
       itemBtn.classList.add("active");
@@ -1028,6 +1092,8 @@ function init() {
 }
 
 init();
+
+
 
 
 
