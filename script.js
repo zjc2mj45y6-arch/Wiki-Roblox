@@ -245,6 +245,7 @@ let activeGameTitle = "";
 let modalCloseTimer = null;
 let favoriteTitles = new Set();
 let recentlyViewedTitles = [];
+let homeGames = [];
 const homeGameLimit = 12;
 const suggestionLimit = 6;
 const recentlyViewedLimit = 3;
@@ -327,6 +328,15 @@ function categoriesFromData(data) {
   return ["Todas", ...new Set(data.map((g) => g.category))];
 }
 
+function shuffledGames(data) {
+  const copy = [...data];
+  for (let index = copy.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+  }
+  return copy;
+}
+
 function buildFilters() {
   categoryFilters.innerHTML = "";
   const categories = categoriesFromData(games);
@@ -360,7 +370,7 @@ function filteredGames() {
   }
 
   if (!hasCategoryFilter && !showFavoritesOnly) {
-    return matches.slice(0, homeGameLimit);
+    return (homeGames.length ? homeGames : matches).slice(0, homeGameLimit);
   }
 
   return matches;
@@ -1062,6 +1072,7 @@ function init() {
   loadFavorites();
   loadRecentlyViewed();
   initTheme();
+  homeGames = shuffledGames(games);
   syncFavoritesFilterButton();
   buildFilters();
   renderGames();
