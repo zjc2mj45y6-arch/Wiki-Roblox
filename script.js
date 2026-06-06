@@ -246,6 +246,7 @@ let favoriteTitles = new Set();
 let recentlyViewedTitles = [];
 let homeGames = [];
 const homeGameLimit = 12;
+const homeGridColumns = 4;
 const suggestionLimit = 6;
 const recentlyViewedLimit = 3;
 const favoritesStorageKey = "robloxWikiFavorites";
@@ -336,6 +337,23 @@ function shuffledGames(data) {
   return copy;
 }
 
+function balancedHomeGames(matches) {
+  const source = homeGames.length ? homeGames : matches;
+  const visible = source.slice(0, homeGameLimit);
+  const missingSlots = (homeGridColumns - (visible.length % homeGridColumns)) % homeGridColumns;
+
+  if (missingSlots === 0) {
+    return visible;
+  }
+
+  const visibleTitles = new Set(visible.map((game) => game.title));
+  const fillers = source
+    .filter((game) => !visibleTitles.has(game.title))
+    .slice(0, missingSlots);
+
+  return [...visible, ...fillers];
+}
+
 function buildFilters() {
   categoryFilters.innerHTML = "";
   const categories = categoriesFromData(games);
@@ -369,7 +387,7 @@ function filteredGames() {
   }
 
   if (!hasCategoryFilter && !showFavoritesOnly) {
-    return (homeGames.length ? homeGames : matches).slice(0, homeGameLimit);
+    return balancedHomeGames(matches);
   }
 
   return matches;
